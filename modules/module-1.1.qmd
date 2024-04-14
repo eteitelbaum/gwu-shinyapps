@@ -1,0 +1,39 @@
+---
+title: "Getting Started"
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+::: {.callout-tip}
+## Prework
+- Browse the [R Shiny Gallery](https://shiny.posit.co/r/gallery/)
+- Review Tidyverse concepts presented in [R for Data Science](https://r4ds.hadley.nz/)
+:::
+
+## R and RStudio {#sec-rstudio-setup}
+
+{{< video https://youtu.be/eimM6pNkYjE title='Getting Started with R and R Studio' >}}
+
+All of our work for this course will be done in the R language and we will be working with R in RStudio. RStudio is an integrated development environment (IDE) develop by a company named Posit. Please be sure to download and install the most recent versions of R and R Studio from Posit's [website](https://posit.co/download/rstudio-desktop/).
+
+It is a good idea to periodically update R and RStudio. RStudio will prompt you when an update is available, and to perform the update you can follow the usual process of downloading and installing from the Posit website. For R, there are a number of ways to update, but the easiest is to use packages like [installr](https://www.r-project.org/nosvn/pandoc/installr.html) for Windows and [updateR](https://github.com/AndreaCirilloAC/updateR) for Mac. Here is a good [blog post](https://www.linkedin.com/pulse/3-methods-update-r-rstudio-windows-mac-woratana-ngarmtrakulchol/) that walks you through the steps of how to update R using these packages. I usually update R once a semester.
+
+We are going to be using a number of R packages throughout the course. One essential set of packages are those that comprise the [Tidyverse](https://www.tidyverse.org/). You can install the entire Tidyverse collection of packages by typing `install.packages("tidyverse")` in your console. 
+
+Since this is a course the focuses, on Shiny Web apps, you will also want to install the Shiny package. You can do this by typing `install.packages("shiny")` in your console.
+
+Another thing that you probably want to do is to make sure that you have the native pipe operator (`|>`) enabled. In RStudio, go to Tools>Global Options, then go to Code and select "Use native pipe operator." It is OK if you want to use the `magrittr` pipe (`%>%`) instead, but I find the native pipe to a little more flexible and slightly easier to use. 
+
+## The Tidyverse Dialect {#sec-tidyverse-dialect}
+
+{{< video https://youtu.be/MKwyauo8nSI?si=i3gMTwHvcBhIAF1p title='Intro to the Tidyverse' >}}
+
+This course assumes a fair degree of familiarity with the R programming language and the Tidyverse. If you are not familiar with the Tidyverse or it has been some time since you have worked with R or Tidyverse packages andfunctions, then check out the above video by Posit's Tom Mock. In this video, Tom provides a brief overview of the Tidyverse and some of the key functions that we will be using throughout the course.
+
+From there, you might also take a look at the [Tidyverse website](https://www.tidyverse.org/) and [R for Data Science](https://r4ds.hadley.nz/) by Hadley Wickham, Mine Çetinkaya-Rundel and Garrett Grolemund. For this course it is enough to have a basic familiarity with the concepts of the first section of the book ("Whole Game"). You might might also find it helpful to reference the [Tidyverse cheatsheets](https://posit.co/resources/cheatsheets/) for a quick review and reference of the functions available in specific Tidyverse packages. 

@@ -1,0 +1,43 @@
+---
+title: "Module 1.2"
+subtitle: "What is R Shiny?"
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
+execute:
+  echo: true
+  message: false
+  warning: false
+---
+
+::: {.callout-tip}
+## Prework
+- Install Shiny (`install.packages("shiny")`)
+- Have a look at the [getting started](https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/index.html) section on the Shiny website
+- Get ahead: sign up for a free account on [shinyapps.io](https://www.shinyapps.io/)
+:::
+
+## Shiny History
+
+Shiny is a tool that enables you to create interactive web-based visualizations and dashboards directly from your R code. It simplifies the process of developing web applications by providing a higher-level abstraction and handling the underlying web technologies. With Shiny, you can allow your users to explore data, change parameters, and see the results of an analysis dynamically without needing extensive web development skills.
+
+Shiny was developed by [Posit](https://posit.co/) (formerly RStudio), a public benefit corporation that develops open source data science tools for R and Python. Shiny was first released in 2012 and has since become one of the most popular web application frameworks for R. Shiny was built on top of the R programming language but recently Posit has also released a version for [Python](https://shiny.posit.co/py/). 
+
+For a detailed and personalized account of the development of Shiny, have a look at this talk at the 2022 Posit Conference by Joe Cheng, the creator of Shiny:
+
+{{< video https://youtu.be/HpqLXB_TnpI?si=Vu-CTNQYmXK2opDe title='The Past and Future of Shiny' >}}
+
+## Your First Shiny App
+
+Once you have installed the Shiny package, you can create a new Shiny app by selecting `File > New File > Shiny Web App...` in RStudio. Give it a name ("test" or something similar is fine) and press Create. You can also choose whether you want a single file or a multiple file app. We will stick with single file for now. 
+
+This will create a new file with an example Shiny app that displays data on waiting times for the next eruption of the Old Faithful geyser at Yellowstone Park. You can run the app by pressing the `Run App` button in the top right corner of the script window. Now try manipulating the slider and see how the plot changes. 
+
+Note that the app code consist of three components:1) a *user interface* (UI); 2) a *server function*; and 3) a *call to the Shiny app*. The UI is the part of the app that defines what the user is going to see and interact with. The server function runs all of the computations and produces the visualizations and output that you want to display. And the call to the Shiny app simply tells Shiny to run the app. We will delve into each of these components in more detail in subsequent models.
+
+At some point you will want to share your apps with a broader audience. For this, you will need to host it on a server. There are lots of different ways to do this, but the easiestmethod when you are getting started is [shinyapps.io](https://www.shinyapps.io/). If you have set up your shinyapps.io account, you can publish your app by clicking the `Publish` button in the top right corner of the script window. If not, that is fine. We will return to the task of publishing apps later in the course and you can just view your app locally for now.
+
+
+
+

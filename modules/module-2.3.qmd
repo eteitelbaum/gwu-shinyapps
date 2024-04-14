@@ -1,0 +1,88 @@
+---
+title: "Module 2.3"
+subtitle: "Line Chart App Server"
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
+execute:
+  echo: true
+  message: false
+  warning: false
+---
+
+::: {.callout-tip}
+## Prework
+
+- Read *Mastering Shiny*, [Chapter 3](https://mastering-shiny.org/basic-reactivity.html), section 3.4
+:::
+
+{{< video https://youtu.be/TM2jD0PQOfE?si=CFAU32NPAWrHiHEN title = 'FRED App Server'>}}
+
+## The Server Function
+
+For our server function, we are going to define two separate `reactive()` functions. This is how we are going to dynamically update the plot based on two different user inputs. First, we will define an input for the indicator where `input$indicator` takes the user input from the dropdown menu to perform a fresh API call whenever the selected indicator changes. Then, we take that input and filter it based on the input from the slider, e.g. `input$range`. Then we render the plot based on these updated data. 
+Notice that whenever we want to use the stored data from the reactive calls we need to add parentheses after the objects, e.g. `fred_indicator()` in the second reactive function or `fred_data()` in the `ggplot` call. This is to ensure that the reactive expression is evaluated and its current value is used as the input data for the plot. 
+
+Finally, we are going to use the `add_rec_shade()` helper function to add the recession shading to the chart. We again use the inputs from the two reactive functions to define the start date and end date of the shading as well as the y-min and y-max values of the shaded rectangles.
+
+```{r}
+#| label: server
+#| eval: false
+
+server <- function(input, output) {
+  
+    # Download data from FRED with reactive function. 
+    # Only updates when user selects new indicator
+    fred_indicator <- reactive({
+      fredr(series_id = input$indicator,
+        observation_start = start_date,
+        observation_end = end_date)
+    })
+  
+    # Filter data according to chosen years 
+    # Only updates when user selects new data range
+    fred_data <- reactive({
+      fred_indicator() |>
+      filter(between(date, input$range[1],input$range[2])) 
+   })
+
+    # Render line chart
+    output$lineChart <- renderPlot({
+      
+      # Build plot with ggplot2
+      ggplot(fred_data(), aes(x = date, y = value)) + 
+        geom_line(color = "navyblue") +
+        labs(
+          x = "", 
+          y =  names(vars[which(vars == input$indicator)])
+        ) +
+        theme_minimal() +
+        # add recession shading
+        add_rec_shade(st_date = input$range[1], 
+                      ed_date = input$range[2], 
+                      shade_color = "darkgrey",
+                      y_min = min(fred_data()$value),
+                      y_max = max(fred_data()$value))
+    })
+}
+```
+
+## Call to Shiny app
+
+Once we have our UI and server functions defined we are ready to go. But don't forget to include the call to the Shiny app or the app won't run! Once this is in place, you can click "Run App" in the RStudio IDE to view the app locally. Optionally, right now, you can try setting up an account on [shinyapps.io](https://www.shinyapps.io/) and try publishing your app on their server. 
+
+```{r}
+#| label: call_shiny
+#| eval: false
+
+# See above for the definitions of ui and server
+ui <- ...
+
+server <- ...
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+```
+
+

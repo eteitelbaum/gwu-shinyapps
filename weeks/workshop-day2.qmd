@@ -1,0 +1,29 @@
+---
+title: "Workshop Day 2"
+subtitle: "Visualizing Data"
+format: html
+---
+
+::: {.callout-important}
+- Homework Assignment 2 is due Sunday, March 3 at 11:59pm.
+- Final Project is due Sunday, March 10 at 11:59pm.
+:::
+
+## Guest Speaker
+
+- David Keyes, founder of [R for the Rest of Us](https://rfortherestofus.com/)
+
+## Sessions
+
+- 9:00 - 10:30: [Revealjs Slides](/slides/session-2.1.qmd)
+- 10:30 - 11:00: Break
+- 11:00 - 12:30: [Blogs and Websites](/slides/session-2.2.qmd)
+- 12:30 - 1:30: Lunch
+- 1:30 - 3:00: [Working with PDFs](/slides/session-2.3.qmd)
+- 3:00 - 3:30: Break
+- 3:30 - 5:00 [Parameterized Reporting](/slides/session-2.4.qmd) with David Keyes
+
+## Assignments
+
+| 🧮 [Coding Assignment 2]()
+| ✍️ [Final Project]()

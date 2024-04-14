@@ -1,0 +1,50 @@
+---
+title: "Course Schedule"
+tbl-colwidths: [5,5,5,10,5,5,5]
+editor: visual
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(lubridate)
+
+mon <- as_date("2024-04-15")
+tues <- mon + days(1)
+wed <- mon + days(2)
+thur <- mon + days(3)
+fri <- mon + days(4)
+sat <- mon + days(5)
+sun <- mon + days(6)
+
+advdate <- function(day, week) {
+  date <- (day + weeks(week))
+  dm <- paste(month(date, label = TRUE), day(date))
+  return(dm)  
+}
+
+advdate2 <- function(day, week) {
+  date <- (day + weeks(week))
+  day_name <- wday(date, label = TRUE, abbr = FALSE)
+  return(day_name)
+}
+```
+
+This page displays an outline of the topics, content, and assignments for the course along with guidelines for when to start and finish assignments. Please see the assignments themselves for due dates.
+
+::: column-screen-inset-right
+|                                             | Day                  | Date                | Topic                                                |                                                                              Reference                                                                              |                                                                    Videos                                                                     |                                                       Assignments                                                        |
+|---------|---------|---------|---------|:-------:|:-------:|:-------:|
+| [1.1](/modules/module-1.1.qmd "Module 1.1") | `r advdate2(mon,0)`  | `r advdate(mon,0)`  | Getting Started                                      |                                                      [📖](https://shiny.posit.co/r/gallery/ "R Shiny Gallery")                                                      | [🖥️](https://youtu.be/eimM6pNkYjE "RStudio Setup") [🖥️](https://youtu.be/MKwyauo8nSI?si=PQBS8VaI16Kx8hd1 "Intro to the Tidyverse (Tom Mock)") |                                                                                                                          |
+| [1.2](/modules/module-1.2.qmd "Module 1.2") | `r advdate2(tues,0)` | `r advdate(tues,0)` | R Shiny Overview                                     |                                 [📖](https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/index.html "R Shiny Getting Started")                                 |                       [🖥️](https://youtu.be/HpqLXB_TnpI?si=Vu-CTNQYmXK2opDe "The Past and Future of Shiny (Joe Cheng)")                       |                                                                                                                          |
+| [1.3](/modules/module-1.3.qmd "Module 1.3") | `r advdate2(wed,0)`  | `r advdate(wed,0)`  | Scatter plot app setup                               |                                              [📖](https://mastering-shiny.org/basic-app.html "Mastering Shiny ch. 1")                                               |                                                                      🖥️                                                                       |                                                                                                                          |
+| [1.4](/modules/module-1.4.qmd "Module 1.4") | `r advdate2(thur,0)` | `r advdate(thur,0)` | Building the UI                                      |                                              [📖](https://mastering-shiny.org/basic-ui.html "Mastering Shiny, ch. 2")                                               |                                                                      🖥️                                                                       |                                                                                                                          |
+| [1.5](/modules/module-1.5.qmd "Module 1.5") | `r advdate2(fri,0)`  | `r advdate(fri,0)`  | Building the server                                  | [📖](https://mastering-shiny.org/basic-reactivity.html "Mastering Shiny, ch. 3.1-3.3") [📖](https://mastering-shiny.org/action-tidy.html "Mastering Shiny, ch. 12") |                                                                      🖥️                                                                       |                                                                                                                          |
+| [WS-1](/weeks/workshop-day1.html "Day 1")   | `r advdate2(sat,0)`  | `r advdate(sat,0)`  | [*See workshop schedule*](/weeks/workshop-day1.html) |                                                                                                                                                                     |                                                                                                                                               |                            [🧮](/assignments/coding-assignment-1.html "Coding assignment 1")                             |
+| [2.1](/modules/module-2.1.qmd "Module 2.1") | `r advdate2(mon,1)`  | `r advdate(mon,1)`  | Line chart app setup                                 |                                               [📖](https://shiny.posit.co/r/articles/build/sliders/ "Using Sliders")                                                |                                                                      🖥️                                                                       |                                                                                                                          |
+| [2.2](/modules/module-2.2.qmd "Module 2.2") | `r advdate2(tues,1)` | `r advdate(tues,1)` | Building the UI                                      |                                            [📖](https://mastering-shiny.org/action-layout.html "Mastering Shiny, ch. 6")                                            |                                                                      🖥️                                                                       |                                                                                                                          |
+| [2.3](/modules/module-2.3.qmd "Module 2.3") | `r advdate2(wed,1)`  | `r advdate(wed,1)`  | Building the server                                  |                                         [📖](https://mastering-shiny.org/basic-reactivity.html "Mastering Shiny, ch. 3.4")                                          |                                                                      🖥️                                                                       |                                                                                                                          |
+| [2.4](/modules/module-2.4.qmd "Module 2.4") | `r advdate2(thur,1)` | `r advdate(thur,1)` | Building your app                                    |                                           [📖](https://mastering-shiny.org/action-workflow.html "Mastering Shiny, ch. 5")                                           |                                                                      🖥️                                                                       |                                                                                                                          |
+| [2.5](/modules/module-2.5.qmd "Module 2.5") | `r advdate2(fri,1)`  | `r advdate(fri,1)`  | Deploying your app                                   |                                    [📖](https://docs.posit.co/shinyapps.io/index.html "shinyapps.io Getting Started, chs. 1&2")                                     |                                                                      🖥️                                                                       |                                                                                                                          |
+| [WS-2](/weeks/workshop-day2.html "Day 2")   | `r advdate2(sat,1)`  | `r advdate(sat,1)`  | [*See workshop schedule*](/weeks/workshop-day2.html) |                                                                                                                                                                     |                                                                                                                                               | [🧮](/assignments/coding-assignment-2.html "Coding assignment 2") [✍️](/project/project-assignment.html "Final project") |
+:::

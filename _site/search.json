@@ -1,0 +1,1182 @@
+[
+  {
+    "objectID": "data/module-1.1.html",
+    "href": "data/module-1.1.html",
+    "title": "Getting Started",
+    "section": "",
+    "text": "All of our work for this course will be done in the R language and we will be working with R in RStudio. RStudio is an integrated development environment (IDE) develop by a company named Posit. Please be sure to download and install the most recent versions of R and R Studio from Posit’s website.\nIt is a good idea to periodically update R and RStudio. RStudio will prompt you when it is time to update and you can follow the same process of downloading and installing from the Posit website that we just did here. For R, there are a number of ways to do it, but the easiest is to use packages like installr for Windows and updateR for Mac. Here is a good blog post that walks you through the steps of how to update R using these packages. I usually update R once a semester.\nWe are going to be using a number of R packages throughout the course. One essential set of packages are those that comprise the Tidyverse, but especially readr, dplyr, ggplot2 and tidyr. You can install the entire Tidyverse collection of packages by typing install.packages(\"tidyverse\") in your console. We will talk about these packages in detail as we go through the course, but have a look at this basic description now to gain some basic familiarity.\nAnother thing that you really want to do is to make sure that you have the native pipe operator (|&gt;) enabled. In RStudio, go to Tools&gt;Global Options, then go to Code and select “Use native pipe operator.”\nWhile you are here, you can also go to Appearance to select a different editor theme or to Pane Layout to change how the four panes in R Studio are organized. Next, familiarize yourself with how to expand and minimize the four windows. The most important window that I want to highlight here is the source window. This is where we are going to be working most of the time in this course. And if I tell you to send your source code, I mean to send the file that you are working on in this window. This could be a Quarto document, an R script or an app.R file for a Shiny app.\nThe next window is the Console and there we also see tabs for Terminal and Background Jobs. The console is where you can run R code one line at a time. The terminal is relevant for more advanced users and we will make some use of it when we talk about publishing Quarto documents. Background Jobs is going to be helpful when we want troubleshoot a Quarto document that is not rendering properly.\nFrom there, the next pane we want to explore is Environment, History, etc. Environment tells us what files are currently available to us. The other important tab here is Git which will be where we push things to GitHub. You will be using this a lot in the course.\nFinally, we see a pane with Files, Plots, Packages etc. Files tells us what files are in our project folder and enables us to copy, and delete files associated with our project. Plots is a window for viewing our visualizations. And Packages shows us what packages are available and loaded into our environment.\nBefore you move on to the next section, take some time to familiarize yourself with the various user-friendly buttons and shortcuts available to you like the drop down menu for the pane layout, a spell checker, a button for inserting a code chunk and other features that you can play around with."
+  },
+  {
+    "objectID": "data/module-1.1.html#sec-rstudio-setup",
+    "href": "data/module-1.1.html#sec-rstudio-setup",
+    "title": "Getting Started",
+    "section": "",
+    "text": "All of our work for this course will be done in the R language and we will be working with R in RStudio. RStudio is an integrated development environment (IDE) develop by a company named Posit. Please be sure to download and install the most recent versions of R and R Studio from Posit’s website.\nIt is a good idea to periodically update R and RStudio. RStudio will prompt you when it is time to update and you can follow the same process of downloading and installing from the Posit website that we just did here. For R, there are a number of ways to do it, but the easiest is to use packages like installr for Windows and updateR for Mac. Here is a good blog post that walks you through the steps of how to update R using these packages. I usually update R once a semester.\nWe are going to be using a number of R packages throughout the course. One essential set of packages are those that comprise the Tidyverse, but especially readr, dplyr, ggplot2 and tidyr. You can install the entire Tidyverse collection of packages by typing install.packages(\"tidyverse\") in your console. We will talk about these packages in detail as we go through the course, but have a look at this basic description now to gain some basic familiarity.\nAnother thing that you really want to do is to make sure that you have the native pipe operator (|&gt;) enabled. In RStudio, go to Tools&gt;Global Options, then go to Code and select “Use native pipe operator.”\nWhile you are here, you can also go to Appearance to select a different editor theme or to Pane Layout to change how the four panes in R Studio are organized. Next, familiarize yourself with how to expand and minimize the four windows. The most important window that I want to highlight here is the source window. This is where we are going to be working most of the time in this course. And if I tell you to send your source code, I mean to send the file that you are working on in this window. This could be a Quarto document, an R script or an app.R file for a Shiny app.\nThe next window is the Console and there we also see tabs for Terminal and Background Jobs. The console is where you can run R code one line at a time. The terminal is relevant for more advanced users and we will make some use of it when we talk about publishing Quarto documents. Background Jobs is going to be helpful when we want troubleshoot a Quarto document that is not rendering properly.\nFrom there, the next pane we want to explore is Environment, History, etc. Environment tells us what files are currently available to us. The other important tab here is Git which will be where we push things to GitHub. You will be using this a lot in the course.\nFinally, we see a pane with Files, Plots, Packages etc. Files tells us what files are in our project folder and enables us to copy, and delete files associated with our project. Plots is a window for viewing our visualizations. And Packages shows us what packages are available and loaded into our environment.\nBefore you move on to the next section, take some time to familiarize yourself with the various user-friendly buttons and shortcuts available to you like the drop down menu for the pane layout, a spell checker, a button for inserting a code chunk and other features that you can play around with."
+  },
+  {
+    "objectID": "data/module-1.1.html#sec-quarto-setup",
+    "href": "data/module-1.1.html#sec-quarto-setup",
+    "title": "Getting Started",
+    "section": "Quarto",
+    "text": "Quarto\n\nOnce you have R, R Studio and Quarto installed, you are ready to start integrating text and code with Quarto. Quarto is an open source publishing platform that enables you to integrate text with code. If you have used R Markdown before then Quarto will look familiar to you because Quarto is the next generation of R Markdown.\nRStudio comes with a version of Quarto already installed, but it can be useful to install the most recent version separately and because doing so will allow you to use Quarto with another IDE like VS Code. You can install the most recent version of Quarto by visiting this page and selecting the version for your operating system.\nNow take a little time to create a Quarto project in R Studio and make sure everything is working properly. But before you get started, create a new folder(directory) for this course on your computer somewhere. Once that is done, go to File &gt; New Project. Then select Quarto Project and name the project something like “test-project” in the Directory name field. Next, select Browse and navigate to the folder that you created for this course. Select Create Project.\nYou will notice that in your new project folder there is a file with an .Rproj extension. The .Rproj file is what tells RStudio which files are associated with the project and it obviates the need to set the working directory. It also makes it possible to share the folder with anyone who is running R and RStudio and have them run your code without having to set a working directory. This is what we refer to as a project-based workflow and we will use it for every assignment in this class.\nNow try rendering the document with the Render toggle button. By default, Quarto renders an .html file that it will open in a browser and save to your project folder.\nNext we want to try rendering a .pdf document. To do this, we have to install tinytex, a lightweight version of LaTeX. To do this, go to the Terminal and type quarto install tinytex. Now, change the format from html to pdf by inserting format: pdf in the YAML header. Then render the document again. A .pdf document should open up.\nNow take a few minutes and try changing more of the code in the YAML header. You can try changing the title, adding a subtitle (subtitle:) or changing the execution options. By default, Quarto uses the visual editor but behind the scenes it is using Markdown. Try and edit some text using the toggle buttons available in the visual editor and then switch to Source to view the underlying Markdown code. Play with the R code chunks embedded in the document or try adding new code chunks.\nYou may already have some experience writing in Markdown, which is a lightweight markup language that enables you to format plaintext files. If you have not used Markdown, or if your memory is hazy, don’t worry: it is really easy to learn. Have a look at this Markdown cheat sheet and try to familiarize yourself with its basic syntax. Finally, take some time to get familiar with the Guide and Reference sections of the Quarto website. Then take a look at the gallery so that you can get an idea of the kinds of things you can produce with Quarto."
+  },
+  {
+    "objectID": "modules/module-1.5.html",
+    "href": "modules/module-1.5.html",
+    "title": "Module 1.5",
+    "section": "",
+    "text": "Prework\n\n\n\n\nRead Mastering Shiny, Chapter 3, sections 3.1-3.3\nRead Mastering Shiny, Chapter 12",
+    "crumbs": [
+      "Course Modules",
+      "Module 1.5"
+    ]
+  },
+  {
+    "objectID": "modules/module-1.5.html#overview",
+    "href": "modules/module-1.5.html#overview",
+    "title": "Module 1.5",
+    "section": "Overview",
+    "text": "Overview\nIn this module we are going to complete our scatter plot app by coding up the server function and calling the app with the shinyApp() function. The server function is where you are going to put the logic and computations of the application. The server function receives input from the user interface, processes it, and generates the corresponding output. It can perform calculations, query databases, apply statistical models, and produce visualizations.",
+    "crumbs": [
+      "Course Modules",
+      "Module 1.5"
+    ]
+  },
+  {
+    "objectID": "modules/module-1.5.html#the-server-function",
+    "href": "modules/module-1.5.html#the-server-function",
+    "title": "Module 1.5",
+    "section": "The Server Function",
+    "text": "The Server Function\n\nThe server function contains three arguments. Two of them (input and output) are mandatory. session is an optional parameter that controls the behavior of the app during the user session that we won’t get into here. But we will keep it in the function call for now just to remind us that it is there.\nNext we are going to define the output of the app with output$scatterplot &lt;- renderPlot({}). This bit of code is going to render a plot and then save it to the output in an object called scatterplot. Remember that in the UI, we defined our plot output as plotOutput(\"scatterplot\"). This is where that object scatterplot is going to come from. The scatter plot is going to be created in two steps. First we are going to reactively retrieve the data each time the user selects new inputs. To do this we are going to use the inputs (xcol, ycol) from the UI to subset our data frame demdata, e.g. dem_data[, c(input$xcol, input$ycol, \"region\")]. That is going to create a three-column data frame with the user’s selected x variable, y variable and the region coding and store it in an object called selectedData.\nFrom there, we take selectedData and use it to create a scatter plot with ggplot2. This is done in the usual way, except for a couple of things. First, in our aes() call we need to use get() to specify the x and y variables. aes() uses nonstandard evaluation to capture variable names, meaning that the bare column names of the data frame are read directly so that you do not have to explicitly quote the inputs. However, in this case the names of the inputs are being passed as a string from the user. The get() function enables us to retrieve the value of an object based on its name. So our aes() call will be aes(x = get(x = input$xcol), y = get(input$ycol)).\nThe other thing we need to do is to add some special code to deal with the x- and y-axis labels because these are going to change every time the user selects a different variable. Here we are going to use the names() function to return the names of the the object selected in the vars vector of variable names. To make sure we get the right name from the vector, we are going to use the which() function. which() returns the value that satisfies a given function, in this case the index number of the vars vector that matches the user input. So for example, our x label will be defined as x = names(vars[which(vars == input$xcol)]. Here the number returned by [which(vars == input$xcol)] is going to be used to subset the vars list so that x displays the name of the variable selected by the user.\n\n# Define server logic required to draw a scatter plot\nserver &lt;- function(input, output, session) {\n  \n  # Render the plot\n  output$scatterplot &lt;- renderPlot({\n    \n    # ggplot call\n    ggplot(dem_data, aes(x = .data[[input$xcol]], y = .data[[input$ycol]])) +\n      geom_point(aes(color = region)) +\n      geom_smooth(method = \"loess\") +\n      scale_color_viridis_d(option = \"plasma\") +\n      theme_minimal() +\n      labs(\n        x =  names(vars[which(vars == input$xcol)]), # select names in vars that\n        y =  names(vars[which(vars == input$ycol)]), # match input selections\n        caption = \"Source: V-Dem Institute\",\n        color = \"Region\"\n      )\n  })\n}",
+    "crumbs": [
+      "Course Modules",
+      "Module 1.5"
+    ]
+  },
+  {
+    "objectID": "modules/module-1.5.html#displaying-your-app",
+    "href": "modules/module-1.5.html#displaying-your-app",
+    "title": "Module 1.5",
+    "section": "Displaying your app",
+    "text": "Displaying your app\nAt this point it should be relatively simple to view your app. Just add the call to the Shiny app, e.g. shinyApp(ui = ui, server = server) and click “Run App” in RStudio.\n\n# See above for the definitions of ui and server\nui &lt;- ...\n\nserver &lt;- ...\n\n# Run the application \nshinyApp(ui = ui, server = server)\n\nOptionally, right now, you can try setting up an account on shinyapps.io. Read over the shinyapps.io user guide and see if you can get it to work. For your final project, you will need to be able to deploy your app but but right now it is fine if you only want to view it locally.",
+    "crumbs": [
+      "Course Modules",
+      "Module 1.5"
+    ]
+  },
+  {
+    "objectID": "modules/module-1.2.html",
+    "href": "modules/module-1.2.html",
+    "title": "Module 1.2",
+    "section": "",
+    "text": "Prework\n\n\n\n\nInstall Shiny (install.packages(\"shiny\"))\nHave a look at the getting started section on the Shiny website\nGet ahead: sign up for a free account on shinyapps.io",
+    "crumbs": [
+      "Course Modules",
+      "Module 1.2"
+    ]
+  },
+  {
+    "objectID": "modules/module-1.2.html#shiny-history",
+    "href": "modules/module-1.2.html#shiny-history",
+    "title": "Module 1.2",
+    "section": "Shiny History",
+    "text": "Shiny History\nShiny is a tool that enables you to create interactive web-based visualizations and dashboards directly from your R code. It simplifies the process of developing web applications by providing a higher-level abstraction and handling the underlying web technologies. With Shiny, you can allow your users to explore data, change parameters, and see the results of an analysis dynamically without needing extensive web development skills.\nShiny was developed by Posit (formerly RStudio), a public benefit corporation that develops open source data science tools for R and Python. Shiny was first released in 2012 and has since become one of the most popular web application frameworks for R. Shiny was built on top of the R programming language but recently Posit has also released a version for Python.\nFor a detailed and personalized account of the development of Shiny, have a look at this talk at the 2022 Posit Conference by Joe Cheng, the creator of Shiny:",
+    "crumbs": [
+      "Course Modules",
+      "Module 1.2"
+    ]
+  },
+  {
+    "objectID": "modules/module-1.2.html#your-first-shiny-app",
+    "href": "modules/module-1.2.html#your-first-shiny-app",
+    "title": "Module 1.2",
+    "section": "Your First Shiny App",
+    "text": "Your First Shiny App\nOnce you have installed the Shiny package, you can create a new Shiny app by selecting File &gt; New File &gt; Shiny Web App... in RStudio. Give it a name (“test” or something similar is fine) and press Create. You can also choose whether you want a single file or a multiple file app. We will stick with single file for now.\nThis will create a new file with an example Shiny app that displays data on waiting times for the next eruption of the Old Faithful geyser at Yellowstone Park. You can run the app by pressing the Run App button in the top right corner of the script window. Now try manipulating the slider and see how the plot changes.\nNote that the app code consist of three components:1) a user interface (UI); 2) a server function; and 3) a call to the Shiny app. The UI is the part of the app that defines what the user is going to see and interact with. The server function runs all of the computations and produces the visualizations and output that you want to display. And the call to the Shiny app simply tells Shiny to run the app. We will delve into each of these components in more detail in subsequent models.\nAt some point you will want to share your apps with a broader audience. For this, you will need to host it on a server. There are lots of different ways to do this, but the easiestmethod when you are getting started is shinyapps.io. If you have set up your shinyapps.io account, you can publish your app by clicking the Publish button in the top right corner of the script window. If not, that is fine. We will return to the task of publishing apps later in the course and you can just view your app locally for now.",
+    "crumbs": [
+      "Course Modules",
+      "Module 1.2"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.5.html",
+    "href": "modules/module-2.5.html",
+    "title": "Module 2.5",
+    "section": "",
+    "text": "Prework\n\n\n\n\nSign up for a free account on ShinyApps.io\n\nInstall rsconnect so that you can publish to shinyapps.io (install.packages(\"rsconnect\"))\nInstall renv and familiarize yourself with its basic purpose and features (install.packages(\"renv\"))\nRead Chapters 1 & 2 of the shinyapps.io user guide\nNow that you have your Shiny app, how can you share it with others? The simplest and most logical thing to do is to publish it as a web page. After all, sharing your app on the web is sort of the point of making a web app and doing so is an essential if you want to share your apps with a broader set of users who do not know how to use R or and/or Shiny. There are many different ways to publish your app but the best way when you are getting started is ShinyApps.io.\nYou also may want to share your app with collaborators by sending them your R script and supporting files before you make your app public or available to a broader group of users. There are many ways to share your Shiny app files but the two we are going to cover are sending the files via email or sharing them on GitHub.",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.5"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.5.html#publishing-your-app-on-shinyapps.io",
+    "href": "modules/module-2.5.html#publishing-your-app-on-shinyapps.io",
+    "title": "Module 2.5",
+    "section": "Publishing your app on ShinyApps.io",
+    "text": "Publishing your app on ShinyApps.io\nOnce it is ready to go, publishing your app to ShinyApps.io is super-easy. Make sure that you have the rsconnect package installed. Then, in RStudio, go to Tools &gt; Global Options and select Publishing. Select Connect, ShinyApps.io and follow the instructions for retrieving and entering your token.\nOnce that is set up, open your app.R file. At the top of your Source window, you should see a little blue circle with arrows surrounding it that says “Publish the application or document” when you hover over it. Click that and, if prompted to do so, install any required updates.\nNext you will be prompted for which files you want to upload. Just select the essential files that you need for the app like the app.R file and any supporting files like a .csv file with the data the app needs or helper scripts. No need to upload ancillary files like your prep file or .Rprofile.\nThen hit Publish and that should be it! Here is a good set of step-by-step instructions in case you happen to get stuck.",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.5"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.5.html#sharing-your-project-folder-via-email",
+    "href": "modules/module-2.5.html#sharing-your-project-folder-via-email",
+    "title": "Module 2.5",
+    "section": "Sharing your project folder via email",
+    "text": "Sharing your project folder via email\nNow let’s say you want to share your code with people. The most basic way to share your app is to simply zip your project folder and send it to your collaborators via email. The other users can then place your project folder wherever they like and run the app by pressing the “run” icon or by using the runApp() function, e.g. \n\n# install.packages(\"shiny\")\nlibrary(shiny)\nrunApp(\"name-of-app\")",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.5"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.5.html#sharing-your-code-on-github",
+    "href": "modules/module-2.5.html#sharing-your-code-on-github",
+    "title": "Module 2.5",
+    "section": "Sharing your code on GitHub",
+    "text": "Sharing your code on GitHub\nAnother way to share your code is on GitHub. The easiest way to do this is to use version control from the very beginning like you have been doing with GitHub classroom for the assignments in this course.\nBut since you are submitting the code via a private GitHub classroom repo, the best way to share your code for this app would be to simply create a new public GitHub repo and copy your code to a new version control project associated with that repo. Then, if you want to make changes to your app and publish it from the new project folder, simply give it a new title when you upload it to ShinyApps.io.\nTo create a new repo in GitHub, go to your profile, go to Repositories, select New and name your new repository. You can also give it an optional description. Make sure your new repo is set to Public and hit “Create repository.” From there copy the repo’s URL and use it to create a new version control project in RStudio. Then copy your app.R and supporting files to the new version control rep.",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.5"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.5.html#using-the-renv-package-to-record-your-r-environment",
+    "href": "modules/module-2.5.html#using-the-renv-package-to-record-your-r-environment",
+    "title": "Module 2.5",
+    "section": "Using the renv package to record your R environment",
+    "text": "Using the renv package to record your R environment\nOne problem you will frequently run into with R Shiny apps is that they can break as a result of package updates and new R installations. One way to prevent this from happening is to use the renv package, which records your R environment at the time you made the app.\nTo do this, make sure renv is installed. Then type renv::init() in your console. Next, type ren::snapshot(). At this point, renv will give you a list of the packages and versions being used by the app. If everything looks good, type ‘y’ and renv will record the environment. When you come back to work on the app later, you can choose whether to update the packages, but if doing so breaks the app you the option of restoring the earlier environment by typing renv::restore().",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.5"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.1.html",
+    "href": "modules/module-2.1.html",
+    "title": "Module 2.1",
+    "section": "",
+    "text": "Prework\n\n\n\n\nGet a FRED API key\n\nInstall fredr, read about its basic usage and have a look at the FRED website\nInstall ecm, which we will use to build our recession shading helper script\nInstall shinyWidgets and familiarize yourself with its basic functions\nStart a new Shiny project for this lesson. Go to File, select New Directory and then Shiny App. Browse to where you want to save the app, give the directory a name and click Create Project.\nRead this article about sliders",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.1"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.1.html#overview",
+    "href": "modules/module-2.1.html#overview",
+    "title": "Module 2.1",
+    "section": "Overview",
+    "text": "Overview\nA fundmental concept in R Shiny is reactivity. Reactivity refers to the automatic responsiveness and dynamic behavior of the application based on user input and data changes. It allows the application to update and re-render specific parts of the user interface (UI) in response to changes in input values, data updates, or other reactive triggers.\nAll Shiny apps have an element of reactivity. In a basic Shiny app like we say in the last module, reactivity occurs when user input is fed to the server function through functions like renderPlot() or renderTable(). But we might also want to add additional elements of reactivity by using reactive functions like reactive() or observe().\nThe app that we are going to build over the next few modules is going to look at how to use the reactive() function to control two separate reactive inputs to a line chart: the indicator the user wishes to view and the date range that the way to view it for. Here is the app that we are going to be building:",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.1"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.1.html#setup",
+    "href": "modules/module-2.1.html#setup",
+    "title": "Module 2.1",
+    "section": "Setup",
+    "text": "Setup\n\nIn the setup portion of our we want to start by loading the packages we will need to build the app. For this app, we are going to be using the fredr package to download data pertaining to the overall health of the economy from the St. Louis Fed’s Federal Reserve Economic Data (FRED)[https://fred.stlouisfed.org/] API. So here we will also set our FRED API key and assign the codes for the indicators that we want to download to objects.\nNext, we will use the as.Date() function to set the start date of our line series to Januar 1, 1970 and the end date as today’s date (system date). We will also create a list of variable names for our UI dropdown (vars) and relate them to the objects containing the indicator codes.\nFinally, we are going to be using a helper function to generate recession shading for our charts. Scroll down to the bottom of this page to see the code for the helper function. Take this and save it in an R file and put it in your app folder. In this chunk, we are going to call it with the source function, e.g. source(helper.R).\n\n# Load packages\nlibrary(shiny)\nlibrary(fredr)\nlibrary(dplyr)\nlibrary(ggplot2)\n\n# Set Fred API key \nfredr_set_key(\"YOUR FRED API KEY\") \n\n# Assign FRED series to objects\ncci &lt;- \"CSCICP03USM665S\" # consumer confidence\nbci &lt;- \"BSCICP03USM665S\" # business confidence\ncli &lt;- \"USALOLITONOSTSAM\" # composite lead indicator\nunemp_rate &lt;- \"UNRATE\" # unemployment rate\ngrowth &lt;- \"A191RL1Q225SBEA\" # growth rate\n\n# set start and end date\nstart_date &lt;- as.Date(\"1970-01-01\")\nend_date &lt;- as.Date(Sys.Date())\n\n# Create list of named values for the input selection\nvars &lt;- c(\"Consumer Confidence\" = cci, \n          \"Business Confidence\" = bci, \n          \"Composite Indicator\" = cli, \n          \"Unemployment Rate\" = unemp_rate,\n          \"Growth Rate\" = growth)\n\n# Load helper script\nsource(\"helper.R\") # scroll down, code pasted below",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.1"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.1.html#helper-script",
+    "href": "modules/module-2.1.html#helper-script",
+    "title": "Module 2.1",
+    "section": "Helper script",
+    "text": "Helper script\nThis is the helper script for shaded recession rectangles. Save in a file called helper.R in same folder as your app.R file. See this post for more details.\n\nlibrary(ecm) # forlagpad\n\n# define add_rec_shade function\nadd_rec_shade&lt;-function(st_date,ed_date,shade_color, y_min, y_max) {\n  \n  # download NBER recession indicators, peak through trough\n  recession&lt;- fredr(series_id = \"USRECD\",\n                    observation_start = as.Date(st_date), \n                    observation_end = as.Date(ed_date))\n  \n  #code 1 for 1st day of recession, -1 for 1st day after it ends\n  recession$diff&lt;-recession$value-lagpad(recession$value,k=1)\n  \n  #drop 1st N.A. value\n  recession&lt;-recession[!is.na(recession$diff),] \n  \n  #create vector of recession start dates\n  recession.start&lt;-recession[recession$diff==1,]$date \n  \n  #create vector of recession end dates\n  recession.end&lt;-recession[recession$diff==(-1),]$date \n  \n  # if there are more dates listed in recession.start than recession.end\n  if(length(recession.start)&gt;length(recession.end))\n  # then enter system date for last date in recession.end\n  {recession.end&lt;-c(recession.end,Sys.Date())} \n  \n  # if there are more dates listed in recession.end than recession.start\n  if(length(recession.end)&gt;length(recession.start))       \n  # then enter the earliest date in recession$date as first date in recession.start  \n  {recession.start&lt;-c(min(recession$date),recession.start)} \n  \n  # make a dataframe out of recession.start and recession.end\n  recs&lt;-as.data.frame(cbind(recession.start,recession.end))\n  \n  # convert recession.start into a date\n  recs$recession.start&lt;-as.Date(\n    as.numeric(recs$recession.start),\n    origin=as.Date(\"1970-01-01\")) \n\n  # convert recession.end into a date\n  recs$recession.end&lt;-as.Date(\n    recs$recession.end,\n    origin=as.Date(\"1970-01-01\")) \n  \n  # if the number of rows in recs &gt; 0\n  if(nrow(recs)&gt;0) \n  # draw the rectangle  \n  {rec_shade&lt;-geom_rect(data=recs, \n                         # inherit.aes=F overrides default aesthetics\n                         inherit.aes=F, \n                         aes(xmin=recession.start, \n                         xmax=recession.end, \n                         ymin=y_min, ymax=y_max), \n                         fill=shade_color, alpha=0.5)\n    return(rec_shade)\n  }\n}",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.1"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.2.html",
+    "href": "modules/module-2.2.html",
+    "title": "Module 2.2",
+    "section": "",
+    "text": "Prework\n\n\n\n\nRead Mastering Shiny, Chapter 6\n\n\n\n\n\nNow we can get started on developing the UI for our app and, along the way, learn a few more aspects of Shiny app layouts that we can apply.\nFor this app, we are going to have a title panel and two main display elements. The first is a panel where the user can select the indicator that they want to chart and the second is a plot with a slider where users can select the years they want to view. So let’s divide the UI into two sections using the fluidRow() and column()\nThe fluidRow() function creates horizontal containers while the column() function is used to create vertical containers. Since we our app is going to display a single row, we will have just one fluidRow() call. Then we can divide that row into two columns using the column() function. The first argument in column()is the column width. Since column widths in Shiny are based on the Boots Bootstrap 12-wide grid system, our column widths must add up to 12. So let’s make our panel for selecting the indicator 4 units wide and the area where we will display the plot 8 units wide.\nFrom there, we can define the panel as a wellPanel() to give it an inset look and a grey background. We include selectInput() to get our dropdown where users can select an indicator from the vars list. Let’s also use the helpText() function to display some instructions regarding how to use the app.\nFor the main display section, we are going to have our plot out along with the slider input. We are going to call this input “range” and leave the label blank. Then we need to define a min value, a max value and a range for the slider. For min and max, we will use start_date and end_date, which we defined earlier in the setup and the combination of these to define the range (value). Then we set width to 100% because we want the slider to expand to fit the entire width of the plot. `\n\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"FRED Data App\"),\n    \n    fluidRow(\n      \n      # 12 columns on one row: this panel will take 1/3 of it\n      column(4, wellPanel(\n        selectInput(\"indicator\", \"Indicator:\", vars)\n        ),\n      helpText(\"Select an indicator, choose a date range and view the trend. \n               The grey bars represent economic recessions. \n               The data for this app comes from the St. Louis Fed's \n               FRED database. The consumer confidence, business confidence and \n               lead composite indicators are OECD data downloaded through FRED.\")\n      ), \n      \n      # Remaining 2/3 occupied by plot\n      column(8,\n        plotOutput(\"lineChart\"),     \n        sliderInput(\n          \"range\",\n          \"\",\n          min = start_date,\n          max = end_date, \n          value = c(start_date, end_date), \n          width = \"100%\"\n        )\n      )\n    )\n)",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.2"
+    ]
+  },
+  {
+    "objectID": "course-support.html",
+    "href": "course-support.html",
+    "title": "Support",
+    "section": "",
+    "text": "Writing Center GW’s Writing Center cultivates confident writers in the University community by facilitating collaborative, critical, and inclusive conversations at all stages of the writing process. Working alongside peer mentors, writers develop strategies to write independently in academic and public settings. Appointments can be booked online here.\nAcademic Commons Academic Commons provides tutoring and other academic support resources to students in many courses. Students can schedule virtual one-on-one appointments or attend virtual drop-in sessions. Students may schedule an appointment, review the tutoring schedule, access other academic support resources, or obtain assistance here.",
+    "crumbs": [
+      "Course Information",
+      "Support"
+    ]
+  },
+  {
+    "objectID": "course-support.html#academic-support",
+    "href": "course-support.html#academic-support",
+    "title": "Support",
+    "section": "",
+    "text": "Writing Center GW’s Writing Center cultivates confident writers in the University community by facilitating collaborative, critical, and inclusive conversations at all stages of the writing process. Working alongside peer mentors, writers develop strategies to write independently in academic and public settings. Appointments can be booked online here.\nAcademic Commons Academic Commons provides tutoring and other academic support resources to students in many courses. Students can schedule virtual one-on-one appointments or attend virtual drop-in sessions. Students may schedule an appointment, review the tutoring schedule, access other academic support resources, or obtain assistance here.",
+    "crumbs": [
+      "Course Information",
+      "Support"
+    ]
+  },
+  {
+    "objectID": "course-support.html#support-for-students-outside-the-classroom",
+    "href": "course-support.html#support-for-students-outside-the-classroom",
+    "title": "Support",
+    "section": "Support for students outside the classroom",
+    "text": "Support for students outside the classroom\nDisability Support Services (DSS) 202-994-8250 Any student who may need an accommodation based on the potential impact of a disability should contact Disability Support Services to establish eligibility and to coordinate reasonable accommodations.\nCounseling and Psychological Services 202-994-5300 GW’s Colonial Health Center offers counseling and psychological services, supporting mental health and personal development by collaborating directly with students to overcome challenges and difficulties that may interfere with academic, emotional, and personal success.\nGW aims to create a community that cares for each other.The CARE Team fosters this goal by creating a pathway through which students who may need additional support can be identified and referred to the most appropriate services. Through the CARE Team, students are given the support they need to persist and succeed at GW and beyond.\nSafety and Security:\n\nIn an emergency: call GWPD 202-994-6111 or 911.\nFor situation-specific actions: review the Emergency Response Handbook\nStay informed: safety.gwu.edu/stay-informed",
+    "crumbs": [
+      "Course Information",
+      "Support"
+    ]
+  },
+  {
+    "objectID": "project/project-datasets.html",
+    "href": "project/project-datasets.html",
+    "title": "Datasets",
+    "section": "",
+    "text": "Here are some datasets that you might consider using for your final project:\n\nILOSTAT is the statistical database of the International Labour Organisation. It has data pertaining to labor, working conditions, industrial relations, poverty and inequality.\nKaggle has data on just about anything you can think of. Very usable, clean data. Just stick to the social science stuff for your project.\nOECD DATA provides data related to the performance of high income countries.\nOur World in Data is a good general resource for political economy data. The site is centered around blog posts but you can also search for a topic, view a visualization related to that topic and then download the data used to create it.\nStatista is a good place to look for data on more niche topics.\nUNCTADstat is the United Nations Conference on Trade and Development statistical database. It provides harmonized data on a range of topics related to economic performance, trade and statistics.\nThe UN Human Development Reports include a number of important indicators related to human development, gender and sustainable development goals (SDGs).\nVarieties of Democracy (V-DEM) provides original measures of the quality of democracy for every country dating back to the 18th century.\nWorld Bank Development Indicators (WDI) is the primary World Bank database for development data from officially-recognized international sources.\nThe World Bank DataBank provides access to dozens of additional World Bank databases on topics such as regional development, governance, education, gender and the environment.\nGoogle Public Data Explorer contains information about dozens of databases related to governance and the economy. You cannot download the raw data from Google, but you can use the site to visualize the data and then follow the link to the original source.\n\nFor information on more specific resources available, see this page on the Gelman Library website.",
+    "crumbs": [
+      "Project",
+      "Datasets"
+    ]
+  },
+  {
+    "objectID": "slides/session-1.1.html#quarto",
+    "href": "slides/session-1.1.html#quarto",
+    "title": "Data Rich Reports",
+    "section": "Quarto",
+    "text": "Quarto\n\n\n\nQuarto is an open-source scientific publishing platform\nAllows you to integrate text with code\nKind of like a word processor for data science\nCan use it to create reports, books, websites, etc.\nCan make HTML, PDF, Word, and other formats\nCan use R, Python, Julia, and other languages"
+  },
+  {
+    "objectID": "slides/session-1.1.html#quick-discussion",
+    "href": "slides/session-1.1.html#quick-discussion",
+    "title": "Data Rich Reports",
+    "section": "Quick Discussion",
+    "text": "Quick Discussion\n\n\nHave a look at the Quarto gallery\nWhat project(s) do you like?\nWhat would you like to do for a final project?\nDiscuss with a neighbor\n\n\n\n\n−+\n03:00"
+  },
+  {
+    "objectID": "slides/session-1.1.html#install-r-and-rstudio",
+    "href": "slides/session-1.1.html#install-r-and-rstudio",
+    "title": "Data Rich Reports",
+    "section": "Install R and RStudio",
+    "text": "Install R and RStudio\n\n\nIf you haven’t already…\nGo to the RStudio download page\nDownload R and then RStudio"
+  },
+  {
+    "objectID": "slides/session-1.1.html#set-up-rstudio",
+    "href": "slides/session-1.1.html#set-up-rstudio",
+    "title": "Data Rich Reports",
+    "section": "Set up RStudio",
+    "text": "Set up RStudio\n\n\nGo to Tools&gt;Global Options\nUnder Code, enable native pipe operator (|&gt;)\nUnder Appearance, choose a theme\nConfigure panes\n\nGo to Pane Layout\nMove Source, Console, etc. to preferred positions"
+  },
+  {
+    "objectID": "slides/session-1.1.html#illustration",
+    "href": "slides/session-1.1.html#illustration",
+    "title": "Data Rich Reports",
+    "section": "Illustration",
+    "text": "Illustration\n\n\n\n\n−+\n03:00"
+  },
+  {
+    "objectID": "slides/session-1.1.html#project-oriented-workflow",
+    "href": "slides/session-1.1.html#project-oriented-workflow",
+    "title": "Data Rich Reports",
+    "section": "Project Oriented Workflow",
+    "text": "Project Oriented Workflow\n\n\n\nAlways start a document in a project folder\n\nThat way you don’t have to do setwd\nAlso can share easily with other people\n\nGo to File&gt;New Project\nCreate a Quarto project folder"
+  },
+  {
+    "objectID": "slides/session-1.1.html#visual-editor",
+    "href": "slides/session-1.1.html#visual-editor",
+    "title": "Data Rich Reports",
+    "section": "Visual Editor",
+    "text": "Visual Editor\n\n\nThere are two ways to edit Quarto docs\n\nSource (markdown)\nVisual editor\n\nVisual editor\n\nWYSIWYM\nApproximates appearance\n\nTry both and see what you like"
+  },
+  {
+    "objectID": "slides/session-1.1.html#rendering-documents",
+    "href": "slides/session-1.1.html#rendering-documents",
+    "title": "Data Rich Reports",
+    "section": "Rendering Documents",
+    "text": "Rendering Documents\n\n\nRendering = converting to another format\n\nDefault format is HTML\nCan also render to PDF, Word, etc.\n\nTo render a Quarto document\n\nClick on the Render button\n\nOr keyboard shortcut (Cmd/Ctrl + Shift + K)\n\n\nBy default, Quarto will preview the document in your browser\nBut you can also preview in Viewer pane\n\nClick on the gear icon next to the Render button\nSelect “Preview in Viewer Pane”"
+  },
+  {
+    "objectID": "slides/session-1.1.html#illustration-1",
+    "href": "slides/session-1.1.html#illustration-1",
+    "title": "Data Rich Reports",
+    "section": "Illustration",
+    "text": "Illustration"
+  },
+  {
+    "objectID": "slides/session-1.1.html#lets-try-quarto",
+    "href": "slides/session-1.1.html#lets-try-quarto",
+    "title": "Data Rich Reports",
+    "section": "Let’s Try Quarto!",
+    "text": "Let’s Try Quarto!\n\nCreate a new Quarto document\n\nFile&gt;New File&gt;Quarto Document\n\nSave the document in your project folder\nRender it\n\nClick on the Render button\nOr keyboard shortcut (Cmd/Ctr + Shift + K)\n\nTry out the visual editor\n\n\n\n\n−+\n02:00"
+  },
+  {
+    "objectID": "slides/session-1.1.html#document-elements",
+    "href": "slides/session-1.1.html#document-elements",
+    "title": "Data Rich Reports",
+    "section": "Document Elements",
+    "text": "Document Elements\n\n\nYAML Header\nMarkdown content\nCode chunks"
+  },
+  {
+    "objectID": "slides/session-1.1.html#yaml-header",
+    "href": "slides/session-1.1.html#yaml-header",
+    "title": "Data Rich Reports",
+    "section": "YAML Header",
+    "text": "YAML Header\n\n\nMetadata about the document\n\nTitle, author, date, etc.\n\nOutput format\nExecution options"
+  },
+  {
+    "objectID": "slides/session-1.1.html#yaml-header-1",
+    "href": "slides/session-1.1.html#yaml-header-1",
+    "title": "Data Rich Reports",
+    "section": "YAML Header",
+    "text": "YAML Header\n---\ntitle: \"My Documnet\"\nauthor: \"Your Name\"\ndate: today\ndate-format: long\nformat: html\nexecute:\n  echo: false\n  message: false\n---\n\nTry changing some of these options in your document\nThen render it again\nLook in the Quarto guide for other options to try\n\n\n\n\n−+\n02:00"
+  },
+  {
+    "objectID": "slides/session-1.1.html#markdown",
+    "href": "slides/session-1.1.html#markdown",
+    "title": "Data Rich Reports",
+    "section": "Markdown",
+    "text": "Markdown\n\n\n\nMarkdown is a simple markup language\nYou can use it to format text\nYou can also use it to embed images, tables, etc.\nAnd to embed code chunks…"
+  },
+  {
+    "objectID": "slides/session-1.1.html#markdown-syntax---basic-authoring",
+    "href": "slides/session-1.1.html#markdown-syntax---basic-authoring",
+    "title": "Data Rich Reports",
+    "section": "Markdown Syntax - Basic Authoring",
+    "text": "Markdown Syntax - Basic Authoring\n\n\nFor basic text you can just start typing\nFor line breaks use two spaces and return (enter)\nHeadings (use #, ##, ###, etc.)\n\n# is the largest heading (level 1)\n## is the next largest (level 2)\n### is the next largest (level 3)\nEtc."
+  },
+  {
+    "objectID": "slides/session-1.1.html#markdown-syntax---styling",
+    "href": "slides/session-1.1.html#markdown-syntax---styling",
+    "title": "Data Rich Reports",
+    "section": "Markdown Syntax - Styling",
+    "text": "Markdown Syntax - Styling\n\n\nEmphasis = Italics (use *)\n\nBold (use **)\n\nLists\n\nBullet points (use -)\nNumbered lists (use 1.)"
+  },
+  {
+    "objectID": "slides/session-1.1.html#markdown-syntax---content",
+    "href": "slides/session-1.1.html#markdown-syntax---content",
+    "title": "Data Rich Reports",
+    "section": "Markdown Syntax - Content",
+    "text": "Markdown Syntax - Content\n\n\nLinks (use [text](url))\nImages (use ![](file path or url))\nCode chunks\n\nR code chunks (```{r}…```)\nPython code chunks (```{python}…```)\nEtc."
+  },
+  {
+    "objectID": "slides/session-1.1.html#try-some-markdown",
+    "href": "slides/session-1.1.html#try-some-markdown",
+    "title": "Data Rich Reports",
+    "section": "Try Some Markdown",
+    "text": "Try Some Markdown\n\n\nCheck out the Markdown Cheatsheet\nTry editing the markdown in your document\nTry incorporating an figure (image), link, table, etc.\nTry some of the other things you find in the guide\nThen render it again\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/session-1.1.html#code-chunks",
+    "href": "slides/session-1.1.html#code-chunks",
+    "title": "Data Rich Reports",
+    "section": "Code Chunks",
+    "text": "Code Chunks\n\n\nIncorporate R code (could also be Python, Julia, etc.)\nAdd a code chunk with the ‘+’ button\nRun the code chunk by clicking the play button\n\nOr use keyboard shortcut (Cmd/Ctrl + Shift + Enter)\n\nRun all chunks up that point by clicking the down arrow\n\nOr use keyboard shortcut (Cmd/Ctrl + Shift + K)\n\nRun a single line with shortcut (Cmd/Ctrl + Enter)"
+  },
+  {
+    "objectID": "slides/session-1.1.html#code-chunk-options",
+    "href": "slides/session-1.1.html#code-chunk-options",
+    "title": "Data Rich Reports",
+    "section": "Code Chunk Options",
+    "text": "Code Chunk Options\n\n\nUse #| (hash-pipe) to add options\nlabel is a unique identifier for the chunk\nOptions to control what happens when you render\n\necho controls whether the code is shown\neval controls whether the code is run\nmessage controls whether messages are shown\nwarning controls whether warnings are shown"
+  },
+  {
+    "objectID": "slides/session-1.1.html#code-chunk-options-1",
+    "href": "slides/session-1.1.html#code-chunk-options-1",
+    "title": "Data Rich Reports",
+    "section": "Code Chunk Options",
+    "text": "Code Chunk Options\n\n\nCode-chunk options override global options set in YAML header\nSee documentation for more options\nYou can also use write chunk options inline with chunk name,\n\ne.g., {r, echo = FALSE} ..."
+  },
+  {
+    "objectID": "slides/session-1.1.html#illustration-2",
+    "href": "slides/session-1.1.html#illustration-2",
+    "title": "Data Rich Reports",
+    "section": "Illustration",
+    "text": "Illustration"
+  },
+  {
+    "objectID": "slides/session-1.1.html#your-turn",
+    "href": "slides/session-1.1.html#your-turn",
+    "title": "Data Rich Reports",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\n\nTry running a code chunk in your document\nChange the chunk options\nRun the code again"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Course Schedule",
+    "section": "",
+    "text": "This page displays an outline of the topics, content, and assignments for the course along with guidelines for when to start and finish assignments. Please see the assignments themselves for due dates.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDay\nDate\nTopic\nReference\nVideos\nAssignments\n\n\n\n\n1.1\nMonday\nApr 15\nGetting Started\n📖\n🖥️ 🖥️\n\n\n\n1.2\nTuesday\nApr 16\nR Shiny Overview\n📖\n🖥️\n\n\n\n1.3\nWednesday\nApr 17\nScatter plot app setup\n📖\n🖥️\n\n\n\n1.4\nThursday\nApr 18\nBuilding the UI\n📖\n🖥️\n\n\n\n1.5\nFriday\nApr 19\nBuilding the server\n📖 📖\n🖥️\n\n\n\nWS-1\nSaturday\nApr 20\nSee workshop schedule\n\n\n🧮\n\n\n2.1\nMonday\nApr 22\nLine chart app setup\n📖\n🖥️\n\n\n\n2.2\nTuesday\nApr 23\nBuilding the UI\n📖\n🖥️\n\n\n\n2.3\nWednesday\nApr 24\nBuilding the server\n📖\n🖥️\n\n\n\n2.4\nThursday\nApr 25\nBuilding your app\n📖\n🖥️\n\n\n\n2.5\nFriday\nApr 26\nDeploying your app\n📖\n🖥️\n\n\n\nWS-2\nSaturday\nApr 27\nSee workshop schedule\n\n\n🧮 ✍️",
+    "crumbs": [
+      "Course Information",
+      "Schedule"
+    ]
+  },
+  {
+    "objectID": "weeks/workshop-day2.html",
+    "href": "weeks/workshop-day2.html",
+    "title": "Workshop Day 2",
+    "section": "",
+    "text": "Important\n\n\n\n\nHomework Assignment 2 is due Sunday, March 3 at 11:59pm.\nFinal Project is due Sunday, March 10 at 11:59pm.",
+    "crumbs": [
+      "Workshop Schedule",
+      "Workshop Day 2"
+    ]
+  },
+  {
+    "objectID": "weeks/workshop-day2.html#guest-speaker",
+    "href": "weeks/workshop-day2.html#guest-speaker",
+    "title": "Workshop Day 2",
+    "section": "Guest Speaker",
+    "text": "Guest Speaker\n\nDavid Keyes, founder of R for the Rest of Us",
+    "crumbs": [
+      "Workshop Schedule",
+      "Workshop Day 2"
+    ]
+  },
+  {
+    "objectID": "weeks/workshop-day2.html#sessions",
+    "href": "weeks/workshop-day2.html#sessions",
+    "title": "Workshop Day 2",
+    "section": "Sessions",
+    "text": "Sessions\n\n9:00 - 10:30: Revealjs Slides\n10:30 - 11:00: Break\n11:00 - 12:30: Blogs and Websites\n12:30 - 1:30: Lunch\n1:30 - 3:00: Working with PDFs\n3:00 - 3:30: Break\n3:30 - 5:00 Parameterized Reporting with David Keyes",
+    "crumbs": [
+      "Workshop Schedule",
+      "Workshop Day 2"
+    ]
+  },
+  {
+    "objectID": "weeks/workshop-day2.html#assignments",
+    "href": "weeks/workshop-day2.html#assignments",
+    "title": "Workshop Day 2",
+    "section": "Assignments",
+    "text": "Assignments\n🧮 Coding Assignment 2\n✍️ Final Project",
+    "crumbs": [
+      "Workshop Schedule",
+      "Workshop Day 2"
+    ]
+  },
+  {
+    "objectID": "assignments/coding-assignment-1.html",
+    "href": "assignments/coding-assignment-1.html",
+    "title": "Coding Assignment 1",
+    "section": "",
+    "text": "For this assignment you are going to create a short essay on trends in democracy and human rights. You can use the data that we worked with in class this week or some data of your choice. You will use R to create a data visualization and then you will write a short essay that interprets the data visualization. You will also incorporate additional elements into your document, such as a figure, a hyperlink, a table, a callout box, a block quote, a footnote or some other element that you learned about in class, in the readings, or in the Quarto documentation. Then you will upload the document to Quarto Pub and shsare the link with the class on the Discord server.\nBe sure to reference the course material, the Quarto Guide and the Quarto Reference as you work through this assignment.\nSubmission note: After you share your link with the class, please also submit your document to me via this link."
+  },
+  {
+    "objectID": "assignments/coding-assignment-1.html#overview",
+    "href": "assignments/coding-assignment-1.html#overview",
+    "title": "Coding Assignment 1",
+    "section": "",
+    "text": "For this assignment you are going to create a short essay on trends in democracy and human rights. You can use the data that we worked with in class this week or some data of your choice. You will use R to create a data visualization and then you will write a short essay that interprets the data visualization. You will also incorporate additional elements into your document, such as a figure, a hyperlink, a table, a callout box, a block quote, a footnote or some other element that you learned about in class, in the readings, or in the Quarto documentation. Then you will upload the document to Quarto Pub and shsare the link with the class on the Discord server.\nBe sure to reference the course material, the Quarto Guide and the Quarto Reference as you work through this assignment.\nSubmission note: After you share your link with the class, please also submit your document to me via this link."
+  },
+  {
+    "objectID": "assignments/coding-assignment-1.html#step-1-create-a-quarto-project-20pts",
+    "href": "assignments/coding-assignment-1.html#step-1-create-a-quarto-project-20pts",
+    "title": "Coding Assignment 1",
+    "section": "Step 1: Create a quarto project (20pts)",
+    "text": "Step 1: Create a quarto project (20pts)\nCreate a new project folder and call it assignment-1. Once you have your project open, initialize a Quarto document. In the YAML header, include the following information: title, subtitle, author, format, and execute.\nThe title and subtitle should reflect the basic contents of the document and the author is you. Set the execute should be set to echo: false, message: false, and warning: false. Save your Quarto document as assignment-1.qmd."
+  },
+  {
+    "objectID": "assignments/coding-assignment-1.html#step-2-create-a-data-visualization-20-pts",
+    "href": "assignments/coding-assignment-1.html#step-2-create-a-data-visualization-20-pts",
+    "title": "Coding Assignment 1",
+    "section": "Step 2: Create a data visualization (20 pts)",
+    "text": "Step 2: Create a data visualization (20 pts)\nCreate a code chunk and within it write the code that you need to produce a data visualization. This will involve loading the packages you need, importing the data and creating the visualization with ggplot2.\nIf you do not have prior coding experience, you can use the code for one of the visualizations. If you have prior coding experience, you can create a visualization of your choice. Feel free to be as creative as you like!"
+  },
+  {
+    "objectID": "assignments/coding-assignment-1.html#step-3-incorporate-additional-elements-20-pts",
+    "href": "assignments/coding-assignment-1.html#step-3-incorporate-additional-elements-20-pts",
+    "title": "Coding Assignment 1",
+    "section": "Step 3: Incorporate additional elements (20 pts)",
+    "text": "Step 3: Incorporate additional elements (20 pts)\nIncorporate at least three additional elements to your document. This could be a figure (image), a hyperlink, a table, a callout box, a block quote, a footnote or some other element that you learned about in class, in the readings, or in the Quarto documentation. These could be anything you like but should relate to the basic content and narrative of your document."
+  },
+  {
+    "objectID": "assignments/coding-assignment-1.html#step-4-summarize-your-combined-data-set-20-pts",
+    "href": "assignments/coding-assignment-1.html#step-4-summarize-your-combined-data-set-20-pts",
+    "title": "Coding Assignment 1",
+    "section": "Step 4: Summarize your combined data set (20 pts)",
+    "text": "Step 4: Summarize your combined data set (20 pts)\nWrite text in Markdown that summarizes and interprets the data visualizations and the additional elements you have incorporated. Use level 2 headers to divide your content into separate sections. Use bullet points to create lists. Use asterisks to create emphasis by italicizing and/or bolding your text. You can use any other Markdown formatting that you like to make your document look nice and to communicate your ideas effectively."
+  },
+  {
+    "objectID": "assignments/coding-assignment-1.html#step-5-uplaod-your-document-to-quarto-pub-20-pts",
+    "href": "assignments/coding-assignment-1.html#step-5-uplaod-your-document-to-quarto-pub-20-pts",
+    "title": "Coding Assignment 1",
+    "section": "Step 5: Uplaod your document to Quarto pub (20 pts)",
+    "text": "Step 5: Uplaod your document to Quarto pub (20 pts)\nFollowing the procedure you leanred in class, upload your HTML document to Quarto pub. Remember that you will need to have a Quarto account to do this and that you need to type the relevant command in the terminal (not the console) to upload your document. Once you have your document link, share it with the class on the Discord server."
+  },
+  {
+    "objectID": "course-links.html",
+    "href": "course-links.html",
+    "title": "Useful links",
+    "section": "",
+    "text": "Microsoft 365\n🔗 on GW IT’s Microsoft 365 Page\n\n\nTableau\n🔗 on Tableau Trial\n\n\nLecture Recordings\n🔗 on Blackboard\n\n\nProf T’s Zoom Office\n🔗 on Zoom\n\n\nOffice Hours Appointments\n🔗 on Calendly",
+    "crumbs": [
+      "Course Information",
+      "Useful links"
+    ]
+  },
+  {
+    "objectID": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
+    "href": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
+    "title": "Attribution-ShareAlike 4.0 International",
+    "section": "Creative Commons Attribution-ShareAlike 4.0 International Public License",
+    "text": "Creative Commons Attribution-ShareAlike 4.0 International Public License\nBy exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-ShareAlike 4.0 International Public License (“Public License”). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.\n\nSection 1 – Definitions.\n\nAdapted Material means material subject to Copyright and Similar Rights that is derived from or based upon the Licensed Material and in which the Licensed Material is translated, altered, arranged, transformed, or otherwise modified in a manner requiring permission under the Copyright and Similar Rights held by the Licensor. For purposes of this Public License, where the Licensed Material is a musical work, performance, or sound recording, Adapted Material is always produced where the Licensed Material is synched in timed relation with a moving image.\nAdapter’s License means the license You apply to Your Copyright and Similar Rights in Your contributions to Adapted Material in accordance with the terms and conditions of this Public License.\nBY-SA Compatible License means a license listed at creativecommons.org/compatiblelicenses, approved by Creative Commons as essentially the equivalent of this Public License.\nCopyright and Similar Rights means copyright and/or similar rights closely related to copyright including, without limitation, performance, broadcast, sound recording, and Sui Generis Database Rights, without regard to how the rights are labeled or categorized. For purposes of this Public License, the rights specified in Section 2(b)(1)-(2) are not Copyright and Similar Rights.\nEffective Technological Measures means those measures that, in the absence of proper authority, may not be circumvented under laws fulfilling obligations under Article 11 of the WIPO Copyright Treaty adopted on December 20, 1996, and/or similar international agreements.\nExceptions and Limitations means fair use, fair dealing, and/or any other exception or limitation to Copyright and Similar Rights that applies to Your use of the Licensed Material.\nLicense Elements means the license attributes listed in the name of a Creative Commons Public License. The License Elements of this Public License are Attribution and ShareAlike.\nLicensed Material means the artistic or literary work, database, or other material to which the Licensor applied this Public License.\nLicensed Rights means the rights granted to You subject to the terms and conditions of this Public License, which are limited to all Copyright and Similar Rights that apply to Your use of the Licensed Material and that the Licensor has authority to license.\nLicensor means the individual(s) or entity(ies) granting rights under this Public License.\nShare means to provide material to the public by any means or process that requires permission under the Licensed Rights, such as reproduction, public display, public performance, distribution, dissemination, communication, or importation, and to make material available to the public including in ways that members of the public may access the material from a place and at a time individually chosen by them.\nSui Generis Database Rights means rights other than copyright resulting from Directive 96/9/EC of the European Parliament and of the Council of 11 March 1996 on the legal protection of databases, as amended and/or succeeded, as well as other essentially equivalent rights anywhere in the world.\nYou means the individual or entity exercising the Licensed Rights under this Public License. Your has a corresponding meaning.\n\n\n\nSection 2 – Scope.\n\nLicense grant.\n\nSubject to the terms and conditions of this Public License, the Licensor hereby grants You a worldwide, royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the Licensed Material to:\nA. reproduce and Share the Licensed Material, in whole or in part; and\nB. produce, reproduce, and Share Adapted Material.\nExceptions and Limitations. For the avoidance of doubt, where Exceptions and Limitations apply to Your use, this Public License does not apply, and You do not need to comply with its terms and conditions.\nTerm. The term of this Public License is specified in Section 6(a).\nMedia and formats; technical modifications allowed. The Licensor authorizes You to exercise the Licensed Rights in all media and formats whether now known or hereafter created, and to make technical modifications necessary to do so. The Licensor waives and/or agrees not to assert any right or authority to forbid You from making technical modifications necessary to exercise the Licensed Rights, including technical modifications necessary to circumvent Effective Technological Measures. For purposes of this Public License, simply making modifications authorized by this Section 2(a)(4) never produces Adapted Material.\nDownstream recipients.\nA. Offer from the Licensor – Licensed Material. Every recipient of the Licensed Material automatically receives an offer from the Licensor to exercise the Licensed Rights under the terms and conditions of this Public License.\nB. Additional offer from the Licensor – Adapted Material. Every recipient of Adapted Material from You automatically receives an offer from the Licensor to exercise the Licensed Rights in the Adapted Material under the conditions of the Adapter’s License You apply.\nC. No downstream restrictions. You may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, the Licensed Material if doing so restricts exercise of the Licensed Rights by any recipient of the Licensed Material.\nNo endorsement. Nothing in this Public License constitutes or may be construed as permission to assert or imply that You are, or that Your use of the Licensed Material is, connected with, or sponsored, endorsed, or granted official status by, the Licensor or others designated to receive attribution as provided in Section 3(a)(1)(A)(i).\n\nOther rights.\n\nMoral rights, such as the right of integrity, are not licensed under this Public License, nor are publicity, privacy, and/or other similar personality rights; however, to the extent possible, the Licensor waives and/or agrees not to assert any such rights held by the Licensor to the limited extent necessary to allow You to exercise the Licensed Rights, but not otherwise.\nPatent and trademark rights are not licensed under this Public License.\nTo the extent possible, the Licensor waives any right to collect royalties from You for the exercise of the Licensed Rights, whether directly or through a collecting society under any voluntary or waivable statutory or compulsory licensing scheme. In all other cases the Licensor expressly reserves any right to collect such royalties.\n\n\n\n\nSection 3 – License Conditions.\nYour exercise of the Licensed Rights is expressly made subject to the following conditions.\n\nAttribution.\n\nIf You Share the Licensed Material (including in modified form), You must:\nA. retain the following if it is supplied by the Licensor with the Licensed Material:\n\nidentification of the creator(s) of the Licensed Material and any others designated to receive attribution, in any reasonable manner requested by the Licensor (including by pseudonym if designated);\na copyright notice;\na notice that refers to this Public License;\na notice that refers to the disclaimer of warranties;\na URI or hyperlink to the Licensed Material to the extent reasonably practicable;\n\nB. indicate if You modified the Licensed Material and retain an indication of any previous modifications; and\nC. indicate the Licensed Material is licensed under this Public License, and include the text of, or the URI or hyperlink to, this Public License.\nYou may satisfy the conditions in Section 3(a)(1) in any reasonable manner based on the medium, means, and context in which You Share the Licensed Material. For example, it may be reasonable to satisfy the conditions by providing a URI or hyperlink to a resource that includes the required information.\nIf requested by the Licensor, You must remove any of the information required by Section 3(a)(1)(A) to the extent reasonably practicable.\n\nShareAlike.\n\nIn addition to the conditions in Section 3(a), if You Share Adapted Material You produce, the following conditions also apply.\n\nThe Adapter’s License You apply must be a Creative Commons license with the same License Elements, this version or later, or a BY-SA Compatible License.\nYou must include the text of, or the URI or hyperlink to, the Adapter’s License You apply. You may satisfy this condition in any reasonable manner based on the medium, means, and context in which You Share Adapted Material.\nYou may not offer or impose any additional or different terms or conditions on, or apply any Effective Technological Measures to, Adapted Material that restrict exercise of the rights granted under the Adapter’s License You apply.\n\n\n\nSection 4 – Sui Generis Database Rights.\nWhere the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:\n\nfor the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and Share all or a substantial portion of the contents of the database;\nif You include all or a substantial portion of the database contents in a database in which You have Sui Generis Database Rights, then the database in which You have Sui Generis Database Rights (but not its individual contents) is Adapted Material, including for purposes of Section 3(b); and\nYou must comply with the conditions in Section 3(a) if You Share all or a substantial portion of the contents of the database.\n\nFor the avoidance of doubt, this Section 4 supplements and does not replace Your obligations under this Public License where the Licensed Rights include other Copyright and Similar Rights.\n\n\nSection 5 – Disclaimer of Warranties and Limitation of Liability.\n\nUnless otherwise separately undertaken by the Licensor, to the extent possible, the Licensor offers the Licensed Material as-is and as-available, and makes no representations or warranties of any kind concerning the Licensed Material, whether express, implied, statutory, or other. This includes, without limitation, warranties of title, merchantability, fitness for a particular purpose, non-infringement, absence of latent or other defects, accuracy, or the presence or absence of errors, whether or not known or discoverable. Where disclaimers of warranties are not allowed in full or in part, this disclaimer may not apply to You.\nTo the extent possible, in no event will the Licensor be liable to You on any legal theory (including, without limitation, negligence) or otherwise for any direct, special, indirect, incidental, consequential, punitive, exemplary, or other losses, costs, expenses, or damages arising out of this Public License or use of the Licensed Material, even if the Licensor has been advised of the possibility of such losses, costs, expenses, or damages. Where a limitation of liability is not allowed in full or in part, this limitation may not apply to You.\nThe disclaimer of warranties and limitation of liability provided above shall be interpreted in a manner that, to the extent possible, most closely approximates an absolute disclaimer and waiver of all liability.\n\n\n\nSection 6 – Term and Termination.\n\nThis Public License applies for the term of the Copyright and Similar Rights licensed here. However, if You fail to comply with this Public License, then Your rights under this Public License terminate automatically.\nWhere Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:\n\nautomatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery of the violation; or\nupon express reinstatement by the Licensor.\n\nFor the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies for Your violations of this Public License.\nFor the avoidance of doubt, the Licensor may also offer the Licensed Material under separate terms or conditions or stop distributing the Licensed Material at any time; however, doing so will not terminate this Public License.\nSections 1, 5, 6, 7, and 8 survive termination of this Public License.\n\n\n\nSection 7 – Other Terms and Conditions.\n\nThe Licensor shall not be bound by any additional or different terms or conditions communicated by You unless expressly agreed.\nAny arrangements, understandings, or agreements regarding the Licensed Material not stated herein are separate from and independent of the terms and conditions of this Public License.\n\n\n\nSection 8 – Interpretation.\n\nFor the avoidance of doubt, this Public License does not, and shall not be interpreted to, reduce, limit, restrict, or impose conditions on any use of the Licensed Material that could lawfully be made without permission under this Public License.\nTo the extent possible, if any provision of this Public License is deemed unenforceable, it shall be automatically reformed to the minimum extent necessary to make it enforceable. If the provision cannot be reformed, it shall be severed from this Public License without affecting the enforceability of the remaining terms and conditions.\nNo term or condition of this Public License will be waived and no failure to comply consented to unless expressly agreed to by the Licensor.\nNothing in this Public License constitutes or may be interpreted as a limitation upon, or waiver of, any privileges and immunities that apply to the Licensor or You, including from the legal processes of any jurisdiction or authority.\n\n\nCreative Commons is not a party to its public licenses. Notwithstanding, Creative Commons may elect to apply one of its public licenses to material it publishes and in those instances will be considered the “Licensor.” The text of the Creative Commons public licenses is dedicated to the public domain under the CC0 Public Domain Dedication. Except for the limited purpose of indicating that material is shared under a Creative Commons public license or as otherwise permitted by the Creative Commons policies published at creativecommons.org/policies, Creative Commons does not authorize the use of the trademark “Creative Commons” or any other trademark or logo of Creative Commons without its prior written consent including, without limitation, in connection with any unauthorized modifications to any of its public licenses or any other arrangements, understandings, or agreements concerning use of licensed material. For the avoidance of doubt, this paragraph does not form part of the public licenses.\nCreative Commons may be contacted at creativecommons.org."
+  },
+  {
+    "objectID": "assignments/coding-assignment-2.html",
+    "href": "assignments/coding-assignment-2.html",
+    "title": "Coding Assignment 2",
+    "section": "",
+    "text": "For this assignment you are going to do two things. The first is to produce a basic data visualization that takes advantage of parameterization. The second is to embed that visualization in either a reveal JS presentation or a blog post. Then you will produce a duplicate version of that presentation or blog post with a different parameter value (most likely a country).\nBe sure to reference the course material, the Quarto Guide and the Quarto Reference as you work through this assignment.\nSubmission note: After you share your link with the class, please also submit your document to me via this link."
+  },
+  {
+    "objectID": "assignments/coding-assignment-2.html#overview",
+    "href": "assignments/coding-assignment-2.html#overview",
+    "title": "Coding Assignment 2",
+    "section": "",
+    "text": "For this assignment you are going to do two things. The first is to produce a basic data visualization that takes advantage of parameterization. The second is to embed that visualization in either a reveal JS presentation or a blog post. Then you will produce a duplicate version of that presentation or blog post with a different parameter value (most likely a country).\nBe sure to reference the course material, the Quarto Guide and the Quarto Reference as you work through this assignment.\nSubmission note: After you share your link with the class, please also submit your document to me via this link."
+  },
+  {
+    "objectID": "assignments/coding-assignment-2.html#step-1-create-a-quarto-presentation-or-blog20pts",
+    "href": "assignments/coding-assignment-2.html#step-1-create-a-quarto-presentation-or-blog20pts",
+    "title": "Coding Assignment 2",
+    "section": "Step 1: Create a quarto presentation or blog(20pts)",
+    "text": "Step 1: Create a quarto presentation or blog(20pts)\nCreate a new Revealjs presentation or Quarto blog. You can copy code from class to get yourself started. In your YAML header, be sure to include a params: argument that will specify what country you want to visualize data for."
+  },
+  {
+    "objectID": "assignments/coding-assignment-2.html#step-2-create-a-data-visualization-20-pts",
+    "href": "assignments/coding-assignment-2.html#step-2-create-a-data-visualization-20-pts",
+    "title": "Coding Assignment 2",
+    "section": "Step 2: Create a data visualization (20 pts)",
+    "text": "Step 2: Create a data visualization (20 pts)\nCreate a code chunk and within it write the code that you need to produce a data visualization. This will involve loading the packages you need, importing the data and creating the visualization with ggplot2.\nFor your visualization, you could go with the gapminder dataset like we did in class or you could go back to the vdem dataset that we used in the first workshop. You could also use a different dataset if you like. The important thing is that you are able to parameterize your visualization so that you can easily change the country that is being visualized."
+  },
+  {
+    "objectID": "assignments/coding-assignment-2.html#step-3-incorporate-additional-elements-20-pts",
+    "href": "assignments/coding-assignment-2.html#step-3-incorporate-additional-elements-20-pts",
+    "title": "Coding Assignment 2",
+    "section": "Step 3: Incorporate additional elements (20 pts)",
+    "text": "Step 3: Incorporate additional elements (20 pts)\nIncorporate at some additional elements to your blog post or Reveal presentation. This could be a figure (image), a hyperlink, a table, a callout box, a block quote, a footnote or some other element that relates to the basic content and narrative of your document. Now change the theme and try to make your blog or presentation look a little different/better than the default"
+  },
+  {
+    "objectID": "assignments/coding-assignment-2.html#step-4-create-a-duplicate-post-or-presentation-20-pts",
+    "href": "assignments/coding-assignment-2.html#step-4-create-a-duplicate-post-or-presentation-20-pts",
+    "title": "Coding Assignment 2",
+    "section": "Step 4: Create a duplicate post or presentation (20 pts)",
+    "text": "Step 4: Create a duplicate post or presentation (20 pts)\nNow create a duplicate presentation or blog post. This time, change the parameter value so that the visualization is for a different country. You can do this by changing the params: argument in the YAML header. You should also change the title of the document so that it is clear that this is a different version of the original document."
+  },
+  {
+    "objectID": "assignments/coding-assignment-2.html#step-5-uplaod-your-document-to-quarto-pub-20-pts",
+    "href": "assignments/coding-assignment-2.html#step-5-uplaod-your-document-to-quarto-pub-20-pts",
+    "title": "Coding Assignment 2",
+    "section": "Step 5: Uplaod your document to Quarto pub (20 pts)",
+    "text": "Step 5: Uplaod your document to Quarto pub (20 pts)\nFollowing the procedure you leanred in class, upload your blog or Reveal presentations to Quarto PUb. Remember that you will need to have a Quarto account to do this and that you need to type the relevant command in the terminal (not the console) to upload your document. Once you have your document link, share it with the class on the Discord server. Please also upload your project folder to this link."
+  },
+  {
+    "objectID": "weeks/workshop-day1.html",
+    "href": "weeks/workshop-day1.html",
+    "title": "Workshop Day 1",
+    "section": "",
+    "text": "Important\n\n\n\n\nHomework Assignment 1 is due Sunday, February 25 at 11:59pm.",
+    "crumbs": [
+      "Workshop Schedule",
+      "Workshop Day 1"
+    ]
+  },
+  {
+    "objectID": "weeks/workshop-day1.html#location",
+    "href": "weeks/workshop-day1.html#location",
+    "title": "Workshop Day 1",
+    "section": "Location",
+    "text": "Location\nRoom 428, Monroe Hall (Sigelman Seminar Room)",
+    "crumbs": [
+      "Workshop Schedule",
+      "Workshop Day 1"
+    ]
+  },
+  {
+    "objectID": "weeks/workshop-day1.html#sessions",
+    "href": "weeks/workshop-day1.html#sessions",
+    "title": "Workshop Day 1",
+    "section": "Sessions",
+    "text": "Sessions\n\n9:00 - 10:30: Basic Authoring in Quarto\n10:30 - 11:00: Break\n11:00 - 12:30: Coding in R\n12:30 - 1:30: Lunch\n1:30 - 3:00: Working with Data\n3:00 - 3:30: Break\n3:30 - 5:00 Visualizing Data with ggplot2",
+    "crumbs": [
+      "Workshop Schedule",
+      "Workshop Day 1"
+    ]
+  },
+  {
+    "objectID": "weeks/workshop-day1.html#assignments",
+    "href": "weeks/workshop-day1.html#assignments",
+    "title": "Workshop Day 1",
+    "section": "Assignments",
+    "text": "Assignments\n🧮 Coding Assignment 1",
+    "crumbs": [
+      "Workshop Schedule",
+      "Workshop Day 1"
+    ]
+  },
+  {
+    "objectID": "instructor.html",
+    "href": "instructor.html",
+    "title": "Instructor",
+    "section": "",
+    "text": "Emmanuel Teitelbaum is an associate professor of political science and international affairs at the The George Washington University His research and writing explore how class conflict and compromise intersect with democracy and development. He also has a strong interest in labor standards and understanding how labor unions, nonprofit organizations, consumers and corporations can help to promote them.\nAt GW, Professor Teitelbaum teaches courses on comparative politics, comparative political economy and South Asia. He is on faculty in the Department of Political Science and the Elliott School of International Affairs and am affiliated with the Sigur Center for Asian Studies as well as the Institute for International Economic Policy.",
+    "crumbs": [
+      "Course Information",
+      "Instructor"
+    ]
+  },
+  {
+    "objectID": "instructor.html#office-hours",
+    "href": "instructor.html#office-hours",
+    "title": "Instructor",
+    "section": "Office Hours",
+    "text": "Office Hours\nProfessor Teitelbaum’s regular office hours for GW students. The exact timing of office hours varies by semester. Please sign up for a slot (or two) on his Calendly page. Professor Teitelbaum is available for consultation virtually on Zoom or in person.",
+    "crumbs": [
+      "Course Information",
+      "Instructor"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment.html",
+    "href": "project/project-assignment.html",
+    "title": "Project Assignment",
+    "section": "",
+    "text": "This is your opportunity to apply the insights and skills you have developed in this course to a real-world problem. You can produce an HTML report, Revealjs slides, a blog or a pdf document. It can be on anything you like and can incorporate any kind of data that you like. But it should incoprorate both text and code as we have done throughout the course and it should be substantial enough that you would be proud to show it to a potential employer."
+  },
+  {
+    "objectID": "project/project-assignment.html#overview",
+    "href": "project/project-assignment.html#overview",
+    "title": "Project Assignment",
+    "section": "",
+    "text": "This is your opportunity to apply the insights and skills you have developed in this course to a real-world problem. You can produce an HTML report, Revealjs slides, a blog or a pdf document. It can be on anything you like and can incorporate any kind of data that you like. But it should incoprorate both text and code as we have done throughout the course and it should be substantial enough that you would be proud to show it to a potential employer."
+  },
+  {
+    "objectID": "project/project-assignment.html#setup",
+    "href": "project/project-assignment.html#setup",
+    "title": "Project Assignment",
+    "section": "Setup",
+    "text": "Setup\nCreate a new project folder and call it final-project. Once you have your project open, initialize whatever type of Quarto document you have chosen to use. In the YAML header, include the following information: title, subtitle, author, format, execute and any other settings that you want to apply to the document. Set echo: false, message: false, and warning: false.\n(12.5 pts)"
+  },
+  {
+    "objectID": "project/project-assignment.html#elements",
+    "href": "project/project-assignment.html#elements",
+    "title": "Project Assignment",
+    "section": "Elements",
+    "text": "Elements\nYour project should include the following elements:\n\nIntroduction: What is the problem or question that you are addressing? Why is it interesting? Why is it important? (12.5 pts)\nData: Discuss the data. What data are you using? Where did it come from–a package, an API or wild-caught? How did you process it? (12.5 pts)\nVisualization: Include at least one visualization. It can be a plot, a map, a diagram, or any other kind of visual representation that you think is appropriate. (12.5 pts)\nAnalysis: What did you learn from the data and your visualization? What insights did you gain? What did you find surprising? (12.5 pts)\nOther Elements: Incorporate at some additional elements like a figure (image), a hyperlink, a table, a callout box, a block quote, a footnote that relate to the basic content and narrative of your document. (12.5 pts)\nStyling: Now change the theme and try to make your blog or presentation look a little different/better than the default. (12.5 pts)\nConclusion: What are the implications of your findings? What are the next steps? What other data would you like to have to further explore this question? (12.5 pts)"
+  },
+  {
+    "objectID": "project/project-assignment.html#submission",
+    "href": "project/project-assignment.html#submission",
+    "title": "Project Assignment",
+    "section": "Submission",
+    "text": "Submission\nUpload your document to Quarto Pub. and submit a link to your project in the Discord server. Then, submit your project folder to this link."
+  },
+  {
+    "objectID": "course-syllabus.html",
+    "href": "course-syllabus.html",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "",
+    "text": "Location: Monroe Hall, Rm. 428\nInstructor: Prof. Emmanuel Teitelbaum\nEmail: ejt@gwu.edu\n\nThe best way to contact me is via email.\n\nVirtual Office/Student Hours: By appointment only. Please email me directly.\n\nCredit Hours: 1/1.5",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#course-information",
+    "href": "course-syllabus.html#course-information",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "",
+    "text": "Location: Monroe Hall, Rm. 428\nInstructor: Prof. Emmanuel Teitelbaum\nEmail: ejt@gwu.edu\n\nThe best way to contact me is via email.\n\nVirtual Office/Student Hours: By appointment only. Please email me directly.\n\nCredit Hours: 1/1.5",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#what-our-course-is-about",
+    "href": "course-syllabus.html#what-our-course-is-about",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "What Our Course Is About",
+    "text": "What Our Course Is About\nThis course will teach you how to use R Shiny to create interactive web apps with your data. Students will develop coding, data visualization, and data presentation skills. By the end of the course they will know how to use Shiny to make and deploy web apps.",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#course-objectives-what-youll-be-able-to-do",
+    "href": "course-syllabus.html#course-objectives-what-youll-be-able-to-do",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "Course Objectives: What You’ll Be Able To Do",
+    "text": "Course Objectives: What You’ll Be Able To Do\nCourse and module objectives are guides to gauge your skill and knowledge development. By the end of this course, you should be able to:\n\nSet up and run a basic Shiny app: Learn how to install Shiny, create a simple app layout, and execute it locally.\nUnderstand UI and server logic: Grasp the fundamental structure of Shiny applications, focusing on the separation and interaction between UI and server components.\nImplement reactive expressions and dynamic UI elements: Introduce reactivity in Shiny apps to create dynamic user interfaces that respond to user input.\nCreate and integrate data visualizations: Use ggplot2 to develop interactive visualizations and embed them within the Shiny interface.\nManage user input and output: Handle different types of user input and display corresponding outputs to enhance interactivity.\nDeploy a Shiny app online: Cover the essentials of publishing Shiny apps to platforms like ShinyApps.io.",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#aiming-for-success",
+    "href": "course-syllabus.html#aiming-for-success",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "Aiming For Success",
+    "text": "Aiming For Success\nI care about your learning and also about this subject matter, and I am here to help you have a meaningful learning experience. I expect you to take ownership of your learning: you can get more out of the course by thoughtfully participating in discussions, actively taking notes on readings and lectures, and giving your best effort overall. I will hold you to the highest standards for academic honesty and integrity in your work. I will also encourage you to collaborate and learn from your peers through thoughtful and respectful discussion. It is recommended you log in daily order to keep up with course requirements. I must highlight that communication is vital, so I hope you feel comfortable reaching out to me if you are struggling or have concerns or need accommodations beyond accessibility. We can determine strategies to set you up for success. Finally, I look forward to collaborating with you in this course to create a meaningful experience for everyone.",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#office-hours",
+    "href": "course-syllabus.html#office-hours",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "Office Hours",
+    "text": "Office Hours\nAnother way we can work toward your success in the course is through office/student hours. Please make an appointment to talk with me during this time. You can work with me to:\n\nClarify any questions about the syllabus or course content\nReview an assignment you’ve completed and have questions about\nStep through practice problems or questions\nGet study strategies\nDiscuss grades\n\nTo make the meeting more effective, you can:\n\nGather materials (assignments, notes, etc.) ready in advance\nBe ready to take notes during office hours\nAsk follow up questions if you need clarification\nConfirm any action plan at the close of the meeting\nFollowing through on any action plan",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#prerequisites",
+    "href": "course-syllabus.html#prerequisites",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "Prerequisites",
+    "text": "Prerequisites\n\nAcademic\nThere are no formal academic prerequisites for this course. However, some prior experience with coding in the R language is presumed.\n\n\nTechnological\n\nConfiguration and software\nTo fully participate in our course, you will need regular access to broadband Internet access as well as other technology components. Please consult GW Online’s Technical Requirements and Support for details on recommended configurations and software available to you. You will need to use the following tools and platforms:\n\nRStudio: an IDE for generating data visualizations using the programming language, R.\nGitHub: a web-based code repository.\nGit: version control protocol.\nDiscord: a real-time chat application.\n\nPlease see the Blackboard Ultra course website for more on these tools and their policies.\n\n\nSkills\nFor our course, you should be able to:\n\nAccess and use GW’s Blackboard system.\nUse your GW email for university-related communications per university policy.\nUse productivity software (e.g., Office 365, Google Suite) to collaborate with peers and submit assignments.\nUse web conferencing tools (e.g., Zoom, Webex) to collaborate with peers and me.\nUse a mobile device and/or computer to upload documents, images, and recordings.\nSeek technology help and tools by contacting GW Information Technology | (202)-994-4948 | ithelp@gwu.edu.\n\nIf you need assistance with technology tools we’ll use in this course, please visit the Technology Support link in the left navigation menu in our course on Blackboard.",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#materials-youll-need",
+    "href": "course-syllabus.html#materials-youll-need",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "Materials You’ll Need",
+    "text": "Materials You’ll Need\nYou will need to download RStudio, Git and the Discord desktop application. You can find our weekly assigned readings through GW libraries. You must use your GW credentials to access these readings. Other course materials will be provided in our Blackboard course modules.",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#course-credit-hour-policy",
+    "href": "course-syllabus.html#course-credit-hour-policy",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "Course Credit Hour Policy",
+    "text": "Course Credit Hour Policy\n\nFor the 1 credit graduate skills version of this course, students are expected to work for a total of 37.5 hours. This includes 16 hours of time spent in class plus 21.5 hours of independent work.\nFor the 1.5 credit executive education version of this course, students are expected to work for a total of at least 56.25 hours. This includes 18 hours of time spent in class and at the keynote lecture, plus 28.25 hours of independent work.\n\n\nHow this applies to you\nUse the credit hour policy to plan and manage your workload and time spent on this course. Please contact me if you are having difficulty managing your workload, and we can discuss strategies to help you succeed in the course.",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#how-you-will-learn-and-demonstrate-knowledge",
+    "href": "course-syllabus.html#how-you-will-learn-and-demonstrate-knowledge",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "How You Will Learn and Demonstrate Knowledge",
+    "text": "How You Will Learn and Demonstrate Knowledge\nMy aim is to provide you opportunities for active learning and skills development that help you meet course learning objectives and also grow in your knowledge of this field.\n\nInstruction\nI’ve designed the following instructional components to support your learning and growth in the course.\n\nLecture Videos: Each week you will be responsible for watching or listening to video mini-lectures and/or podcasts. These media support provide you essential information in order to complete course activities and assessments. Please note that recorded lectures and podcasts are not a substitute for required readings.\nTutorial Videos: Each week you have the opportunity to explore a topic further by watching additional videos. These draw on the expertise of various organizations or individuals and can be used to help you complete activities and assessments.\nReadings: Each week you will be responsible for various reading assignments. The readings contain essential content for completing the course assignments.\n\n\n\nAssessment\nThe following assessments help you gauge and demonstrate your progress in the course and support you in meeting course learning objectives.\n\nDiscord: We will discuss course topics further through the Discord. You are expected to post original thoughts/reflections and respond substantively to others.\nAssignments: You will develop various skills through regular assignments. You are expected to one coding assignment per week. Thoughtfully completing weekly assignments helps you meet course objectives.\nFinal Project: You will develop your own interactive data visualization application as your final project during Week 6/Module 6.\nQuizzes: In this course, you will have opportunities to assess your own knowledge. You are expected to complete two weekly quizzes that provide immediate feedback and support ongoing learning.\n\nYou’ll find support for Blackboard and other tools used for course activities and assignments under the Technology Support link in the left navigation menu in our course on Blackboard.",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#demonstrating-academic-integrity",
+    "href": "course-syllabus.html#demonstrating-academic-integrity",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "Demonstrating Academic Integrity",
+    "text": "Demonstrating Academic Integrity\nAll of us in the course will comply with the GW Code of Academic Integrity. It states that “we, the Students, Faculty, Librarians, Staff, and Administration of The George Washington University, believing academic integrity to be central to the mission of the University, commit ourselves to promoting high standards for the integrity of academic work. Commitment to academic integrity upholds educational equity, development, and dissemination of meaningful knowledge, and mutual respect that our community values and nurtures. The George Washington University Code of Academic Integrity is established to further this commitment.”\nAcademic dishonesty is defined as cheating of any kind, including misrepresenting one’s own work, taking credit for the work of others without crediting them and without appropriate authorization, and the fabrication of information. For details and complete code, see the Code of Academic Integrity.Common examples of academic dishonesty include cheating, fabrication, plagiarism, falsification, forgery of University academic documents, and facilitating academic dishonesty by others. Learn more about avoiding these:\n\nGW guidance for students on academic integrity.\nPlagiarism: What is it and how to avoid it from GW Libraries.\nMaintaining academic honesty can be a challenging skill to learn. If you have questions about maintaining our course standards, please talk with me early on.",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#assignments",
+    "href": "course-syllabus.html#assignments",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "Assignments",
+    "text": "Assignments\n\nCoding assignment 1 (30%)\nCoding assigntment 2 (30%)\nFinal project (40%)\n\n\nCoding Assignments\nStudents will complete two weekly coding assignments. These assignments are designed to provide students with the opportunity to apply their newly-acquired skills to a classic question in political science.\n\n\nFinal Project\nEach student will complete a final project that will be developed in consultation with the professor. The ultimate objective of this project is for the student to design and code a data visualization in R.",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#course-grading",
+    "href": "course-syllabus.html#course-grading",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "Course Grading",
+    "text": "Course Grading\nThe grading scale below maps your final point or percentage total to your final letter grade for the course.\n\n\n\nRange\nLetter Grade\n\n\n\n\n94-100\nA\n\n\n90-93\nA-\n\n\n87-89\nB+\n\n\n84-86\nB\n\n\n80-83\nB-\n\n\n77-79\nC+\n\n\n74-76\nC\n\n\n70-73\nC-\n\n\n&lt;70\nF",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#late-work",
+    "href": "course-syllabus.html#late-work",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "Late Work",
+    "text": "Late Work\nIf you miss an assignment deadline, it is your responsibility to contact me via email. Accommodations are automatically approved for university-approved absences such as sporting events, religious holidays, etc.",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#incomplete-grades",
+    "href": "course-syllabus.html#incomplete-grades",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "Incomplete Grades",
+    "text": "Incomplete Grades\n\nUndergraduate students\nIncomplete grades may be given to undergraduate students only if for reasons beyond the student’s control (such as medical or family emergency) they are unable to complete the final work of the course. Faculty should not assign an Incomplete grade if not asked by the student.\nA contractmust be signed by the instructor and the student and filed in the department office. A copy should be submitted to the Academic Advising office in Phillips 107. A student has up to a calendar year to finish the coursework for the class, and when completed a grade change form must be submitted to the Academic Advising office to update the grade.\nFor further policy and contract information for undergraduate students, please consult with your advisor and also visit the website for Columbian College of Arts and Sciences Academic Advising.\n\n\nGraduate students\nIncomplete grades may be given to graduate students only if for reasons beyond the student’s control (such as medical or family emergency) they are unable to complete the final work of the course. Faculty should not assign an Incomplete grade if not asked by the student.\nFor further information, please consult with your advisor and complete a CCAS graduate student incomplete grade form.",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#course-communication",
+    "href": "course-syllabus.html#course-communication",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "Course Communication",
+    "text": "Course Communication\nCommunication in our course is essential; clearing up questions earlier than later is a good practice, so please don’t hesitate to reach out to me. In any mode of communication used in our course, all of us will follow netiquette found in our syllabus.\nWe will communicate primarily through GW’s Blackboard System and the Discord server. Announcements and emails sent through Blackboard may automatically go to your GW email address (i.e., userid@gwu.edu). Please check your GW email account on a daily basis or forward your GW email to another address that you check daily.\nI will respond to emails/discussion posts within 48 hours (i.e., “24 hours on weekdays and on the next business day over weekends and holidays.”) I will provide feedback on assignments/exams within 3 days (i.e., “five days on weekdays and on the next business day over weekends and holidays.”)\nYou can post general course-related questions to our Discord server. Please post your question here first rather than emailing me directly if your question regards the course material. However, if you have a question that is more personal in nature (i.e., grades), please email me directly to set up an appointment.",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#netiquette",
+    "href": "course-syllabus.html#netiquette",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "Netiquette",
+    "text": "Netiquette\nBehind every name there is a person.\nTo ensure safe and meaningful learning experiences for everyone, we all agree to:\n\nRemain professional, respectful, and courteous at all times on all platforms.\nKeep in mind this is a college class. Something that would be inappropriate in an in-person classroom is also inappropriate in an online classroom.\nWhen upset, we’ll wait a day or two prior to posting. Messages posted or emailed in anger are often regretted later.\nAsk one another for clarification if we find a communication offensive or difficult to understand.\nAvoid sweeping generalizations. Back up our stated opinions with facts and reliable sources.\nUnderstand that we may disagree and that exposure to other people’s opinions is part of the learning experience.\nJust as we would like our privacy respected, we will respect the privacy of other course participants and what they share.\n\nI (the instructor) reserve the right to delete any post or communication in our course that is deemed inappropriate without prior notification to the student. This includes anything containing language that is offensive, rude, profane, racist, or hateful. Items that are seriously off-topic or serve no purpose other than to vent frustration will also be removed.\nUsing outside communication apps\nI am aware that you and your peers might communicate using tools outside of GW’s Blackboard, my course website, our course Discord channel, or email systems. Rules of netiquette and appropriate communication extend to these tools as well as to Blackboard. If you see any tool being used inappropriately (i.e., any communication containing language that is offensive, rude, profane, racist, or hateful; uses that promote cheating of any kind), contact me as soon as possible to speak privately about it.\n(Adapted from Lake Superior Connect, Creative Commons Attribution 3.0)",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#policies",
+    "href": "course-syllabus.html#policies",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "Policies",
+    "text": "Policies\nTo make this a meaningful learning experience for everyone, please read and understand the following policies. All GW policies can be found on the GW Office of Ethics, Compliance, and Privacy site. All GW community members are responsible for adhering to and activating in accordance with all university policies. Please contact me if you have any questions.",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#accessibility-and-accommodations",
+    "href": "course-syllabus.html#accessibility-and-accommodations",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "Accessibility and Accommodations",
+    "text": "Accessibility and Accommodations\n\nGW’s Disability Support Services\nIf you are a student with a disability, or think you may have a disability, you can let me know, and/or you can talk to GW’s Office of Disability Support Services (DSS). DSS works with both students with disabilities and instructors to identify reasonable accommodations. Contact the DSS office at (202) 994-8250, by email on dss@gwu.edu, or in-person in Rome Hall Suite 102 to establish eligibility and to coordinate reasonable accommodations. If you have already been approved for accommodations, please send me your accommodation letter and meet with me so we can develop an implementation plan together.\nHow are course technology tools accessible to everyone? To find out, access Technology Support Technology Tools Policies in the Blackboard course menu.\n\n\nAccommodations Beyond Disability\nEveryone has different needs for learning. If you don’t have a documented disability but feel that you would benefit from learning support for other reasons, please don’t hesitate to talk to me. If you have substantial non-academic obligations or other concerns (e.g., food insecurity, work, childcare, athletic commitments, language barriers, financial issues, technology access, commuting, etc.) that make learning difficult, please contact me. I’ll keep this information confidential, and together, we can brainstorm ways to meet your needs.\n\n\nOther Needs\nAny student who has difficulty affording groceries or accessing sufficient food to eat every day, or who lacks a safe and stable place to live, and believes this may affect their performance in the course, is urged to contact GW’s Office of Student Financial Assistance for support. Furthermore, please notify me if you are comfortable doing so. Some other resources to support you are found under the course menu item Student Resources and include support for academic achievement and personal well-being. (Adapted from Goldrick-Rab, 2017)",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#counseling-and-psychological-services",
+    "href": "course-syllabus.html#counseling-and-psychological-services",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "Counseling and Psychological Services",
+    "text": "Counseling and Psychological Services\nGW’s Health Center offers counseling and psychological services to GW students. Please note that staff is licensed to offer short term therapy to students in Washington, DC, Maryland, and Virginia. If you are living outside these regions, the office may be able to refer you elsewhere. Assistance and referrals 24 hours a day, 365 days a year and can be reached on (202) 994-5300.\nThe Center provides assistance and referral to address students’ personal, social, career, and study skills problems. Services for students include: crisis and emergency mental health consultations, confidential assessment, counseling services (individual and small group), and referrals.\nVirtual Workshops are open to any student regardless of geographic location. These can be exceptionally valuable and help you build essential skills and cope with common ongoing mental health concerns. Please contact the GW Health Center on (202) 994-5300 for more information.",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#religious-observances",
+    "href": "course-syllabus.html#religious-observances",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "Religious Observances",
+    "text": "Religious Observances\nAs members of the GW community, you have the right to observe religious holidays. University policy requires that students notify their instructors during the first week of the semester if they plan to be absent from class on days of religious observance. For further details, please consult the university policy on religious holiday observance.",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#emergency-preparedness-and-response-procedures",
+    "href": "course-syllabus.html#emergency-preparedness-and-response-procedures",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "Emergency Preparedness and Response Procedures",
+    "text": "Emergency Preparedness and Response Procedures\nThe University has asked all faculty to inform students of these procedures, prepared by the GW Office of Public Safety and Emergency Management in collaboration with the Office of the Executive Vice President for Academic Affairs.\n\nTo Report an Emergency or Suspicious Activity\nCall the University Police Department at 202-994-6111 (Foggy Bottom) or 202-242-6111 (Mount Vernon).\n\n\nShelter in Place – General Guidance\nAlthough it is unlikely that we will ever need to shelter in place, it is helpful to know what to do just in case. No matter where you are, the basic steps of shelter in place will generally remain the same.\n\nIf you are inside, stay where you are unless the building you are in is affected. If it is affected, you should evacuate. If you are outdoors, proceed into the closest building or follow instructions from emergency personnel on the scene.\nLocate an interior room to shelter inside. If possible, it should be above ground level and have the fewest number of windows. If sheltering in a room with windows, move away from the windows. If there is a large group of people inside a particular building, several rooms may be necessary.\nShut and lock all windows (for a tighter seal) and close exterior doors.\nTurn off air conditioners, heaters, and fans. Close vents to ventilation systems as you are able. (University staff will turn off ventilation systems as quickly as possible).\nMake a list of the people with you and ask someone to call the list in to UPD so they know where you are sheltering and who is with you. If only students are present, one of the students should call in the list.\nAwait further instructions. If possible, visit GW Campus Advisories for incident updates or call the GW Information Line 202-994-5050.\nMake yourself comfortable and look after one other. You will get word as soon as it is safe to come out.\n\n\n\nEvacuation\nAn evacuation will be considered if the building we are in is affected or we must move to a location of greater safety. We will always evacuate if the fire alarm sounds. In the event of an evacuation, please gather your personal belongings quickly (purse, keys, GWorld card, etc.) and proceed to the nearest exit. Every classroom has a map at the door designating both the shortest egress and an alternate egress. Anyone who is physically unable to walk down the stairs should wait in the stairwell, behind the closed doors. Firemen will check the stairwells upon entering the building. Once you have evacuated the building, proceed to our primary rendezvous location: the court yard area between the GW Hospital and Ross Hall. In the event that this location is unavailable, we will meet on the ground level of the Visitors Parking Garage (I Street entrance, at 22nd Street). From our rendezvous location, we will await instructions to re-enter the School.\n\n\nAlert DC\nAlert DC provides free notification by e-mail or text message during an emergency. Visit GW Campus Advisories for a link and instructions on how to sign up for alerts pertaining to GW. If you receive an Alert DC notification during class, you are encouraged to share the information immediately.\n\n\nGW Alert\nGW Alert provides popup notification to desktop and laptop computers during an emergency. In the event that we receive an alert to the computer in our classroom, we will follow the instructions given. You are also encouraged to download this application to your personal computer. Visit GW Campus Advisories to learn how.\n\n\nAdditional Information\nAdditional information about emergency preparedness and response at GW or the University’s operating status can be found on GW Campus Advisories or by calling the GW Information Line at 202-994-5050.",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "course-syllabus.html#key-dates",
+    "href": "course-syllabus.html#key-dates",
+    "title": "IAFF 6502/6505 Communicating Data with Web Apps",
+    "section": "Key Dates",
+    "text": "Key Dates\nPlease defer to the due dates listed on the course website. You can also view due dates in the gradebook and under each individual course assignment item in Blackboard Ultra.",
+    "crumbs": [
+      "Course Information",
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.3.html",
+    "href": "modules/module-2.3.html",
+    "title": "Module 2.3",
+    "section": "",
+    "text": "Prework\n\n\n\n\nRead Mastering Shiny, Chapter 3, section 3.4",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.3"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.3.html#the-server-function",
+    "href": "modules/module-2.3.html#the-server-function",
+    "title": "Module 2.3",
+    "section": "The Server Function",
+    "text": "The Server Function\nFor our server function, we are going to define two separate reactive() functions. This is how we are going to dynamically update the plot based on two different user inputs. First, we will define an input for the indicator where input$indicator takes the user input from the dropdown menu to perform a fresh API call whenever the selected indicator changes. Then, we take that input and filter it based on the input from the slider, e.g. input$range. Then we render the plot based on these updated data. Notice that whenever we want to use the stored data from the reactive calls we need to add parentheses after the objects, e.g. fred_indicator() in the second reactive function or fred_data() in the ggplot call. This is to ensure that the reactive expression is evaluated and its current value is used as the input data for the plot.\nFinally, we are going to use the add_rec_shade() helper function to add the recession shading to the chart. We again use the inputs from the two reactive functions to define the start date and end date of the shading as well as the y-min and y-max values of the shaded rectangles.\n\nserver &lt;- function(input, output) {\n  \n    # Download data from FRED with reactive function. \n    # Only updates when user selects new indicator\n    fred_indicator &lt;- reactive({\n      fredr(series_id = input$indicator,\n        observation_start = start_date,\n        observation_end = end_date)\n    })\n  \n    # Filter data according to chosen years \n    # Only updates when user selects new data range\n    fred_data &lt;- reactive({\n      fred_indicator() |&gt;\n      filter(between(date, input$range[1],input$range[2])) \n   })\n\n    # Render line chart\n    output$lineChart &lt;- renderPlot({\n      \n      # Build plot with ggplot2\n      ggplot(fred_data(), aes(x = date, y = value)) + \n        geom_line(color = \"navyblue\") +\n        labs(\n          x = \"\", \n          y =  names(vars[which(vars == input$indicator)])\n        ) +\n        theme_minimal() +\n        # add recession shading\n        add_rec_shade(st_date = input$range[1], \n                      ed_date = input$range[2], \n                      shade_color = \"darkgrey\",\n                      y_min = min(fred_data()$value),\n                      y_max = max(fred_data()$value))\n    })\n}",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.3"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.3.html#call-to-shiny-app",
+    "href": "modules/module-2.3.html#call-to-shiny-app",
+    "title": "Module 2.3",
+    "section": "Call to Shiny app",
+    "text": "Call to Shiny app\nOnce we have our UI and server functions defined we are ready to go. But don’t forget to include the call to the Shiny app or the app won’t run! Once this is in place, you can click “Run App” in the RStudio IDE to view the app locally. Optionally, right now, you can try setting up an account on shinyapps.io and try publishing your app on their server.\n\n# See above for the definitions of ui and server\nui &lt;- ...\n\nserver &lt;- ...\n\n# Run the application \nshinyApp(ui = ui, server = server)",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.3"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.4.html",
+    "href": "modules/module-2.4.html",
+    "title": "Module 2.4",
+    "section": "",
+    "text": "Prework\n\n\n\n\nRead Mastering Shiny, Chapter 5\nBy now you should have a good sense of what kind of app you want to create for your final project. In this module, I want to walk you through the process of executing your plan and give you some general tips on how to work out potential bugs in your app. I would also point you to this Shiny cheatsheet.\nOne key piece of advice I will offer is to scaffold the construction of your app. Don’t try to write all of the code at once. This is especially true if you have a lot of moving parts to your app. Start with small, workable parts and build on them.",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.4"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.4.html#wrangle-some-working-data",
+    "href": "modules/module-2.4.html#wrangle-some-working-data",
+    "title": "Module 2.4",
+    "section": "1. Wrangle some “working data”",
+    "text": "1. Wrangle some “working data”\nThe first thing you want to do is to wrangle some of the data that you need for the app. Crucially, you do not need to wrangle all of the data at first.\nLet’s assume for a second, that you want to have an app that builds a scatter plot looking at the relationship between measures of democracy and governance from V-Dem and a large number of development indicators from WDI. You could go ahead and wrangle all of the data from both data sets and merge it or you could start out with a small number of V-Dem or WDI indicators to work with. I would encourage you to use a smaller number of indicators as a proof of concept. Then, go back and merge in more data when you know your app works.",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.4"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.4.html#use-separate-files-to-wrangle-your-data-and-build-your-visualizations",
+    "href": "modules/module-2.4.html#use-separate-files-to-wrangle-your-data-and-build-your-visualizations",
+    "title": "Module 2.4",
+    "section": "2. Use separate files to wrangle your data and build your visualizations",
+    "text": "2. Use separate files to wrangle your data and build your visualizations\nStart the process of wrangling your data in a separate R script or Quarto document rather than trying to do it all in your app.R file. Use glimpse() and View() to make sure that your data looks like it should. This sounds basic, but a lot the errors you are going to get in your app are going to come from bad data. Similarly, use a separate file to test your visualization or analysis with one or a handful of indicators to make sure the basic code is working properly.",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.4"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.4.html#start-building-with-comments-and-function-calls",
+    "href": "modules/module-2.4.html#start-building-with-comments-and-function-calls",
+    "title": "Module 2.4",
+    "section": "3. Start building with comments and function calls",
+    "text": "3. Start building with comments and function calls\nAgain in the spirit of scaffolding your code, start by writing out comments stating what you want each section of the code to do and then introduce the function calls without any arguments. This can give you a clear picture of the basic components and architecture of your app. it can also help to make sure that you have all of your parentheses and brackets in the right place. Here is an example based on the scatter plot app that we built in an earlier module:\n\n# This is a Shiny web application. You can run the application by clicking\n# the 'Run App' button above.\n\n# load packages\nlibrary(shiny)\nlibrary(readr)\nlibrary(ggplot2)\n\n# load the data\ndem_data &lt;- read_csv()\n\n# Create list of named values for the input selection\nvars &lt;- c()\n\n# Define UI for application that draws a histogram\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(),\n\n    # Sidebar with a slider input for number of bins \n    sidebarLayout(\n      sidebarPanel(\n        selectInput(),\n        selectInput()\n      ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput()\n        )\n    )\n)\n\n# Define server logic required to draw a scatter plot\nserver &lt;- function(input, output, session) {\n  \n  # Render the plot output\n  output$scatterplot &lt;- renderPlot({\n\n   })\n}\n\n# Run the application \nshinyApp(ui = ui, server = server)",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.4"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.4.html#test-your-ui-code-separately-from-your-server-code",
+    "href": "modules/module-2.4.html#test-your-ui-code-separately-from-your-server-code",
+    "title": "Module 2.4",
+    "section": "4. Test your UI code separately from your server code",
+    "text": "4. Test your UI code separately from your server code\nOnce you have your UI code built, try running it with a blank server function or commenting out the “guts” of the server function. You should be able to see whether the inputs like drop-down menus, sliders, check boxes and radio buttons are in the right place and working properly. Here is an example from our earlier scatter plot app:\n\n\n\n\n\n\nNote\n\n\n\nYou can comment out multiple lines of code by highlighting them and hitting ctrl + shift + c on a PC or command + shift + c on a Mac.\n\n\n\n#\n# This is a Shiny web application. You can run the application by clicking\n# the 'Run App' button above.\n\n# load packages\nlibrary(shiny)\nlibrary(readr)\nlibrary(ggplot2)\n\n# load the data\ndem_data &lt;- read_csv(\"dem_data.csv\")\n\n# Create list of named values for the input selection\nvars &lt;- c(\"Democracy\" = \"polyarchy\",\n          \"Clientelism\" = \"clientelism\",\n          \"Corruption\" = \"corruption\",\n          \"Women's Empowerment\" = \"womens_emp\",\n          \"Wealth\" = \"gdp_pc\",\n          \"Infant Mortality\" = \"inf_mort\",\n          \"Life Expectancy\" = \"life_exp\", \n          \"Education\" = \"education\")\n\n# Define UI for application that draws a histogram\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Democracy and Development\"),\n\n    # Sidebar with a slider input for number of bins \n    sidebarLayout(\n      sidebarPanel(\n        selectInput('xcol', 'X Variable', vars),\n        selectInput('ycol', 'Y Variable', vars, selected = vars[[6]])\n      ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"scatterplot\")\n        )\n    )\n)\n\n# Define server logic required to draw a scatter plot\nserver &lt;- function(input, output, session) {\n  \n  # # Render the plot output\n  # output$scatterplot &lt;- renderPlot({\n  # \n  #   # Build scatter plot with ggplot2\n  #   ggplot(dem_data, aes(x = get(input$xcol), y = get(input$ycol))) +\n  #     geom_point(aes(color = region)) +\n  #     geom_smooth(method = \"loess\") +\n  #     scale_color_viridis_d(option = \"plasma\") +\n  #     theme_minimal() +\n  #     labs(\n  #       x =  names(vars[which(vars == input$xcol)]), # select names in vars that\n  #       y =  names(vars[which(vars == input$ycol)]), # match input selections\n  #       caption = \"Source: V-Dem Institute\",\n  #       color = \"Region\" \n  #     )\n  #  })\n}\n\n# Run the application \nshinyApp(ui = ui, server = server)",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.4"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.4.html#make-sure-your-reactive-data-frames-have-parentheses-after-them",
+    "href": "modules/module-2.4.html#make-sure-your-reactive-data-frames-have-parentheses-after-them",
+    "title": "Module 2.4",
+    "section": "5. Make sure your reactive data frames have parentheses after them",
+    "text": "5. Make sure your reactive data frames have parentheses after them\nIf you are building a data frame with a reactive() function, then you need to add parentheses after the name of the data frame when you reference it later. For example, in the line chart app that we did earlier in the course, we used a reactive function to download an indicator from the FRED database and store these data in an object called fred_indicator. But when we wanted to filter those data later on in a second reactive function, we referred to them as fred_indicator().",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.4"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.4.html#make-sure-that-you-are-calling-the-input-appropriately",
+    "href": "modules/module-2.4.html#make-sure-that-you-are-calling-the-input-appropriately",
+    "title": "Module 2.4",
+    "section": "6. Make sure that you are calling the input appropriately",
+    "text": "6. Make sure that you are calling the input appropriately\nThink about where your server function needs to use the input from the user. Then, when you are calling the input, make sure you are using the appropriate name for the input. For example, in our scatter plot app, we took input from the user for two selected indicators (input$xcol and input$ycol) and used these to make a scatter plot.",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.4"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.4.html#consider-nonstandard-evaluation-when-using-ggplot",
+    "href": "modules/module-2.4.html#consider-nonstandard-evaluation-when-using-ggplot",
+    "title": "Module 2.4",
+    "section": "7. Consider nonstandard evaluation when using ggplot\n",
+    "text": "7. Consider nonstandard evaluation when using ggplot\n\nConsider the fact that ggplot2 uses nonstandard evaluation and wrap the inputs in your aes() call in get() where appropriate. Nonstandard evaluation refers to the idea that ggplot2 takes the name of the column directly so that you don’t have to quote it. get() transforms the text input from the user to the actual column name. For example, in our scatter plot app we used get() to transform the user input to column names for our x and y variables: ggplot(dem_data, aes(x = get(input$xcol), y = get(input$ycol))).",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.4"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.4.html#in-the-server-code-use-print-to-debug",
+    "href": "modules/module-2.4.html#in-the-server-code-use-print-to-debug",
+    "title": "Module 2.4",
+    "section": "8. In the server code, use print() to debug",
+    "text": "8. In the server code, use print() to debug\nSometimes it is hard to tell if your reactive functions are producing the output you want. One trick is to use print() or glimpse() in your output function to see what is going on. This should produce the output of the reactive function in your console. Here is an example from our line chart app:\n\n# Define the server function\n\nserver &lt;- function(input, output) {\n  \n  # Download data from FRED with reactive function.\n  # Only updates when user selects new indicator\n  fred_indicator &lt;- reactive({\n    fredr(series_id = input$indicator,\n          observation_start = start_date,\n          observation_end = end_date)\n    \n  })\n  \n  # Filter data according to selected years\n  # Only updates when user selects new date range\n  fred_data &lt;- reactive({\n    fred_indicator() |&gt;\n      filter(between(date, input$range[1], input$range[2]))\n  })\n  \n  # Render line chart\n  output$lineChart &lt;- renderPlot({\n    \n    print(fred_data(), n = 100)   ####  USE print() TO VIEW OUTPUT IN CONSOLE \n    #glimpse(fred_data())         ####  ALTERNATIVELY, USE glimpse()  \n    \n    # Build plot with ggplot2\n    ggplot(fred_data(), aes(x = date, y = value)) +\n      geom_line(color = \"navyblue\") +\n      labs(\n        x = \"\",\n        y = names(vars[which(vars == input$indicator)])\n      )+\n      theme_minimal() +\n      # add recession shading\n      add_rec_shade(st_date = input$range[1],\n                    ed_date = input$range[2],\n                    shade_color = \"darkgrey\",\n                    y_min = min(fred_data()$value),\n                    y_max = max(fred_data()$value))\n    })\n}",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.4"
+    ]
+  },
+  {
+    "objectID": "modules/module-2.4.html#think-about-what-your-code-is-doing",
+    "href": "modules/module-2.4.html#think-about-what-your-code-is-doing",
+    "title": "Module 2.4",
+    "section": "9. Think about what your code is doing",
+    "text": "9. Think about what your code is doing\nOne thing that I have emphasized throughout the course that is super-relevant here is to have a theory about what your code is doing. What is each part of the code supposed to do to the data? What is your objective with that chunk of code? And is it accomplishing what you hoped it would accomplish? Experimenting can help when you are stuck, but experimenting really only works when you have an idea of what your experiment is trying to test. This is especially true in the context of a Shiny app where it is hard to tell what is gong on “behind the scenes.”",
+    "crumbs": [
+      "Course Modules",
+      "Module 2.4"
+    ]
+  },
+  {
+    "objectID": "modules/module-1.3.html",
+    "href": "modules/module-1.3.html",
+    "title": "Module 1.3",
+    "section": "",
+    "text": "Prework\n\n\n\n\nInstall the tidyverse (if you have not already). Type (install.packages(\"tidyverse\")) in your console\nInstall the devtools package. Type install.packages(\"devtools\") in your console. You will need this to install the vdemdata package because it is not on the CRAN Network.\nInstall the vdemdata package from GitHub. Type devtools::install_github(\"vdeminstitute/vdemdata\") in your console.\nStart a new project in RStudio\nCreate a new R script file that you will use to wrangle the data for the app\nRead Mastering Shiny, Chapter 1",
+    "crumbs": [
+      "Course Modules",
+      "Module 1.3"
+    ]
+  },
+  {
+    "objectID": "modules/module-1.3.html#overview",
+    "href": "modules/module-1.3.html#overview",
+    "title": "Module 1.3",
+    "section": "Overview",
+    "text": "Overview\nIn this module we are going to start learning by doing. We are going to learn about the basic elements of an R Shiny app by making a scatter plot of wealth and democracy. Here is what we are going to be building:\n\n\nTake a few minutes to familiarize yourself with this scatter plot app. In the UI, you will see that there are two dropdown menus that allow you to select the variables to appear on the x and y axes of the scatter plot.\nBased on what you see here, what do you think you will need to do to prepare the data for the app? Looking ahead, can you guess what you might do to create the server side of the app?",
+    "crumbs": [
+      "Course Modules",
+      "Module 1.3"
+    ]
+  },
+  {
+    "objectID": "modules/module-1.3.html#setting-up-the-app",
+    "href": "modules/module-1.3.html#setting-up-the-app",
+    "title": "Module 1.3",
+    "section": "Setting Up the App",
+    "text": "Setting Up the App\n\nI said earlier that there are three main components of a Shiny app (UI, server and call to app). However, with most apps, there is usually a bit of setup int the code before you get to this point. So perhaps you could say there are actually four elements of a Shiny app, with the set up being the “0th” element.\nThere are going to be two components to the setup for this app. First we are going to “pre-wrangle” our data and store it in a .csv file. Second, we are going to build a setup code chunk that we will include in our app.R file. Let’s get started.\nConsequently, you are going to need to start two files for this module: a new R script file that you will use to wrangle the data for the app; and a new app.R file that will contain the code for the app itself (File&gt;New File&gt;Shiny Web App...).\nWrangling and storing the data\nFor this app, we want users to be able to create scatter plots using selected variables from the V-Dem dataset. Let’s say that we want to have a nice mix of variables related to democracy and development so that users can explore how democracy relates to development and vice versa. So we will filter the data for the post-2000 period and select measures relating to democracy, governance and women’s empowerment and then four measures related to development.\nWe will also make sure to code a region variable and include region in the group_by() call so that it stays in the data frame. Then we will take the country mean of the measures for the post-2000 period so that we have one set of observations for each each country.\nFinally, we will save these data in a .csv file to include with the app. Alternatively, we could have our app wrangle the data each time the app is loaded. This would ensure that the data are always up to date, but it would require more resources than is available with the free version of the Shiny server due to the size of the V-Dem dataset.\n\nlibrary(vdemdata)\nlibrary(dplyr)\nlibrary(readr)\n\ndem_data &lt;- vdem |&gt;\n  filter(year &gt; 2000) |&gt;\n  select(\n    country = country_name, \n    polyarchy = v2x_polyarchy,\n    clientelism = v2xnp_client,\n    corruption = v2xnp_regcorr,\n    womens_emp = v2x_gender,\n    gdp_pc = e_gdppc,\n    inf_mort = e_peinfmor,\n    life_exp = e_pelifeex,\n    education = e_peaveduc,\n    region = e_regionpol_6C \n  ) |&gt;   mutate(\n    region = case_match(region, \n                        1 ~ \"Eastern Europe\", \n                        2 ~ \"Latin America\",  \n                        3 ~ \"Middle East\",   \n                        4 ~ \"Africa\", \n                        5 ~ \"The West\", \n                        6 ~ \"Asia\")\n  ) |&gt;\n  group_by(country, region) |&gt;\n  summarize_all(mean, na.rm = TRUE)\n\n#glimpse(dem_data)\n\nwrite_csv(dem_data, \"dem_data.csv\")\n\nSetup code chunk\nNow let’s build a setup code chunk that we can include in the app.R script. Here we will load the packages we need for the app and read in the data we just wrangled from the CSV file. Finally, let’s go ahead and create a list of variable names for our dropdown menus in the app and map these to the variables in our data frame.\n\n# load packages\nlibrary(shiny)\nlibrary(readr)\nlibrary(ggplot2)\n\n# load the data \ndem_data &lt;- read_csv(\"dem_data.csv\")\n\n# create list of named values for the input selection\nvars &lt;- c(\"Democracy\" = \"polyarchy\",\n          \"Clientelism\" = \"clientelism\",\n          \"Corruption\" = \"corruption\",\n          \"Women's Empowerment\" = \"womens_emp\",\n          \"Wealth\" = \"gdp_pc\",\n          \"Infant Mortality\" = \"inf_mort\",\n          \"Life Expectancy\" = \"life_exp\", \n          \"Education\" = \"education\")",
+    "crumbs": [
+      "Course Modules",
+      "Module 1.3"
+    ]
+  },
+  {
+    "objectID": "modules/module-1.1.html",
+    "href": "modules/module-1.1.html",
+    "title": "Getting Started",
+    "section": "",
+    "text": "Prework\n\n\n\n\nBrowse the R Shiny Gallery\nReview Tidyverse concepts presented in R for Data Science",
+    "crumbs": [
+      "Course Modules",
+      "Module 1.1"
+    ]
+  },
+  {
+    "objectID": "modules/module-1.1.html#sec-rstudio-setup",
+    "href": "modules/module-1.1.html#sec-rstudio-setup",
+    "title": "Getting Started",
+    "section": "R and RStudio",
+    "text": "R and RStudio\n\nAll of our work for this course will be done in the R language and we will be working with R in RStudio. RStudio is an integrated development environment (IDE) develop by a company named Posit. Please be sure to download and install the most recent versions of R and R Studio from Posit’s website.\nIt is a good idea to periodically update R and RStudio. RStudio will prompt you when an update is available, and to perform the update you can follow the usual process of downloading and installing from the Posit website. For R, there are a number of ways to update, but the easiest is to use packages like installr for Windows and updateR for Mac. Here is a good blog post that walks you through the steps of how to update R using these packages. I usually update R once a semester.\nWe are going to be using a number of R packages throughout the course. One essential set of packages are those that comprise the Tidyverse. You can install the entire Tidyverse collection of packages by typing install.packages(\"tidyverse\") in your console.\nSince this is a course the focuses, on Shiny Web apps, you will also want to install the Shiny package. You can do this by typing install.packages(\"shiny\") in your console.\nAnother thing that you probably want to do is to make sure that you have the native pipe operator (|&gt;) enabled. In RStudio, go to Tools&gt;Global Options, then go to Code and select “Use native pipe operator.” It is OK if you want to use the magrittr pipe (%&gt;%) instead, but I find the native pipe to a little more flexible and slightly easier to use.",
+    "crumbs": [
+      "Course Modules",
+      "Module 1.1"
+    ]
+  },
+  {
+    "objectID": "modules/module-1.1.html#sec-tidyverse-dialect",
+    "href": "modules/module-1.1.html#sec-tidyverse-dialect",
+    "title": "Getting Started",
+    "section": "The Tidyverse Dialect",
+    "text": "The Tidyverse Dialect\n\nThis course assumes a fair degree of familiarity with the R programming language and the Tidyverse. If you are not familiar with the Tidyverse or it has been some time since you have worked with R or Tidyverse packages andfunctions, then check out the above video by Posit’s Tom Mock. In this video, Tom provides a brief overview of the Tidyverse and some of the key functions that we will be using throughout the course.\nFrom there, you might also take a look at the Tidyverse website and R for Data Science by Hadley Wickham, Mine Çetinkaya-Rundel and Garrett Grolemund. For this course it is enough to have a basic familiarity with the concepts of the first section of the book (“Whole Game”). You might might also find it helpful to reference the Tidyverse cheatsheets for a quick review and reference of the functions available in specific Tidyverse packages.",
+    "crumbs": [
+      "Course Modules",
+      "Module 1.1"
+    ]
+  },
+  {
+    "objectID": "modules/module-1.4.html",
+    "href": "modules/module-1.4.html",
+    "title": "Module 1.4",
+    "section": "",
+    "text": "Prework\n\n\n\n\nRead Mastering Shiny, Chapter 2",
+    "crumbs": [
+      "Course Modules",
+      "Module 1.4"
+    ]
+  },
+  {
+    "objectID": "modules/module-1.4.html#overview",
+    "href": "modules/module-1.4.html#overview",
+    "title": "Module 1.4",
+    "section": "Overview",
+    "text": "Overview\nIn this module we are going to continue our work on the scatter plot app by coding the basic elements of the user interface (UI). The user interface (UI) defines the layout and appearance of the web application. Here you tell Shiny what elements such as buttons, sliders, text inputs, plots, and other interactive components that you want users to be able to interact with.",
+    "crumbs": [
+      "Course Modules",
+      "Module 1.4"
+    ]
+  },
+  {
+    "objectID": "modules/module-1.4.html#coding-the-ui",
+    "href": "modules/module-1.4.html#coding-the-ui",
+    "title": "Module 1.4",
+    "section": "Coding the UI",
+    "text": "Coding the UI\n\nWe will start with the fluidPage() function as the outermost layer of our UI and then add additional container functions within it. First we will add a titlePanel(). You are free to call this app whatever you like but I thought a good title would be “Democracy and Development.”\nThen we can add a sidebar panel with dropdown menus to select the variables to display in the scatter plot. For this we call sidebarLayout() and then within that sidebarPanel(). This next step is really important. We are going to use the list variables called vars from our setup code chunk to populate the dropdown menus. To do this we are going to call selectInput() twice–once for the x-axis variable that the user wants to appear on the scatter plot and once for the y-axis variable.\nThe three main arguments for this function are input, label and choices. input is the input ID that we will use to access the user selection later on in the server function. label refers to the name that we want to appear above the dropdown menu. And choices refers to the list of choices to appear in the dropdown (in our case the list of variables called vars.)\nWe can also include the argument selected in our selectInput() call to determine which variable is selected by default when the app loads. We are going to specify the sixth variable in the list for the y-axis (vars[[6]]) to make sure that the same two variables do not appear on both the x and y axes.\nThe final piece of our UI is the main panel where we want our scatter plot to appear. Let’s go ahead and add mainPanel() and then within that call plotOutput(\"scatterplot\"). This is going to dynamically retrieve the updated scatter plot as the user changes the variables in the dropdown menu.\n\n# Define UI for application that draws a scatter plot\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Democracy and Development\"),\n\n    # Sidebar with a two dropdown menus\n    sidebarLayout(\n      sidebarPanel(\n        selectInput(input = 'xcol', label = 'X Variable', choices = vars),\n        selectInput(input = 'ycol', label = 'Y Variable', \n                    choices = vars, selected = vars[[6]])\n      ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"scatterplot\")\n        )\n    )\n)",
+    "crumbs": [
+      "Course Modules",
+      "Module 1.4"
+    ]
+  }
+]
