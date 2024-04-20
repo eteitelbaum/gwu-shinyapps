@@ -1,0 +1,313 @@
+---
+title: "WebApps 6502"
+subtitle: "Session 1.2--R Shiny Basics"
+footer: "[WebApps Website](https://rshiny-is.cool)"
+logo: images/webapps-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    chalkboard: true
+execute:
+  echo: true
+  message: false
+  warning: false
+  freeze: auto
+---
+
+# Overview
+
+## Shiny App Basics
+
+Two parts of a Shiny app:
+
+- **UI**: User Interface
+- **Server**: Server logic
+
+They come together in a single script: `app.R`
+
+::: aside
+**Note:** You can compose your app with the ui and server in separate scripts, but we will stick to the single `app.R` script for now.
+:::
+
+## The app.R Script
+
+```{r} 
+#| label: app.r
+#| code-line-numbers: "|1|3-5|7-8|10"
+#| eval: false
+
+library(shiny)
+
+ui <- fluidPage(
+  "Hello, Shiny!"
+)
+
+server <- function(input, output, session) {
+}
+
+shinyApp(ui, server)
+```
+
+# The User Interface (`ui`)
+
+## The UI
+
+```{r} 
+#| label: ui
+#| code-line-numbers: "3-5"
+#| eval: false
+
+library(shiny)
+
+ui <- fluidPage(
+  "Hello, Shiny!"
+)
+
+server <- function(input, output, session) {
+}
+
+shinyApp(ui, server)
+```
+
+`fluidPage()` creates a Bootstrap page
+
+## The UI
+
+- [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/) is a free front-end framework used in web development  
+- It is built on **HTML**, **CSS** and **JavaScript**
+- There are many version of Bootstrap, the latest being version 5, but R Shiny uses version 3 by default
+
+::: aside
+With the `bslib` package you can use Bootstrap 4 or 5 in your R Shiny apps.
+:::
+
+## The UI
+
+```{r}
+#| echo: false
+
+library(shiny)
+```
+
+Under the hood, every UI function is translated to HTML.
+
+```{r}
+as.character(titlePanel("Hello, Shiny!"))
+```
+
+<br>
+
+This HTML can have styles attached to it, either by the `style` attribute, or by a CSS class.
+
+```{r}
+as.character(sidebarPanel())
+```
+
+## The UI
+
+To let users interact with your app, you can add [input controls](https://shiny.posit.co/r/getstarted/shiny-basics/lesson3/). A basic input control has:
+
+- an `inputId`
+- a `label`
+- a `value`
+
+## The UI
+
+For example:
+
+```{.r}
+numericInput(inputId = "number", 
+             label = "Enter a number", 
+             value = 0)
+```
+<br>
+```{.r}
+actionButton(inputId = "button", 
+             label = "Click me")
+```
+
+## Updating the UI
+
+::: {.incremental}
+- When the app runs, every user gets served the same HTML from the UI
+- When the user interacts with the UI, we want that HTML to **react** and update based on user input
+- That is possible because these outputs are **reactive outputs**
+- The server logic (which we will discuss in detail soon) uses **reactive programming** that updates related inputs in the UI
+:::
+
+## Updating the UI
+
+Shiny has several functions that turn R objects into reactive outputs for your `ui`: the [Output](https://shiny.posit.co/r/getstarted/shiny-basics/lesson4/) family of functions.
+
+Each function creates a specific type of output, for example:
+
+| UI Function | Output type |
+|----------|-------------|
+| textOutput() | text |
+| tableOutput() | table |
+| plotOutput() | plot |
+| uiOutput() | raw HTML |
+: {.table .table-striped .table-hover}
+
+## Updating the UI
+
+Every output element needs a single argument: `outputId`. This is a simple string that needs to be **unique**.
+
+<br>
+
+```{.r}
+textOutput(outputId = "text")
+```
+
+<br>
+
+This `textOutput` tells Shiny what to display. It's a **placeholder** for what is goign to be produced by the server logic.
+
+# The Server Logic
+
+## The Server
+
+::: {.incremental}
+- The server function builds an object named **output** and this object will contain all the code needed to display the R objects in the UI
+- This output object is **list-like**
+- Each R object that you want to display has its own entry in this list
+- Therefore the name of every output in your UI needs to match a definition in the server, e.g. `output$text`
+:::
+
+## The Server
+
+Each entry in the output list should contain a **Render** function. You must use **Render** functions that match the **Output** functions:
+
+| UI Function | Output type | Render function |
+|----------|-------------|-----------------|
+| textOutput() | text | renderText() |
+| tableOutput() | table | renderTable() |
+| plotOutput() | plot | renderPlot() |
+| uiOutput() | raw HTML | renderUI() |
+: {.table .table-striped .table-hover}
+
+## The Server
+
+```{r} 
+#| code-line-numbers: "2,6"
+
+ui <- fluidPage(
+  textOutput(outputId = "text")
+)
+
+server <- function(input, output, session) {
+  output$text <- renderText({
+  })
+}
+```
+
+## Using Inputs
+
+- This works the same with inputs.
+- The server can access an object named `input` that will contain the value of all the input objects defined in the UI.
+- This object is **list-like**, just like the output object. Each input value has its own entry in this list, e.g. `input$number`.
+
+## 
+
+Combining the input and output objects, we get a simple app that displays the square of a number. 👏
+
+```{r}
+#| eval: false
+library(shiny)
+
+ui <- fluidPage(
+  numericInput(inputId = "number", 
+               label = "Enter a number", 
+               value = 0),
+               
+  textOutput(outputId = "text")
+)
+
+server <- function(input, output, session) {
+  output$text <- renderText({
+    input$number^2
+  })
+}
+
+shinyApp(ui, server)
+```
+
+## Your Turn! 
+
+- Create a Shiny app that displays the square of a number
+- Try entering different numbers manually
+- Try using the up and down arrows
+- Adjust the server logic to display the cube of a number
+- Try other calculations
+
+```{r}
+#| echo: false
+
+library(countdown)
+countdown(minutes = 10, 
+          id = "timer1", 
+          bottom = "10%",
+          right = "10%",
+          color_border = "#fff",
+          color_text = "#fff",
+          color_running_background = "#42affa",
+          color_running_text = "black",
+          color_finished_background = "#E5D19D",
+          color_finished_text = "#00264A")
+```
+
+## Eager Output
+
+An output is **eager**: it will update as soon as the input changes.
+
+<br>
+
+This **eagerness** is handy: you don't need to worry about updating the output when the input changes.
+
+<br>
+
+But what if you want to trigger the calculation only when you want?
+
+## Adding a Reactivity Modifier
+
+You could use an `actionButton` as an **event**:
+
+```{r} 
+#| code-line-numbers: "8-9,15-17"
+
+library(shiny)
+
+ui <- fluidPage(
+  numericInput(inputId = "number", 
+               label = "Enter a number", 
+               value = 0),
+               
+  actionButton(inputId = "button", 
+               label = "Click me"),
+               
+  textOutput(outputId = "text")
+)
+
+server <- function(input, output, session) {
+  output$text <- renderText({
+    input$number^2
+  }) |> bindEvent(input$button)
+}
+
+shinyApp(ui, server)
+```
+
+## Try It Yourself! 
+
+- Add an `actionButton` to your app
+- Adjust the text on the button to read "Calculate"
+- Make sure it functions as intended
+- Go to the [getting started](https://shiny.posit.co/r/getstarted/shiny-basics/lesson3/) lesson on control widgets
+- See if you can control the calculation with a checkbox instead of a button
+- What is wrong with this approach?
+
+## Acknowledgements
+
+- Parts of this presentation were adapted from Veerle van Leemput's [Shiny 101: The Modular App Blueprint](https://github.com/hypebright/shinyconf2024-shiny101)

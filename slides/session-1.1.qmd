@@ -1,8 +1,8 @@
 ---
-title: "Data Rich Reports"
-subtitle: "Session 1--Basic Authoring in Quarto"
-footer: "[DRR Website](https://quarto.training)"
-logo: images/drr6502-logo.png
+title: "WebApps 6502"
+subtitle: "Session 1.1--Introduction to R Shiny"
+footer: "[WebApps Website](https://rshiny-is.cool)"
+logo: images/webapps-logo.png
 format:
   revealjs:
     theme: [simple, custom.scss]
@@ -16,35 +16,79 @@ execute:
   freeze: auto
 ---
 
-# Overview
+# Welcome 👋
 
-## Quarto
+## Getting to Know Each Other 🗣
 
-<br>
+- Name and background
+- Reasons for taking the course
+- Experience with programming
+- Experience with R and Shiny
+- What you hope to learn
+
+## Today's Schedule
+
+- **9:00 - 10:20:** Introduction to R Shiny
+- **10:20 - 10:40:** Break ☕
+- **10:40 - 12:00:**  Shiny Basics
+- **12:00 - 1:00:** Lunch 🍕🥤 
+- **1:00 - 2:20:**  Scatter Plot App, Part 1
+- **2:20 - 2:40:** Break ☕ 
+- **2:40 - 4:00:** Scatter Plot App, Part 2
+
+## Learning Objectives 
+
+After this workshop, you will know:
+
+- What Shiny is and how it works
+- The elements of a Shiny app including a user interface and server
+- How to create a simple Shiny app
+- How to deploy a Shiny app
+
+# Exploring Shiny 
+
+## What is Shiny?
 
 ::: {.incremental}
--   [Quarto](https://quarto.org/) is an open-source scientific publishing platform
--   Allows you to integrate text with code
--   Kind of like a word processor for data science
--   Can use it to create reports, books, websites, etc.
--   Can make HTML, PDF, Word, and other formats
--   Can use R, Python, Julia, and other languages
+- Shiny is an R package developed by [Posit](www.posit.co) that makes it easy to build interactive web apps straight from R
+- No HTML, CSS, or JavaScript required
+- Shiny apps can be hosted on the web or run locally
+- Makes it easy to explore your data and share your analysis
 :::
 
-## Quick Discussion
+## What You Can Do with Shiny {.smaller}
 
-<br>
+::: {.incremental}
+- **Data Exploration**: Utilize interactive widgets to filter and sort data dynamically
+- **Basic Visualizations**: Create real-time, interactive graphs and charts from datasets
+- **Advanced Analytics**: Integrate R's robust statistical and machine learning capabilities for in-depth analysis
+- **Interactive Reports**: Build dynamic reports that update based on user input or live data
+- **Production-Grade Dashboards**: Develop complex, multi-page dashboards with user authentication and data streaming
+:::
 
-- Have a look at the [Quarto gallery](https://quarto.org/docs/gallery/)
-- What project(s) do you like?
-- What would you like to do for a final project?
+## Flavors of Shiny {.smaller}
+
+:::{.incremental}
+- [R Shiny](https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/index.html): The original framework, allowing R users to build interactive web applications directly within R
+- [Shiny for Python](https://shiny.posit.co/py/): Extends Shiny's capabilities to Python, enabling Python users to create Shiny applications using Python code
+- [Shiny Live](https://shiny.posit.co/py/docs/jupyter-widgets.html#shinylive): Enables you to run apps off the user's browser rather than having to deploy them to a server (only available in Python right now)
+- [Shiny Express](https://shiny.posit.co/blog/posts/shiny-express/): A simplified version of Shiny for Python aimed at rapid development and deployment of applications with less coding and configuration required
+- [Quarto Dashboards](https://quarto.org/docs/dashboards/): Not a Shiny app per se, but can connected to a Shiny server for increased interactivity
+:::
+
+## User Demos
+
+- Have a look at the [Shiny gallery](https://shiny.posit.co/r/gallery/#user-showcase)
+- Pick an app that you like?
+- One thing you would like to learn from that app?
+- One thing that you would improve
 - Discuss with a neighbor
 
 ```{r}
 #| label: timer1
 
 library(countdown)
-countdown(minutes = 3, 
+countdown(minutes = 5, 
           id = "timer1", 
           bottom = "10%",
           right = "10%",
@@ -56,256 +100,75 @@ countdown(minutes = 3,
           color_finished_text = "#00264A")
 ```
 
-# Setup
+## Feature Demos
 
-## Install R and RStudio
-
-<br>
-
--   If you haven't already...
--   Go to the RStudio [download page](https://posit.co/download/rstudio-desktop/)
--   Download R and then RStudio
-
-## Set up RStudio {.smaller}
-
-<br>
-
--   Go to Tools\>Global Options
--   Under Code, enable native pipe operator (`|>`)
--   Under Appearance, choose a theme
--   Configure panes
-    -   Go to Pane Layout
-    -   Move Source, Console, etc. to preferred positions
-
-## Illustration
-
-![](images/rstudio-setup.gif){fig-align="center"}
+- Now let's look at [feature demos](https://shiny.posit.co/r/gallery/#feature-demos)
+- What widgets, layouts, or features are you interested in?
+- How would you use them in your own apps?
 
 ```{r}
 #| label: timer2
 
-library(countdown)
-countdown(minutes = 3, 
+countdown(minutes = 5, 
           id = "timer2", 
-          top = "0%",
-          right = "5%")
-```
-
-# Using Quarto
-
-## Project Oriented Workflow
-
-<br>
-
-:::{.incremental}
--   Always start a document in a project folder
-    -   That way you don't have to do `setwd`
-    -   Also can share easily with other people
--   Go to File\>New Project
--   Create a Quarto project folder
-:::
-
-## Visual Editor
-
-::: {.incremental}
--   There are two ways to edit Quarto docs
-    -   Source (markdown)
-    -   Visual editor
--   Visual editor
-    -   WYSIWYM
-    -   Approximates appearance
--   Try both and see what you like
-:::
-
-## Rendering Documents {.smaller}
-
-::: {.incremental}
--   Rendering = converting to another format
-    - Default format is HTML
-    - Can also render to PDF, Word, etc. 
--   To render a Quarto document
-    -   Click on the Render button
-        -   Or keyboard shortcut (Cmd/Ctrl + Shift + K)
--   By default, Quarto will preview the document in your browser
--   But you can also preview in Viewer pane
-    - Click on the gear icon next to the Render button
-    - Select "Preview in Viewer Pane"
-:::
-
-## Illustration
-
-![](images/intro-quarto.gif){fig-align="center"}
-
-## Let's Try Quarto!
-
--   Create a new Quarto document
-    -   File\>New File\>Quarto Document
--   Save the document in your project folder
--   Render it
-    -   Click on the Render button
-    -   Or keyboard shortcut (Cmd/Ctr + Shift + K)
--   Try out the visual editor
-
-```{r}
-#| label: timer4
-
-library(countdown)
-countdown(minutes = 2, 
-          id = "timer4", 
-          top = "0%",
-          right = "5%")
-```
-
-# Quarto Docs
-
-## Document Elements
-
-<br>
-
--   YAML Header
--   Markdown content
--   Code chunks
-
-## YAML Header
-
-<br>
-
--   Metadata about the document
-    -   Title, author, date, etc.
--   Output format
--   Execution options
-
-## YAML Header
-
-```         
----
-title: "My Documnet"
-author: "Your Name"
-date: today
-date-format: long
-format: html
-execute:
-  echo: false
-  message: false
----
-```
- - Try changing some of these options in your document
- - Then render it again
- - Look in the Quarto [guide](https://quarto.org/docs/reference/formats/html.html) for other options to try
-
-```{r}
-#| label: timer5
-
-countdown(minutes = 2, 
-          id = "timer5", 
-          bottom = "0%",
-          right = "5%")
-```
-
-## Markdown
-
-<br>
-
-::: {.incremental}
--   Markdown is a simple markup language
--   You can use it to format text
--   You can also use it to embed images, tables, etc.
--   And to embed code chunks...
-:::
-
-## Markdown Syntax - Basic Authoring
-
-::: {.incremental}
--   For basic text you can just start typing
--   For line breaks use two spaces and return (enter)
--   Headings (use `#`, `##`, `###`, etc.)
-    -   `#` is the largest heading (level 1)
-    -   `##` is the next largest (level 2)
-    -   `###` is the next largest (level 3)
-    -   Etc.
-:::
-
-## Markdown Syntax - Styling
-
-::: {.incremental}
--   Emphasis = Italics (use `*`)
-    -   Bold (use `**`)
--   Lists
-    -   Bullet points (use `-`)
-    -   Numbered lists (use `1.`)
-:::
-
-## Markdown Syntax - Content
-
-::: {.incremental}
--   Links (use `[text](url)`)
--   Images (use `![](file path or url)`)
--   Code chunks
-    -   R code chunks (\`\`\`{r}...\`\`\`)
-    -   Python code chunks (\`\`\`{python}...\`\`\`)
-    -   Etc. 
-:::
-
-## Try Some Markdown
-
-<br>
-
--   Check out the [Markdown Cheatsheet](https://www.markdownguide.org/basic-syntax/)
--   Try editing the markdown in your document
--   Try incorporating an figure (image), link, table, etc. 
--   Try some of the other things you find in the guide
--   Then render it again
-
-```{r}
-#| label: timer6
-
-countdown(minutes = 10, 
-          id = "timer6", 
           bottom = "10%",
           right = "10%")
 ```
 
-## Code Chunks
+## Professional Apps {.smaller}
 
-::: {.incremental}
--   Incorporate R code (could also be Python, Julia, etc.)
--   Add a code chunk with the '+' button
--   Run the code chunk by clicking the play button
-    -   Or use keyboard shortcut (Cmd/Ctrl + Shift + Enter)
--   Run all chunks up that point by clicking the down arrow
-    -   Or use keyboard shortcut (Cmd/Ctrl + Shift + K)
--  Run a single line with shortcut (Cmd/Ctrl + Enter) 
-:::
+- Here is a selection of modern, professional Shiny Apps
+  - [PESKAS](https://timor.peskas.org/) fisheries monitoring in Timor-Leste
+  - [WaCSE](https://wsda.shinyapps.io/WaCSE/) for tracking reductions in GHG emissions as part of Washington State's [Sustainable Farms and Fields](https://www.scc.wa.gov/programs/sustainable-farms-fields) program
+  - [JHU Lyme Disease Tracker](https://www.hopkinslymetracker.org/)
+  - [movie-vue-r](https://friss.shinyapps.io/shiny-vue-r/#/) a Vue.js and Shiny app for exploring movie + COVID information
+- These are mainly for inspiration, but try to find the code on GitHub and see how much you can understand
 
-## Code Chunk Options
+```{r}
+#| label: timer3
 
-::: {.incremental}
--   Use `#|` (hash-pipe) to add options 
--   `label` is a unique identifier for the chunk
--   Options to control what happens when you render
-    -   `echo` controls whether the code is shown
-    -   `eval` controls whether the code is run
-    -   `message` controls whether messages are shown
-    -   `warning` controls whether warnings are shown
-:::
+countdown(minutes = 5, 
+          id = "timer3", 
+          bottom = "10%",
+          right = "10%")
+```
 
-## Code Chunk Options
+## Getting Started with Shiny
 
-<br>
+- Open RStudio
+- Start a folder for the workshop 
+- Install the `shiny` package (if not installed already)
+- Create a new Shiny app
+  - (File > New File > Shiny Web App)
+- Run the Geyser App
+- Try opening it in a browser
 
--   Code-chunk options override global options set in YAML header
--   See [documentation](https://quarto.org/docs/reference/cells/cells-knitr.html) for more options
--   You can also use write chunk options inline with chunk name,
-    -   e.g., `{r, echo = FALSE} ...`
-    
-## Illustration
+```{r}
+#| label: timer4
 
-![](images/code-chunks.gif){fig-align="center"}
+countdown(minutes = 5, 
+          id = "timer4", 
+          bottom = "10%",
+          right = "10%")
+```
 
-## Your Turn! 
+## Challenge
 
-<br>
+- Look at the `faithful` dataset in R (hint: `?faithful`)
+- Create a Shiny app that displays a histogram of the `eruptions` column
+- Change the labels accordingly
+- What kind of distribution do you see?
 
--   Try running a code chunk in your document
--   Change the chunk options
--   Run the code again
+```{r}
+#| label: timer5
+
+countdown(minutes = 10, 
+          id = "timer5", 
+          bottom = "10%",
+          right = "10%")
+```
+
+
+
+
+

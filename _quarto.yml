@@ -96,8 +96,8 @@ website:
             text: "Module 2.5"
       - section: "Workshop Schedule"
         contents: 
-          # - href: weeks/workshop-day1.qmd
-          #   text: "Workshop Day 1"
+          - href: weeks/workshop-day1.qmd
+            text: "Workshop Day 1"
           # - href: weeks/workshop-day2.qmd
           #   text: "Workshop Day 2" 
 format:

@@ -18,10 +18,18 @@ $link-color: #42affa;
     max-height: unset !important;
   }
   
+.reveal h2 {
+  padding-bottom: 40px;
+}  
+  
 .reveal .footer {
     color: #42affa !important;
 }
 
 .bg-light {
   background-color: #ffffff;
+}
+
+b, strong {
+    color: #42affa;
 }

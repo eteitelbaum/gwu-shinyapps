@@ -1,0 +1,65 @@
+---
+title: "WebApps 6502"
+subtitle: "Session 1.4--Scatter Plot App, Part 2"
+footer: "[WebApps Website](https://rshiny-is.cool)"
+logo: images/webapps-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    chalkboard: true
+execute:
+  echo: false
+  message: false
+  warning: false
+  freeze: auto
+---
+
+```{r}
+#| label: setup
+
+library(dplyr)
+library(vdemdata)
+
+dem_data <- vdem |>
+  filter(year == 2000) |>
+  select(
+    country = country_name, 
+    polyarchy = v2x_polyarchy,
+    clientelism = v2xnp_client,
+    corruption = v2xnp_regcorr,
+    womens_emp = v2x_gender,
+    gdp_pc = e_gdppc,
+    inf_mort = e_peinfmor,
+    life_exp = e_pelifeex,
+    education = e_peaveduc,
+    region = e_regionpol_6C 
+  ) |>   mutate(
+    region = case_match(region, 
+                        1 ~ "Eastern Europe", 
+                        2 ~ "Latin America",  
+                        3 ~ "Middle East",   
+                        4 ~ "Africa", 
+                        5 ~ "The West", 
+                        6 ~ "Asia")
+  )
+```
+
+# Overview
+
+## Idea for the App
+
+<iframe src="https://emmanuelteitelbaum.shinyapps.io/vdem-scatter-plot/" width="780" height="500" data-external="1"></iframe>
+
+## Plan
+
+- **Step 1:** Wrangle Data (done) 
+- **Step 2:** Code up a scatter plot with two variables (done)
+- **Step 3:** Code UI with a title panel, sidebar with two dropdowns, and a main panel with the scatter plot output
+- **Step 4:** Code Server with reactive expressions to filter data and render the scatter plot
+- **Step 5:** Call the Shiny App (don't forget!)
+
+# The User Interface (`ui`)
+
+## 
