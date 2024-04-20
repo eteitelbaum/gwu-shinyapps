@@ -266,6 +266,104 @@
     "text": "Plan\n\nStep 1: Wrangle Data (done)\nStep 2: Code up a scatter plot with two variables (done)\nStep 3: Code UI with a title panel, sidebar with two dropdowns, and a main panel with the scatter plot output\nStep 4: Code Server with reactive expressions to filter data and render the scatter plot\nStep 5: Call the Shiny App (don’t forget!)"
   },
   {
+    "objectID": "slides/session-1.4.html#preliminaries",
+    "href": "slides/session-1.4.html#preliminaries",
+    "title": "WebApps 6502",
+    "section": "Preliminaries",
+    "text": "Preliminaries\n\nStart a new Shiny Web App\nName the app something like vdem-scatter-plot\nStart a new R script in the folder that was created\n\nName the script something like wrangle.R\n\nUse this file for the code in the next slide"
+  },
+  {
+    "objectID": "slides/session-1.4.html#save-the-data",
+    "href": "slides/session-1.4.html#save-the-data",
+    "title": "WebApps 6502",
+    "section": "Save the Data",
+    "text": "Save the Data\n\nlibrary(dplyr)\nlibrary(readr)\nlibrary(vdemdata)\n\ndem_data &lt;- vdem |&gt;\n  filter(year == 2000) |&gt;\n  select(\n    country = country_name, \n    polyarchy = v2x_polyarchy,\n    clientelism = v2xnp_client,\n    corruption = v2xnp_regcorr,\n    womens_emp = v2x_gender,\n    gdp_pc = e_gdppc,\n    inf_mort = e_peinfmor,\n    life_exp = e_pelifeex,\n    education = e_peaveduc,\n    region = e_regionpol_6C \n  ) |&gt;   mutate(\n    region = case_match(region, \n                        1 ~ \"Eastern Europe\", \n                        2 ~ \"Latin America\",  \n                        3 ~ \"Middle East\",   \n                        4 ~ \"Africa\", \n                        5 ~ \"The West\", \n                        6 ~ \"Asia\")\n  )\n\n# glimpse(dem_data)\n\nwrite_csv(dem_data, \"dem_data.csv\")"
+  },
+  {
+    "objectID": "slides/session-1.4.html#make-the-setup-chunk",
+    "href": "slides/session-1.4.html#make-the-setup-chunk",
+    "title": "WebApps 6502",
+    "section": "Make the Setup Chunk",
+    "text": "Make the Setup Chunk\nIn the app.R file, use this code for the global section of the app…\n\n# load packages\nlibrary(shiny)\nlibrary(readr)\nlibrary(ggplot2)\n\n# load the data \ndem_data &lt;- read_csv(\"dem_data.csv\")\n\n# create list of named values for the input selection\nvars &lt;- c(\"Democracy\" = \"polyarchy\",\n          \"Clientelism\" = \"clientelism\",\n          \"Corruption\" = \"corruption\",\n          \"Women's Empowerment\" = \"womens_emp\",\n          \"Wealth\" = \"gdp_pc\",\n          \"Infant Mortality\" = \"inf_mort\",\n          \"Life Expectancy\" = \"life_exp\", \n          \"Education\" = \"education\")"
+  },
+  {
+    "objectID": "slides/session-1.4.html#the-ui-code",
+    "href": "slides/session-1.4.html#the-ui-code",
+    "title": "WebApps 6502",
+    "section": "The UI Code",
+    "text": "The UI Code\nCopy and paste the UI code into the app.R file…\n\n# Define UI for application that draws a scatter plot\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Democracy and Development\"),\n\n    # Sidebar with a two dropdown menus\n    sidebarLayout(\n      sidebarPanel(\n        selectInput(input = 'xcol', label = 'X Variable', choices = vars),\n        selectInput(input = 'ycol', label = 'Y Variable', \n                    choices = vars, selected = vars[[6]])\n      ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"scatterplot\")\n        )\n    )\n)"
+  },
+  {
+    "objectID": "slides/session-1.4.html#the-ui-code-1",
+    "href": "slides/session-1.4.html#the-ui-code-1",
+    "title": "WebApps 6502",
+    "section": "The UI Code",
+    "text": "The UI Code\nAdds the the title panel…\n\n# Define UI for application that draws a scatter plot\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Democracy and Development\"),\n\n    # Sidebar with a two dropdown menus\n    sidebarLayout(\n      sidebarPanel(\n        selectInput(input = 'xcol', label = 'X Variable', choices = vars),\n        selectInput(input = 'ycol', label = 'Y Variable', \n                    choices = vars, selected = vars[[6]])\n      ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"scatterplot\")\n        )\n    )\n)"
+  },
+  {
+    "objectID": "slides/session-1.4.html#the-ui-code-2",
+    "href": "slides/session-1.4.html#the-ui-code-2",
+    "title": "WebApps 6502",
+    "section": "The UI Code",
+    "text": "The UI Code\nDefines the sidebar layout with the two dropdown panels…\n\n# Define UI for application that draws a scatter plot\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Democracy and Development\"),\n\n    # Sidebar with a two dropdown menus\n    sidebarLayout(\n      sidebarPanel(\n        selectInput(input = 'xcol', label = 'X Variable', choices = vars),\n        selectInput(input = 'ycol', label = 'Y Variable', \n                    choices = vars, selected = vars[[6]])\n      ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"scatterplot\")\n        )\n    )\n)"
+  },
+  {
+    "objectID": "slides/session-1.4.html#the-ui-code-3",
+    "href": "slides/session-1.4.html#the-ui-code-3",
+    "title": "WebApps 6502",
+    "section": "The UI Code",
+    "text": "The UI Code\nDefines the main panel for the output. Note that we are calling plotOutput() and that we are calling the output “scatterplot” (the unique outputID for our plot)…\n\n# Define UI for application that draws a scatter plot\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"Democracy and Development\"),\n\n    # Sidebar with a two dropdown menus\n    sidebarLayout(\n      sidebarPanel(\n        selectInput(input = 'xcol', label = 'X Variable', choices = vars),\n        selectInput(input = 'ycol', label = 'Y Variable', \n                    choices = vars, selected = vars[[6]])\n      ),\n\n        # Show a plot of the generated distribution\n        mainPanel(\n           plotOutput(\"scatterplot\")\n        )\n    )\n)"
+  },
+  {
+    "objectID": "slides/session-1.4.html#the-server-code",
+    "href": "slides/session-1.4.html#the-server-code",
+    "title": "WebApps 6502",
+    "section": "The Server Code",
+    "text": "The Server Code\nCopy and paste the server code into the app.R file…\n\n# Define server logic required to draw a scatter plot\nserver &lt;- function(input, output, session) {\n  \n  # Render the plot\n  output$scatterplot &lt;- renderPlot({\n    \n    # ggplot call\n    ggplot(dem_data, aes(x = .data[[input$xcol]], y = .data[[input$ycol]])) +\n      geom_point(aes(color = region)) +\n      geom_smooth(method = \"loess\") +\n      scale_color_viridis_d(option = \"plasma\") +\n      theme_minimal() +\n      labs(\n        x =  names(vars[which(vars == input$xcol)]), # select names in vars that\n        y =  names(vars[which(vars == input$ycol)]), # match input selections\n        caption = \"Source: V-Dem Institute\",\n        color = \"Region\"\n      )\n  })\n}"
+  },
+  {
+    "objectID": "slides/session-1.4.html#the-server-code-1",
+    "href": "slides/session-1.4.html#the-server-code-1",
+    "title": "WebApps 6502",
+    "section": "The Server Code",
+    "text": "The Server Code\nNote that we are calling renderPlot(), which matches up with the plotOutput() in the UI. And we are referencing output as “scatterplot” (again, the unique outputID for our plot)…\n\n# Define server logic required to draw a scatter plot\nserver &lt;- function(input, output, session) {\n  \n  # Render the plot\n  output$scatterplot &lt;- renderPlot({\n    \n    # ggplot call\n    ggplot(dem_data, aes(x = .data[[input$xcol]], y = .data[[input$ycol]])) +\n      geom_point(aes(color = region)) +\n      geom_smooth(method = \"loess\") +\n      scale_color_viridis_d(option = \"plasma\") +\n      theme_minimal() +\n      labs(\n        x =  names(vars[which(vars == input$xcol)]), # select names in vars that\n        y =  names(vars[which(vars == input$ycol)]), # match input selections\n        caption = \"Source: V-Dem Institute\",\n        color = \"Region\"\n      )\n  })\n}"
+  },
+  {
+    "objectID": "slides/session-1.4.html#the-server-code-2",
+    "href": "slides/session-1.4.html#the-server-code-2",
+    "title": "WebApps 6502",
+    "section": "The Server Code",
+    "text": "The Server Code\nWe dynamically reference the input values from the dropdown menus in the UI. We use input$xcol and input$ycol to reference the user-selected variables. As a result of tidy evaluation in ggplot2, these inputs have to be referenced in .data[[]] in order to work….\n\n# Define server logic required to draw a scatter plot\nserver &lt;- function(input, output, session) {\n  \n  # Render the plot\n  output$scatterplot &lt;- renderPlot({\n    \n    # ggplot call\n    ggplot(dem_data, aes(x = .data[[input$xcol]], y = .data[[input$ycol]])) +\n      geom_point(aes(color = region)) +\n      geom_smooth(method = \"loess\") +\n      scale_color_viridis_d(option = \"plasma\") +\n      theme_minimal() +\n      labs(\n        x =  names(vars[which(vars == input$xcol)]), # select names in vars that\n        y =  names(vars[which(vars == input$ycol)]), # match input selections\n        caption = \"Source: V-Dem Institute\",\n        color = \"Region\"\n      )\n  })\n}"
+  },
+  {
+    "objectID": "slides/session-1.4.html#the-server-code-3",
+    "href": "slides/session-1.4.html#the-server-code-3",
+    "title": "WebApps 6502",
+    "section": "The Server Code",
+    "text": "The Server Code\nHere we need to select the variable from the vector vars that created with the list of variables. We use which(vars == input$xcol) to find the index of the selected variable in the vector vars. We then use names() to get the name of the variable at that index…\n\n# Define server logic required to draw a scatter plot\nserver &lt;- function(input, output, session) {\n  \n  # Render the plot\n  output$scatterplot &lt;- renderPlot({\n    \n    # ggplot call\n    ggplot(dem_data, aes(x = .data[[input$xcol]], y = .data[[input$ycol]])) +\n      geom_point(aes(color = region)) +\n      geom_smooth(method = \"loess\") +\n      scale_color_viridis_d(option = \"plasma\") +\n      theme_minimal() +\n      labs(\n        x =  names(vars[which(vars == input$xcol)]), # select names in vars that\n        y =  names(vars[which(vars == input$ycol)]), # match input selections\n        caption = \"Source: V-Dem Institute\",\n        color = \"Region\"\n      )\n  })\n}"
+  },
+  {
+    "objectID": "slides/session-1.4.html#run-the-app",
+    "href": "slides/session-1.4.html#run-the-app",
+    "title": "WebApps 6502",
+    "section": "Run the App",
+    "text": "Run the App\nTo display the app, don’t forget this final line of code…\n\n\n# Run the application \nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "slides/session-1.4.html#your-turn",
+    "href": "slides/session-1.4.html#your-turn",
+    "title": "WebApps 6502",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\nRun the app and select different variables from the drop down menus.\nWhat do you notice about the relationship between democracy and development?\nHow could you potentially improve the app?\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/session-1.4.html#publish-your-app",
+    "href": "slides/session-1.4.html#publish-your-app",
+    "title": "WebApps 6502",
+    "section": "Publish Your App",
+    "text": "Publish Your App\n\nInstall rsconnect:install.packages(\"rsconnect\")\nCreate account and retrieve your API key\nConfigure RStudio:\n\n\nlibrary(rsconnect)\nrsconnect::setAccountInfo(name='&lt;account-name&gt;', token='&lt;account-token&gt;', secret='&lt;secret&gt;')\n\n\nClick the “Publish” button in RStudio toolbar and follow prompts\n\n\n\n\n−+\n10:00"
+  },
+  {
     "objectID": "slides/session-1.2.html#shiny-app-basics",
     "href": "slides/session-1.2.html#shiny-app-basics",
     "title": "WebApps 6502",
@@ -543,49 +641,88 @@
     "href": "assignments/coding-assignment-1.html",
     "title": "Coding Assignment 1",
     "section": "",
-    "text": "Details coming soon…\nSubmission note: After you share your link with the class, please also submit your document to me via this link."
+    "text": "In this assignment, you will create a modified version of the democracy scatter plot app we made in class. You will use the vdemdata package to download data from the Varieties of Democracy project and use it to create an app that allows users to explore the relationship between two sets of variables.\nThere will be two differences in this app relative to the one we did in class. First, the two sets of variables (X and Y) will be separate. Second, you will add a third variable that will allow the user to select the year of the scatter plot.\nBe sure to reference the V-Dem codebook to understand the variables you are using.",
+    "crumbs": [
+      "Homework Assignments",
+      "Assignment 1"
+    ]
   },
   {
     "objectID": "assignments/coding-assignment-1.html#overview",
     "href": "assignments/coding-assignment-1.html#overview",
     "title": "Coding Assignment 1",
     "section": "",
-    "text": "Details coming soon…\nSubmission note: After you share your link with the class, please also submit your document to me via this link."
+    "text": "In this assignment, you will create a modified version of the democracy scatter plot app we made in class. You will use the vdemdata package to download data from the Varieties of Democracy project and use it to create an app that allows users to explore the relationship between two sets of variables.\nThere will be two differences in this app relative to the one we did in class. First, the two sets of variables (X and Y) will be separate. Second, you will add a third variable that will allow the user to select the year of the scatter plot.\nBe sure to reference the V-Dem codebook to understand the variables you are using.",
+    "crumbs": [
+      "Homework Assignments",
+      "Assignment 1"
+    ]
   },
   {
-    "objectID": "assignments/coding-assignment-1.html#step-1",
-    "href": "assignments/coding-assignment-1.html#step-1",
+    "objectID": "assignments/coding-assignment-1.html#step-1-plan-your-app-15",
+    "href": "assignments/coding-assignment-1.html#step-1-plan-your-app-15",
     "title": "Coding Assignment 1",
-    "section": "Step 1:",
-    "text": "Step 1:"
+    "section": "Step 1: Plan Your App (15%)",
+    "text": "Step 1: Plan Your App (15%)\nBefore you start coding, write out a plan for your app. What variables will be on your X axis? What variables will be Y axis variables? What will the user interface look like? What will the server logic do? Etc. Write your plan in words in the space below.",
+    "crumbs": [
+      "Homework Assignments",
+      "Assignment 1"
+    ]
   },
   {
-    "objectID": "assignments/coding-assignment-1.html#step-2",
-    "href": "assignments/coding-assignment-1.html#step-2",
+    "objectID": "assignments/coding-assignment-1.html#step-2-wrangling-15",
+    "href": "assignments/coding-assignment-1.html#step-2-wrangling-15",
     "title": "Coding Assignment 1",
-    "section": "Step 2:",
-    "text": "Step 2:"
+    "section": "Step 2: Wrangling (15%)",
+    "text": "Step 2: Wrangling (15%)\nStart a new Shiny App. In the folder you created, start a new R script. Now use the dplyr package or other handy methods to wrangle the data into a format that is ready for plotting and write the CSV file to the folder. Remember that for this app the USER will be selecting which year to plot.",
+    "crumbs": [
+      "Homework Assignments",
+      "Assignment 1"
+    ]
   },
   {
-    "objectID": "assignments/coding-assignment-1.html#step-3",
-    "href": "assignments/coding-assignment-1.html#step-3",
+    "objectID": "assignments/coding-assignment-1.html#step-3-create-the-setup-portion-of-the-app-20",
+    "href": "assignments/coding-assignment-1.html#step-3-create-the-setup-portion-of-the-app-20",
     "title": "Coding Assignment 1",
-    "section": "Step 3:",
-    "text": "Step 3:"
+    "section": "Step 3: Create the Setup Portion of the App (20%)",
+    "text": "Step 3: Create the Setup Portion of the App (20%)\nLoad the packages that you will need for the app and create the variable lists that you will use in the UI. You will also need to load the data you created in the previous step.",
+    "crumbs": [
+      "Homework Assignments",
+      "Assignment 1"
+    ]
   },
   {
-    "objectID": "assignments/coding-assignment-1.html#step-4",
-    "href": "assignments/coding-assignment-1.html#step-4",
+    "objectID": "assignments/coding-assignment-1.html#step-4-create-the-user-interface-20",
+    "href": "assignments/coding-assignment-1.html#step-4-create-the-user-interface-20",
     "title": "Coding Assignment 1",
-    "section": "Step 4:",
-    "text": "Step 4:"
+    "section": "Step 4: Create the User Interface (20%)",
+    "text": "Step 4: Create the User Interface (20%)\nCreate the user interface for the app. This should include the title, the X and Y axis variable selectors, and the year selector. You will also need to create a plot output.",
+    "crumbs": [
+      "Homework Assignments",
+      "Assignment 1"
+    ]
   },
   {
-    "objectID": "assignments/coding-assignment-1.html#step-5",
-    "href": "assignments/coding-assignment-1.html#step-5",
+    "objectID": "assignments/coding-assignment-1.html#step-5-create-the-server-logic-20",
+    "href": "assignments/coding-assignment-1.html#step-5-create-the-server-logic-20",
     "title": "Coding Assignment 1",
-    "section": "Step 5:",
-    "text": "Step 5:"
+    "section": "Step 5: Create the Server Logic (20%)",
+    "text": "Step 5: Create the Server Logic (20%)\nCreate the server logic for the app. This should include the reactive expression that will filter the data based on the user’s selections and the renderPlot() function that will create the plot. Make sure that your labels also change along with the updated data.",
+    "crumbs": [
+      "Homework Assignments",
+      "Assignment 1"
+    ]
+  },
+  {
+    "objectID": "assignments/coding-assignment-1.html#step-6-deploy-your-app-10",
+    "href": "assignments/coding-assignment-1.html#step-6-deploy-your-app-10",
+    "title": "Coding Assignment 1",
+    "section": "Step 6: Deploy Your App (10%)",
+    "text": "Step 6: Deploy Your App (10%)\nOnce you have it working, deploy your app to shinyapps.io. Share the link with the class. Then submit your folder to the Dropbox link listed below.\n\n\n\n\n\n\nSubmission Note\n\n\n\nAfter you share your link with the class, please also submit your document to me via this link.",
+    "crumbs": [
+      "Homework Assignments",
+      "Assignment 1"
+    ]
   },
   {
     "objectID": "weeks/workshop-day2.html",
