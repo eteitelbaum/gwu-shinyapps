@@ -641,7 +641,7 @@
     "href": "assignments/coding-assignment-1.html",
     "title": "Coding Assignment 1",
     "section": "",
-    "text": "In this assignment, you will create a modified version of the democracy scatter plot app we made in class. You will use the vdemdata package to download data from the Varieties of Democracy project and use it to create an app that allows users to explore the relationship between two sets of variables.\nThere will be two differences in this app relative to the one we did in class. First, the two sets of variables (X and Y) will be separate. Second, you will add a third variable that will allow the user to select the year of the scatter plot.\nBe sure to reference the V-Dem codebook to understand the variables you are using.",
+    "text": "In this assignment, you will create a modified version of the democracy scatter plot app we made in class. You will use the vdemdata package to download data from the Varieties of Democracy project and use it to create an app that allows users to explore the relationship between two sets of variables. You can choose the theme of your app. It does not have to be about democracy and development per se.\nThere will be two differences in this app relative to the one we did in class. First, the two sets of variables (X and Y) will be separate. Second, you will add a third widget that will control the viridis color theme for the scatter plot. If you change the theme, you may also want to change the title panel.\nBe sure to reference the V-Dem codebook to understand the variables you are using.",
     "crumbs": [
       "Homework Assignments",
       "Assignment 1"
@@ -652,7 +652,7 @@
     "href": "assignments/coding-assignment-1.html#overview",
     "title": "Coding Assignment 1",
     "section": "",
-    "text": "In this assignment, you will create a modified version of the democracy scatter plot app we made in class. You will use the vdemdata package to download data from the Varieties of Democracy project and use it to create an app that allows users to explore the relationship between two sets of variables.\nThere will be two differences in this app relative to the one we did in class. First, the two sets of variables (X and Y) will be separate. Second, you will add a third variable that will allow the user to select the year of the scatter plot.\nBe sure to reference the V-Dem codebook to understand the variables you are using.",
+    "text": "In this assignment, you will create a modified version of the democracy scatter plot app we made in class. You will use the vdemdata package to download data from the Varieties of Democracy project and use it to create an app that allows users to explore the relationship between two sets of variables. You can choose the theme of your app. It does not have to be about democracy and development per se.\nThere will be two differences in this app relative to the one we did in class. First, the two sets of variables (X and Y) will be separate. Second, you will add a third widget that will control the viridis color theme for the scatter plot. If you change the theme, you may also want to change the title panel.\nBe sure to reference the V-Dem codebook to understand the variables you are using.",
     "crumbs": [
       "Homework Assignments",
       "Assignment 1"
@@ -696,7 +696,7 @@
     "href": "assignments/coding-assignment-1.html#step-4-create-the-user-interface-20",
     "title": "Coding Assignment 1",
     "section": "Step 4: Create the User Interface (20%)",
-    "text": "Step 4: Create the User Interface (20%)\nCreate the user interface for the app. This should include the title, the X and Y axis variable selectors, and the year selector. You will also need to create a plot output.",
+    "text": "Step 4: Create the User Interface (20%)\nCreate the user interface for the app. This should include the title, the X and Y axis variable selectors, and the viridis color scheme selector. You will also need to create a plot output.",
     "crumbs": [
       "Homework Assignments",
       "Assignment 1"

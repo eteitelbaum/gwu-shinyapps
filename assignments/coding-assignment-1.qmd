@@ -4,9 +4,9 @@ title: "Coding Assignment 1"
 
 ## Overview
 
-In this assignment, you will create a modified version of the democracy scatter plot app we made in class. You will use the `vdemdata` package to download data from the Varieties of Democracy project and use it to create an app that allows users to explore the relationship between two sets of variables.
+In this assignment, you will create a modified version of the democracy scatter plot app we made in class. You will use the `vdemdata` package to download data from the Varieties of Democracy project and use it to create an app that allows users to explore the relationship between two sets of variables. You can choose the theme of your app. It does not have to be about democracy and development per se.
 
-There will be two differences in this app relative to the one we did in class. First, the two sets of variables (X and Y) will be separate. Second, you will add a third variable that will allow the user to select the year of the scatter plot. 
+There will be two differences in this app relative to the one we did in class. First, the two sets of variables (X and Y) will be separate. Second, you will add a third widget that will control the [viridis color theme](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) for the scatter plot. If you change the theme, you may also want to change the title panel. 
 
 Be sure to reference the [V-Dem codebook](https://www.v-dem.net/documents/38/v-dem_codebook_v14.pdf) to understand the variables you are using.
 
@@ -24,7 +24,7 @@ Be sure to reference the [V-Dem codebook](https://www.v-dem.net/documents/38/v-d
 
 ## Step 4: Create the User Interface (20%)
 
-*Create the user interface for the app. This should include the title, the X and Y axis variable selectors, and the year selector. You will also need to create a plot output.*
+*Create the user interface for the app. This should include the title, the X and Y axis variable selectors, and the viridis color scheme selector. You will also need to create a plot output.*
 
 ## Step 5: Create the Server Logic (20%)
 
