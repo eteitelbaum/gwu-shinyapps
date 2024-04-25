@@ -27,7 +27,7 @@ You also may want to share your app with collaborators by sending them your R sc
 Note that while I am covering methods of sharing your code with others, your are not required to do so for this course. The only requirement is sharing your application as a web app via ShinyApps.io and then either writing a short essay about the app or demoing the app in a short video. Then you will submit your code via a private repo via GitHub classroom as you have been doing for the previous assignments.
 :::
 
-{{< video https://youtu.be/TM2jD0PQOfE?si=CFAU32NPAWrHiHEN title = 'Building your app'>}}
+{{< video https://youtu.be/kn3d2n9ycxk title = 'Sharing your app'>}}
 
 ## Publishing your app on ShinyApps.io
 

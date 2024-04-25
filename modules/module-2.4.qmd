@@ -29,7 +29,7 @@ your app. Don't try to write all of the code at once. This is especially
 true if you have a lot of moving parts to your app. Start with small,
 workable parts and build on them.
 
-{{< video https://youtu.be/TM2jD0PQOfE?si=CFAU32NPAWrHiHEN title = 'Building your app'>}}
+{{< video https://youtu.be/7sDbmiH8TXs title = 'Building your app'>}}
 
 ## 1. Wrangle some "working data"
 
