@@ -33,7 +33,7 @@ The app that we are going to build over the next few modules is going to look at
 
 ## Setup
 
-{{< video https://youtu.be/TM2jD0PQOfE?si=CFAU32NPAWrHiHEN title = 'FRED App set up'>}}
+{{< video https://youtu.be/2qAoOWLkdcc title = 'FRED App set up'>}}
 
 In the setup portion of our we want to start by loading the packages we will need to build the app. For this app, we are going to be using the `fredr` package to download data pertaining to the overall health of the economy from the St. Louis Fed's Federal Reserve Economic Data (FRED)[https://fred.stlouisfed.org/] API. So here we will also set our FRED API key and assign the codes for the indicators that we want to download to objects. 
 

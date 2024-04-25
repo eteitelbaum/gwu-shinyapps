@@ -17,7 +17,7 @@ execute:
 - Read *Mastering Shiny*, [Chapter 3](https://mastering-shiny.org/basic-reactivity.html), section 3.4
 :::
 
-{{< video https://youtu.be/TM2jD0PQOfE?si=CFAU32NPAWrHiHEN title = 'FRED App Server'>}}
+{{< video https://youtu.be/UHYpaEVjwRE title = 'FRED App Server'>}}
 
 ## The Server Function
 

@@ -17,7 +17,7 @@ execute:
 - Read *Mastering Shiny*, [Chapter 6](https://mastering-shiny.org/action-layout.html)
 :::
 
-{{< video https://youtu.be/TM2jD0PQOfE?si=CFAU32NPAWrHiHEN title = 'FRED App user interface (UI)'>}}
+{{< video https://youtu.be/ge6-9dBfmII title = 'FRED App user interface (UI)'>}}
 
 Now we can get started on developing the UI for our app and, along the way, learn a few more aspects of Shiny app layouts that we can apply. 
 
