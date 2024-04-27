@@ -721,7 +721,7 @@
     "href": "assignments/coding-assignment-2.html",
     "title": "Coding Assignment 2",
     "section": "",
-    "text": "The requirements for this assignment are very simple. You could create a Shiny app that incorporates at least one reactive function and one module. An observer function is optional. The app can be an extension of the fredr line app that we did for this week, the V-Dem app we did for last week, or it can be a completely new app.",
+    "text": "The requirements for this assignment are very simple. You could create a Shiny app that incorporates at least one observer and one reactive function. An module is optional. The app can be an extension of the fredr line app that we did for this week, the V-Dem app we did for last week, or it can be a completely new app.",
     "crumbs": [
       "Homework Assignments",
       "Assignment 2"
@@ -732,7 +732,7 @@
     "href": "assignments/coding-assignment-2.html#overview",
     "title": "Coding Assignment 2",
     "section": "",
-    "text": "The requirements for this assignment are very simple. You could create a Shiny app that incorporates at least one reactive function and one module. An observer function is optional. The app can be an extension of the fredr line app that we did for this week, the V-Dem app we did for last week, or it can be a completely new app.",
+    "text": "The requirements for this assignment are very simple. You could create a Shiny app that incorporates at least one observer and one reactive function. An module is optional. The app can be an extension of the fredr line app that we did for this week, the V-Dem app we did for last week, or it can be a completely new app.",
     "crumbs": [
       "Homework Assignments",
       "Assignment 2"
