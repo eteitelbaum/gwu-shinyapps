@@ -245,11 +245,158 @@
     "href": "project/project-datasets.html",
     "title": "Datasets",
     "section": "",
-    "text": "Here are some datasets that you might consider using for your final project:\n\nILOSTAT is the statistical database of the International Labour Organisation. It has data pertaining to labor, working conditions, industrial relations, poverty and inequality.\nKaggle has data on just about anything you can think of. Very usable, clean data. Just stick to the social science stuff for your project.\nOECD DATA provides data related to the performance of high income countries.\nOur World in Data is a good general resource for political economy data. The site is centered around blog posts but you can also search for a topic, view a visualization related to that topic and then download the data used to create it.\nStatista is a good place to look for data on more niche topics.\nUNCTADstat is the United Nations Conference on Trade and Development statistical database. It provides harmonized data on a range of topics related to economic performance, trade and statistics.\nThe UN Human Development Reports include a number of important indicators related to human development, gender and sustainable development goals (SDGs).\nVarieties of Democracy (V-DEM) provides original measures of the quality of democracy for every country dating back to the 18th century.\nWorld Bank Development Indicators (WDI) is the primary World Bank database for development data from officially-recognized international sources.\nThe World Bank DataBank provides access to dozens of additional World Bank databases on topics such as regional development, governance, education, gender and the environment.\nGoogle Public Data Explorer contains information about dozens of databases related to governance and the economy. You cannot download the raw data from Google, but you can use the site to visualize the data and then follow the link to the original source.\n\nFor information on more specific resources available, see this page on the Gelman Library website.",
+    "text": "Here are some datasets that you might consider using for your final project:\n\nfredr is an R package that provides access to the Federal Reserve Economic Data (FRED) API. FRED is a comprehensive database of economic data maintained by the Federal Reserve Bank of St. Louis. The package allows you to search for and download data from FRED directly into R.\nGoogle Public Data Explorer contains information about dozens of databases related to governance and the economy. You cannot download the raw data from Google, but you can use the site to visualize the data and then follow the link to the original source.\nILOSTAT is the statistical database of the International Labour Organisation. It has data pertaining to labor, working conditions, industrial relations, poverty and inequality.\nKaggle has data on just about anything you can think of. Very usable, clean data. Just stick to the social science stuff for your project. You can easily download CSV files from Kaggle but you can also access the data through the Kaggle API.\nOECD DATA provides data related to the performance of high income countries.\nOur World in Data is a good general resource for political economy data. The site is centered around blog posts but you can also search for a topic, view a visualization related to that topic and then download the data used to create it.\npeacesciencer is an R package maintained by Steve Miller that compiles data from a number of sources that are useful for peace and conflict studies analysis\nStatista is a good place to look for data on more niche topics.\nUNCTADstat is the United Nations Conference on Trade and Development statistical database. It provides harmonized data on a range of topics related to economic performance, trade and statistics.\nThe UN Human Development Reports include a number of important indicators related to human development, gender and sustainable development goals (SDGs).\nThe unvotes package provides data on United Nations General Assembly voting patterns.\nVarieties of Democracy (V-DEM) provides original measures of the quality of democracy for every country dating back to the 18th century. You can access vdem data through the vdemdata package.\nWorld Bank Development Indicators (WDI) is the primary World Bank database for development data from officially-recognized international sources. You can access WB Development Indicators through the WDI package or the wbstats package.\nThe World Bank DataBank provides access to dozens of additional World Bank databases on topics such as regional development, governance, education, gender and the environment. You can access world bank data through the wbstats package.\n\nFor information on more specific resources available, see this page on the Gelman Library website.",
     "crumbs": [
       "Project",
       "Datasets"
     ]
+  },
+  {
+    "objectID": "slides/session-2.3.html#quickly-leveling-up-your-ui",
+    "href": "slides/session-2.3.html#quickly-leveling-up-your-ui",
+    "title": "WebApps 6502",
+    "section": "Quickly Leveling Up Your UI",
+    "text": "Quickly Leveling Up Your UI\n\nThere are many ways to make your app look instantly better\nOne of them is using bslib which is a package that provides a modern UI toolkit for Shiny and R Markdown based on Bootstrap\nThe cool thing: you can get around Shiny’s default usage of Bootstrap version 3!"
+  },
+  {
+    "objectID": "slides/session-2.3.html#working-with-bslib",
+    "href": "slides/session-2.3.html#working-with-bslib",
+    "title": "WebApps 6502",
+    "section": "Working with {bslib}",
+    "text": "Working with {bslib}\nlibrary(shiny)\nlibrary(bslib)\n\nui &lt;- page_navbar(\n  theme = bs_theme(version = 5),\n  title = \"Modular App Blueprint\",\n  nav_panel(\n    title = \"Numbers\",\n    numericInput(inputId = \"number\",\n                 label = \"Enter a number\",\n                 value = 0),\n    actionButton(inputId = \"button\",\n                 label = \"Click me\"),\n    textOutput(outputId = \"text\")\n  )\n)\n\nserver &lt;- function(input, output, session) {\n  output$text &lt;- renderText({\n    input$number^2\n  }) |&gt; bindEvent(input$button)\n}\n\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "slides/session-2.3.html#working-with-bslib-1",
+    "href": "slides/session-2.3.html#working-with-bslib-1",
+    "title": "WebApps 6502",
+    "section": "Working with {bslib}",
+    "text": "Working with {bslib}\nUse the bootswatch argument to change the theme (other bootswatch themes:\nlibrary(shiny)\nlibrary(bslib)\n\nui &lt;- page_navbar(\n  theme = bs_theme(version = 5, bootswatch = \"minty\"),\n  title = \"Modular App Blueprint\",\n  nav_panel(\n    title = \"Numbers\",\n    numericInput(inputId = \"number\",\n                 label = \"Enter a number\",\n                 value = 0),\n    actionButton(inputId = \"button\",\n                 label = \"Click me\"),\n    textOutput(outputId = \"text\")\n  )\n)\n\nserver &lt;- function(input, output, session) {\n  output$text &lt;- renderText({\n    input$number^2\n  }) |&gt; bindEvent(input$button)\n}\n\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "slides/session-2.3.html#working-with-bslib-2",
+    "href": "slides/session-2.3.html#working-with-bslib-2",
+    "title": "WebApps 6502",
+    "section": "Working with {bslib}",
+    "text": "Working with {bslib}\nYou can also customize the theme:\nlibrary(shiny)\nlibrary(bslib)\n\ncustom_theme &lt;- bs_theme(\n  version = 5,\n  bg = \"#F9F9F9\",\n  fg = \"#003f5c\",\n  primary = \"#bc5090\",\n  secondary = \"#58508d\",\n  warning = \"#ffa600\",\n  danger = \"#ff6361\",\n  info = \"#0091d5\",\n  base_font = font_google(\"PT Sans\")\n)\n\nui &lt;- page_navbar(\n  theme = custom_theme,\n  title = \"Modular App Blueprint\",\n  nav_panel(\n    title = \"Numbers\",\n    numericInput(inputId = \"number\",\n                 label = \"Enter a number\",\n                 value = 0),\n    actionButton(inputId = \"button\",\n                 label = \"Click me\",\n                 width = \"100px\"),\n    textOutput(outputId = \"text\")\n  )\n)\n\nserver &lt;- function(input, output, session) {\n  output$text &lt;- renderText({\n    input$number^2\n  }) |&gt; bindEvent(input$button)\n}\n\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "slides/session-2.3.html#your-turn",
+    "href": "slides/session-2.3.html#your-turn",
+    "title": "WebApps 6502",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\nTake the toy app from this section or another one you have made\nAdd some styling to it using bslib\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/session-2.3.html#what-is-a-dashboard",
+    "href": "slides/session-2.3.html#what-is-a-dashboard",
+    "title": "WebApps 6502",
+    "section": "What is a Dashboard?",
+    "text": "What is a Dashboard?\n\nA dashboard combines multiple visualizations into a single page\nIt provides a high-level overview of the data\nHere is an example of a dashboard I made using the shinydashboard package"
+  },
+  {
+    "objectID": "slides/session-2.3.html#the-hard-part-about-shiny",
+    "href": "slides/session-2.3.html#the-hard-part-about-shiny",
+    "title": "WebApps 6502",
+    "section": "The hard part about Shiny",
+    "text": "The hard part about Shiny\nNote that the server part doesn’t run line-by-line. It’s a reactive environment that will run the code when input changes.\n\nCode only reacts when it needs to, which is why it’s called reactive programming.\n\nThis makes it hard to test your code. And it’s hard to understand what’s going on when you’re new to Shiny!"
+  },
+  {
+    "objectID": "slides/session-2.3.html#the-hard-part-about-shiny-1",
+    "href": "slides/session-2.3.html#the-hard-part-about-shiny-1",
+    "title": "WebApps 6502",
+    "section": "The hard part about Shiny",
+    "text": "The hard part about Shiny\nMy personal top ways ways to get more insight into what’s going on:\n\nUse print() statements to see when something is happening\nUse browser() to stop the code and inspect the environment (just as you can do within functions, because that is literally what server is!)"
+  },
+  {
+    "objectID": "slides/session-2.3.html#print-example",
+    "href": "slides/session-2.3.html#print-example",
+    "title": "WebApps 6502",
+    "section": "print() example",
+    "text": "print() example\n\nserver &lt;- function(input, output) {\n  \n    # Reactive function to fetch data\n    fred_indicator &lt;- reactive({\n      data &lt;- fredr(series_id = input$indicator,\n                    observation_start = start_date,\n                    observation_end = end_date)\n      print(paste(\"Data fetched for indicator:\", input$indicator))  # Debug statement\n      print(head(data))  # Print first few rows of the fetched data\n      data\n    })\n  \n    # Reactive function to filter data\n    fred_data &lt;- reactive({\n      data &lt;- fred_indicator() |&gt; \n              filter(between(date, input$range[1], input$range[2]))\n      print(paste(\"Data filtered for range:\", input$range[1], \"to\", input$range[2]))  # Debug statement\n      data\n    })\n\n    # Plotting function\n    output$lineChart &lt;- renderPlot({\n      data &lt;- fred_data()\n      print(\"Plotting data\")  # Debug statement before plotting\n      ggplot(data, aes(x = date, y = value)) + \n        geom_line(color = \"navyblue\") +\n        labs(x = \"\", y = names(vars[which(vars == input$indicator)])) +\n        theme_minimal()\n    })\n}"
+  },
+  {
+    "objectID": "slides/session-2.3.html#print-example-1",
+    "href": "slides/session-2.3.html#print-example-1",
+    "title": "WebApps 6502",
+    "section": "print() example",
+    "text": "print() example\n\nserver &lt;- function(input, output) {\n  \n    # Reactive function to fetch data\n    fred_indicator &lt;- reactive({\n      data &lt;- fredr(series_id = input$indicator,\n                    observation_start = start_date,\n                    observation_end = end_date)\n      print(paste(\"Data fetched for indicator:\", input$indicator))  # Debug statement\n      print(head(data))  # Print first few rows of the fetched data\n    })\n  \n    # Reactive function to filter data\n    fred_data &lt;- reactive({\n      data &lt;- fred_indicator() |&gt; \n              filter(between(date, input$range[1], input$range[2]))\n      print(paste(\"Data filtered for range:\", input$range[1], \"to\", input$range[2]))  # Debug statement\n      data\n    })\n\n    # Plotting function\n    output$lineChart &lt;- renderPlot({\n      data &lt;- fred_data()\n      print(\"Plotting data\")  # Debug statement before plotting\n      ggplot(data, aes(x = date, y = value)) + \n        geom_line(color = \"navyblue\") +\n        labs(x = \"\", y = names(vars[which(vars == input$indicator)])) +\n        theme_minimal()\n    })\n}"
+  },
+  {
+    "objectID": "slides/session-2.3.html#browser-example",
+    "href": "slides/session-2.3.html#browser-example",
+    "title": "WebApps 6502",
+    "section": "browser() example",
+    "text": "browser() example\n\nserver &lt;- function(input, output) {\n  \n    # Reactive function to fetch data\n    fred_indicator &lt;- reactive({\n      browser()  # Initiate debugging here\n      fredr(series_id = input$indicator,\n            observation_start = start_date,\n            observation_end = end_date)\n    })\n  \n    # Reactive function to filter data\n    fred_data &lt;- reactive({\n      browser()  # Debugging point to inspect filtered data\n      fred_indicator() |&gt; \n        filter(between(date, input$range[1], input$range[2]))\n    })\n\n    # Plotting function\n    output$lineChart &lt;- renderPlot({\n      browser()  # Inspect before plotting\n      ggplot(fred_data(), aes(x = date, y = value)) + \n        geom_line(color = \"navyblue\") +\n        labs(x = \"\", y = names(vars[which(vars == input$indicator)])) +\n        theme_minimal()\n    })\n}"
+  },
+  {
+    "objectID": "slides/session-2.3.html#your-turn-1",
+    "href": "slides/session-2.3.html#your-turn-1",
+    "title": "WebApps 6502",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\nTake the toy app from this section or another one you have made\nTry adding print() or browser() statements to see when things are happening\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/session-2.3.html#wrangle-some-working-data",
+    "href": "slides/session-2.3.html#wrangle-some-working-data",
+    "title": "WebApps 6502",
+    "section": "Wrangle some “working data”",
+    "text": "Wrangle some “working data”\n\nStart by selecting a manageable subset of data.\nFocus on a few indicators for initial testing.\nExpand data scope after validating app functionality."
+  },
+  {
+    "objectID": "slides/session-2.3.html#use-separate-files",
+    "href": "slides/session-2.3.html#use-separate-files",
+    "title": "WebApps 6502",
+    "section": "Use separate files",
+    "text": "Use separate files\n\nSeparate data wrangling and visualization into different R scripts or Quarto documents.\nEmploy glimpse() and View() to verify data structures.\nHelps isolate and troubleshoot errors effectively."
+  },
+  {
+    "objectID": "slides/session-2.3.html#start-building-with-comments-and-function-calls",
+    "href": "slides/session-2.3.html#start-building-with-comments-and-function-calls",
+    "title": "WebApps 6502",
+    "section": "Start building with comments and function calls",
+    "text": "Start building with comments and function calls\n\nUse comments to outline what each code section should do.\nIntroduce function calls without arguments to build the structure.\nThis method helps in maintaining clarity and debugging."
+  },
+  {
+    "objectID": "slides/session-2.3.html#test-your-ui-code-separately-from-your-server-code",
+    "href": "slides/session-2.3.html#test-your-ui-code-separately-from-your-server-code",
+    "title": "WebApps 6502",
+    "section": "Test your UI code separately from your server code",
+    "text": "Test your UI code separately from your server code\n\nTest UI components like drop-downs and sliders without server-side logic.\nHelps ensure that the UI layout functions as intended.\nUse dummy server functions to isolate UI issues."
+  },
+  {
+    "objectID": "slides/session-2.3.html#ensure-reactive-data-frames-are-called-correctly",
+    "href": "slides/session-2.3.html#ensure-reactive-data-frames-are-called-correctly",
+    "title": "WebApps 6502",
+    "section": "Ensure reactive data frames are called correctly",
+    "text": "Ensure reactive data frames are called correctly\n\nUse parentheses to call reactive data frames within server functions.\nEssential for maintaining reactivity and accurate data handling.\nAvoids common bugs related to reactive contexts."
+  },
+  {
+    "objectID": "slides/session-2.3.html#properly-call-input-in-server-functions",
+    "href": "slides/session-2.3.html#properly-call-input-in-server-functions",
+    "title": "WebApps 6502",
+    "section": "Properly call input in server functions",
+    "text": "Properly call input in server functions\n\nCheck that input variables are used correctly in server functions.\nAccurate naming ensures the server reacts properly to UI changes.\nCritical for dynamic app behavior and user interactions."
+  },
+  {
+    "objectID": "slides/session-2.3.html#consider-nonstandard-evaluation-in-ggplot",
+    "href": "slides/session-2.3.html#consider-nonstandard-evaluation-in-ggplot",
+    "title": "WebApps 6502",
+    "section": "Consider nonstandard evaluation in ggplot",
+    "text": "Consider nonstandard evaluation in ggplot\n\nUse .data[[]] to handle user inputs within ggplot2 aesthetics.\nEnsures dynamic plotting based on user-selected data.\nNonstandard evaluation simplifies coding but requires careful handling."
+  },
+  {
+    "objectID": "slides/session-2.3.html#understand-what-your-code-is-doing",
+    "href": "slides/session-2.3.html#understand-what-your-code-is-doing",
+    "title": "WebApps 6502",
+    "section": "Understand what your code is doing",
+    "text": "Understand what your code is doing\n\nMaintain a clear concept of each part’s function within your code.\nRegularly test and refine to ensure it meets your objectives.\nTheoretical understanding aids in effective troubleshooting and innovation."
+  },
+  {
+    "objectID": "slides/session-2.3.html#acknowledgements",
+    "href": "slides/session-2.3.html#acknowledgements",
+    "title": "WebApps 6502",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\n\nParts of this presentation were adapted from Veerle van Leemput’s Shiny 101: The Modular App Blueprint"
   },
   {
     "objectID": "slides/session-1.4.html#idea-for-the-app",
@@ -574,49 +721,56 @@
     "href": "assignments/coding-assignment-2.html",
     "title": "Coding Assignment 2",
     "section": "",
-    "text": "For this assignment you are going to do two things. The first is to produce a basic data visualization that takes advantage of parameterization. The second is to embed that visualization in either a reveal JS presentation or a blog post. Then you will produce a duplicate version of that presentation or blog post with a different parameter value (most likely a country).\nBe sure to reference the course material, the Quarto Guide and the Quarto Reference as you work through this assignment.\nSubmission note: After you share your link with the class, please also submit your document to me via this link."
+    "text": "The requirements for this assignment are very simple. You could create a Shiny app that incorporates at least one reactive function and one module. An observer function is optional. The app can be an extension of the fredr line app that we did for this week, the V-Dem app we did for last week, or it can be a completely new app."
   },
   {
     "objectID": "assignments/coding-assignment-2.html#overview",
     "href": "assignments/coding-assignment-2.html#overview",
     "title": "Coding Assignment 2",
     "section": "",
-    "text": "For this assignment you are going to do two things. The first is to produce a basic data visualization that takes advantage of parameterization. The second is to embed that visualization in either a reveal JS presentation or a blog post. Then you will produce a duplicate version of that presentation or blog post with a different parameter value (most likely a country).\nBe sure to reference the course material, the Quarto Guide and the Quarto Reference as you work through this assignment.\nSubmission note: After you share your link with the class, please also submit your document to me via this link."
+    "text": "The requirements for this assignment are very simple. You could create a Shiny app that incorporates at least one reactive function and one module. An observer function is optional. The app can be an extension of the fredr line app that we did for this week, the V-Dem app we did for last week, or it can be a completely new app."
   },
   {
-    "objectID": "assignments/coding-assignment-2.html#step-1-create-a-quarto-presentation-or-blog20pts",
-    "href": "assignments/coding-assignment-2.html#step-1-create-a-quarto-presentation-or-blog20pts",
+    "objectID": "assignments/coding-assignment-2.html#step-1-plan-your-app-15",
+    "href": "assignments/coding-assignment-2.html#step-1-plan-your-app-15",
     "title": "Coding Assignment 2",
-    "section": "Step 1: Create a quarto presentation or blog(20pts)",
-    "text": "Step 1: Create a quarto presentation or blog(20pts)\nCreate a new Revealjs presentation or Quarto blog. You can copy code from class to get yourself started. In your YAML header, be sure to include a params: argument that will specify what country you want to visualize data for."
+    "section": "Step 1: Plan Your App (15%)",
+    "text": "Step 1: Plan Your App (15%)\nBefore you start coding, write out a plan for your app. What variables will be on your X axis? What variables will be Y axis variables? What will the user interface look like? What will the server logic do? Etc. Write your plan in words in the space below (for your benefit)."
   },
   {
-    "objectID": "assignments/coding-assignment-2.html#step-2-create-a-data-visualization-20-pts",
-    "href": "assignments/coding-assignment-2.html#step-2-create-a-data-visualization-20-pts",
+    "objectID": "assignments/coding-assignment-2.html#step-2-wrangling-15",
+    "href": "assignments/coding-assignment-2.html#step-2-wrangling-15",
     "title": "Coding Assignment 2",
-    "section": "Step 2: Create a data visualization (20 pts)",
-    "text": "Step 2: Create a data visualization (20 pts)\nCreate a code chunk and within it write the code that you need to produce a data visualization. This will involve loading the packages you need, importing the data and creating the visualization with ggplot2.\nFor your visualization, you could go with the gapminder dataset like we did in class or you could go back to the vdem dataset that we used in the first workshop. You could also use a different dataset if you like. The important thing is that you are able to parameterize your visualization so that you can easily change the country that is being visualized."
+    "section": "Step 2: Wrangling (15%)",
+    "text": "Step 2: Wrangling (15%)\nStart a new Shiny App. In the folder you created, start a new R script. Now use the dplyr package or other handy methods to wrangle the data into a format that is ready for plotting and write the CSV file to the folder. Remember that for this app the USER will be selecting which year to plot."
   },
   {
-    "objectID": "assignments/coding-assignment-2.html#step-3-incorporate-additional-elements-20-pts",
-    "href": "assignments/coding-assignment-2.html#step-3-incorporate-additional-elements-20-pts",
+    "objectID": "assignments/coding-assignment-2.html#step-3-create-the-setup-portion-of-the-app-20",
+    "href": "assignments/coding-assignment-2.html#step-3-create-the-setup-portion-of-the-app-20",
     "title": "Coding Assignment 2",
-    "section": "Step 3: Incorporate additional elements (20 pts)",
-    "text": "Step 3: Incorporate additional elements (20 pts)\nIncorporate at some additional elements to your blog post or Reveal presentation. This could be a figure (image), a hyperlink, a table, a callout box, a block quote, a footnote or some other element that relates to the basic content and narrative of your document. Now change the theme and try to make your blog or presentation look a little different/better than the default"
+    "section": "Step 3: Create the Setup Portion of the App (20%)",
+    "text": "Step 3: Create the Setup Portion of the App (20%)\nLoad the packages that you will need for the app and create the variable lists that you will use in the UI. You will also need to load the data you created in the previous step."
   },
   {
-    "objectID": "assignments/coding-assignment-2.html#step-4-create-a-duplicate-post-or-presentation-20-pts",
-    "href": "assignments/coding-assignment-2.html#step-4-create-a-duplicate-post-or-presentation-20-pts",
+    "objectID": "assignments/coding-assignment-2.html#step-4-create-the-user-interface-20",
+    "href": "assignments/coding-assignment-2.html#step-4-create-the-user-interface-20",
     "title": "Coding Assignment 2",
-    "section": "Step 4: Create a duplicate post or presentation (20 pts)",
-    "text": "Step 4: Create a duplicate post or presentation (20 pts)\nNow create a duplicate presentation or blog post. This time, change the parameter value so that the visualization is for a different country. You can do this by changing the params: argument in the YAML header. You should also change the title of the document so that it is clear that this is a different version of the original document."
+    "section": "Step 4: Create the User Interface (20%)",
+    "text": "Step 4: Create the User Interface (20%)\nCreate the user interface for the app. This should include the title, the X and Y axis variable selectors, and the viridis color scheme selector. You will also need to create a plot output."
   },
   {
-    "objectID": "assignments/coding-assignment-2.html#step-5-uplaod-your-document-to-quarto-pub-20-pts",
-    "href": "assignments/coding-assignment-2.html#step-5-uplaod-your-document-to-quarto-pub-20-pts",
+    "objectID": "assignments/coding-assignment-2.html#step-5-create-the-server-logic-20",
+    "href": "assignments/coding-assignment-2.html#step-5-create-the-server-logic-20",
     "title": "Coding Assignment 2",
-    "section": "Step 5: Uplaod your document to Quarto pub (20 pts)",
-    "text": "Step 5: Uplaod your document to Quarto pub (20 pts)\nFollowing the procedure you leanred in class, upload your blog or Reveal presentations to Quarto PUb. Remember that you will need to have a Quarto account to do this and that you need to type the relevant command in the terminal (not the console) to upload your document. Once you have your document link, share it with the class on the Discord server. Please also upload your project folder to this link."
+    "section": "Step 5: Create the Server Logic (20%)",
+    "text": "Step 5: Create the Server Logic (20%)\nCreate the server logic for the app. This should include the reactive expression that will filter the data based on the user’s selections and the renderPlot() function that will create the plot. Make sure that your labels also change along with the updated data."
+  },
+  {
+    "objectID": "assignments/coding-assignment-2.html#step-6-deploy-your-app-10",
+    "href": "assignments/coding-assignment-2.html#step-6-deploy-your-app-10",
+    "title": "Coding Assignment 2",
+    "section": "Step 6: Deploy Your App (10%)",
+    "text": "Step 6: Deploy Your App (10%)\nOnce you have it working, deploy your app to shinyapps.io. Share the link with the class. Then submit your folder to the Dropbox link listed below.\n\n\n\n\n\n\nSubmission Note\n\n\n\nAfter you share your link with the class, please also submit your document to me via this link."
   },
   {
     "objectID": "LICENSE.html#creative-commons-attribution-sharealike-4.0-international-public-license",
@@ -729,28 +883,33 @@
     "href": "weeks/workshop-day2.html",
     "title": "Workshop Day 2",
     "section": "",
-    "text": "Important\n\n\n\n\nHomework Assignment 2 is due Sunday, March 3 at 11:59pm.\nFinal Project is due Sunday, March 10 at 11:59pm."
-  },
-  {
-    "objectID": "weeks/workshop-day2.html#guest-speaker",
-    "href": "weeks/workshop-day2.html#guest-speaker",
-    "title": "Workshop Day 2",
-    "section": "Guest Speaker",
-    "text": "Guest Speaker\n\nDavid Keyes, founder of R for the Rest of Us"
+    "text": "Important\n\n\n\n\nHomework Assignment 2 is due Monday, May 6 at 11:59pm.\nFinal Project is due Friday, May 10 at 11:59pm.",
+    "crumbs": [
+      "Workshop Schedule",
+      "Workshop Day 2"
+    ]
   },
   {
     "objectID": "weeks/workshop-day2.html#sessions",
     "href": "weeks/workshop-day2.html#sessions",
     "title": "Workshop Day 2",
     "section": "Sessions",
-    "text": "Sessions\n\n9:00 - 10:30: Revealjs Slides\n10:30 - 11:00: Break\n11:00 - 12:30: Blogs and Websites\n12:30 - 1:30: Lunch\n1:30 - 3:00: Working with PDFs\n3:00 - 3:30: Break\n3:30 - 5:00 Parameterized Reporting with David Keyes"
+    "text": "Sessions\n\n9:00 - 10:20: Observers and Reactives\n10:20 - 10:40: Break\n10:40 - 12:00: Modules\n12:00 - 1:00: Lunch\n1:00 - 2:20: Building Your App\n2:20 - 2:40: Break\n2:40 - 4:00 Final Project time",
+    "crumbs": [
+      "Workshop Schedule",
+      "Workshop Day 2"
+    ]
   },
   {
     "objectID": "weeks/workshop-day2.html#assignments",
     "href": "weeks/workshop-day2.html#assignments",
     "title": "Workshop Day 2",
     "section": "Assignments",
-    "text": "Assignments\n🧮 Coding Assignment 2\n✍️ Final Project"
+    "text": "Assignments\n🧮 Coding Assignment 2\n✍️ Final Project",
+    "crumbs": [
+      "Workshop Schedule",
+      "Workshop Day 2"
+    ]
   },
   {
     "objectID": "index.html",
@@ -1016,39 +1175,358 @@
     "text": "What will change?\n\nlibrary(ggplot2)\n\nggplot(dem_data, aes(x = polyarchy, y = inf_mort)) + \n  geom_point(aes(color = region)) + \n  geom_smooth(linewidth = 1) + \n  labs(\n    x= \"Democracy\", \n    y = \"Infant Mortality\",\n    title = \"Democracy and Development\", \n    caption = \"Source: V-Dem Institute\", \n    color = \"Region\"\n    ) +\n  scale_color_viridis_d(option = \"inferno\", end = .8) +\n  theme_minimal()"
   },
   {
+    "objectID": "slides/session-2.1.html#observers-1",
+    "href": "slides/session-2.1.html#observers-1",
+    "title": "WebApps 6502",
+    "section": "Observers",
+    "text": "Observers\nSo far, we used render* functions to produce our output. All of the action with those functions happens inside of the app.\n\nBut sometimes, we want to reach outside the app: call an API, send data to a database, send debugging messages. We want to call a function for its “side-effects.”\n\nWe need observers for that!"
+  },
+  {
+    "objectID": "slides/session-2.1.html#observers-2",
+    "href": "slides/session-2.1.html#observers-2",
+    "title": "WebApps 6502",
+    "section": "Observers",
+    "text": "Observers\nObservers are functions that run when their dependencies change, just like outputs.\n\nBut unlike output rendering functions that directly update the UI, observers handle tasks that can affect the application state or perform other “side effects.”"
+  },
+  {
+    "objectID": "slides/session-2.1.html#types-of-observers",
+    "href": "slides/session-2.1.html#types-of-observers",
+    "title": "WebApps 6502",
+    "section": "Types of Observers",
+    "text": "Types of Observers\n\nobserve({}): Automatically re-executes when any of its reactive dependencies change.\nobserveEvent(event, { }): Executes in response to a specific event, offering more control over reactivity and allowing you to ignore changes in other inputs."
+  },
+  {
+    "objectID": "slides/session-2.1.html#what-are-side-effects",
+    "href": "slides/session-2.1.html#what-are-side-effects",
+    "title": "WebApps 6502",
+    "section": "What Are Side Effects?",
+    "text": "What Are Side Effects?\nIn the context of Shiny, a side effect refers to any action performed by an observer that affects the state of the application or external systems but does not directly result in UI output. These include:\n\nModifying application state\nInteracting with databases\nSending data to external APIs\nWriting to or reading from files"
+  },
+  {
+    "objectID": "slides/session-2.1.html#example-printing-to-console",
+    "href": "slides/session-2.1.html#example-printing-to-console",
+    "title": "WebApps 6502",
+    "section": "Example: Printing to Console",
+    "text": "Example: Printing to Console\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  numericInput(inputId = \"number\", \n               label = \"Enter a number\", \n               value = 0),\n               \n  actionButton(inputId = \"button\", \n               label = \"Click me\"),\n               \n  textOutput(outputId = \"text\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$text &lt;- renderText({\n    input$number^2\n  }) |&gt; bindEvent(input$button)\n  \n  observe({\n    print(input$number^2)\n  })\n}\n\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "slides/session-2.1.html#example-printing-to-console-1",
+    "href": "slides/session-2.1.html#example-printing-to-console-1",
+    "title": "WebApps 6502",
+    "section": "Example: Printing to Console",
+    "text": "Example: Printing to Console\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  numericInput(inputId = \"number\", \n               label = \"Enter a number\", \n               value = 0),\n               \n  actionButton(inputId = \"button\", \n               label = \"Click me\"),\n               \n  textOutput(outputId = \"text\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$text &lt;- renderText({\n    input$number^2\n  }) |&gt; bindEvent(input$button)\n  \n  observe({\n    print(input$number^2)\n  }) |&gt; bindEvent(input$button)\n}\n\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "slides/session-2.1.html#example-resetting-values",
+    "href": "slides/session-2.1.html#example-resetting-values",
+    "title": "WebApps 6502",
+    "section": "Example: Resetting Values",
+    "text": "Example: Resetting Values\nDemocracy Around the World! App.\n\n\n  # Observe changes to region selection\n  observeEvent(input$regions, {\n    if (input$regions == \"Global\") {\n      # Reset the selected country and display global trend when \"Global\" is chosen\n      selected_country(NULL)\n    } else {\n      # Reset the selected country when any specific region is chosen\n      selected_country(NULL)\n    }\n  })"
+  },
+  {
+    "objectID": "slides/session-2.1.html#what-reactives-do",
+    "href": "slides/session-2.1.html#what-reactives-do",
+    "title": "WebApps 6502",
+    "section": "What Reactives Do",
+    "text": "What Reactives Do\nReactives are functions that return a value. You can assign them to an object and you can refer to reactives elsewhere in your app.\n\nYou can see them as backpacks 🎒 that carry values and expressions around that you can open whenever you want."
+  },
+  {
+    "objectID": "slides/session-2.1.html#types-of-reactive-functions",
+    "href": "slides/session-2.1.html#types-of-reactive-functions",
+    "title": "WebApps 6502",
+    "section": "Types of Reactive Functions",
+    "text": "Types of Reactive Functions\nWhen you go hiking, you pick a backpack that fits your needs. There are different types of backpacks that are fit to carry different things.\n\nThat’s similar with a reactive. They carry different things:\n\nreactive(): takes an expression\nreactiveVal(): takes a single value\nreactiveValues(): takes a list of values"
+  },
+  {
+    "objectID": "slides/session-2.1.html#the-reactive-function-1",
+    "href": "slides/session-2.1.html#the-reactive-function-1",
+    "title": "WebApps 6502",
+    "section": "The reactive() Function",
+    "text": "The reactive() Function\nYou can see reactive() as a very fancy full-size backpack 🎒🌟.\n\nIt can take multiple inputs, manipulate them and return something simple (a value) or complex (a plot, a table). It can even take other reactives (other backpacks) as input!"
+  },
+  {
+    "objectID": "slides/session-2.1.html#reactive-example",
+    "href": "slides/session-2.1.html#reactive-example",
+    "title": "WebApps 6502",
+    "section": "reactive() Example",
+    "text": "reactive() Example\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  numericInput(inputId = \"number\", \n               label = \"Enter a number\", \n               value = 0),\n               \n  actionButton(inputId = \"button\", \n               label = \"Click me\"),\n               \n  textOutput(outputId = \"text\")\n)\n\nserver &lt;- function(input, output, session) {\n  number_squared &lt;- reactive({\n    input$number^2\n  }) |&gt; bindEvent(input$button)\n  \n  output$text &lt;- renderText({\n    number_squared()\n  })\n  \n  observe({\n    print(number_squared())\n  })\n}\n\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "slides/session-2.1.html#laziness",
+    "href": "slides/session-2.1.html#laziness",
+    "title": "WebApps 6502",
+    "section": "Laziness",
+    "text": "Laziness\nThis fancy backpack is only opened when you ask for it. It is therefore lazy.\n\nMore technical: when the dependencies of a reactive change, it doesn’t re-execute right away but rather waits until it gets called by something else."
+  },
+  {
+    "objectID": "slides/session-2.1.html#reactive-values",
+    "href": "slides/session-2.1.html#reactive-values",
+    "title": "WebApps 6502",
+    "section": "Reactive Values",
+    "text": "Reactive Values\nIf reactive() is a fancy backpack, reactive values are simpler backpacks. They carry one or more value(s) that you can unpack, but also update.\n\nYou make a reactive single value with reactiveVal() and you can update it by calling it with a new value.\n\nYou can make multiple reactive values with reactiveValues() and you can update them by assigning a new value to them."
+  },
+  {
+    "objectID": "slides/session-2.1.html#reactiveval-example",
+    "href": "slides/session-2.1.html#reactiveval-example",
+    "title": "WebApps 6502",
+    "section": "reactiveVal() Example",
+    "text": "reactiveVal() Example\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  numericInput(inputId = \"number\", \n               label = \"Enter a number\", \n               value = 0),\n               \n  actionButton(inputId = \"button\", \n               label = \"Click me\"),\n               \n  textOutput(outputId = \"text\")\n)\n\nserver &lt;- function(input, output, session) {\n  number_squared &lt;- reactiveVal(0)\n  \n  observe({\n    number_squared(input$number^2)\n  }) |&gt; bindEvent(input$button)\n  \n  output$text &lt;- renderText({\n    number_squared()\n  })\n  \n  observe({\n    print(number_squared())\n  })\n}\n\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "slides/session-2.1.html#reactivevalues-example",
+    "href": "slides/session-2.1.html#reactivevalues-example",
+    "title": "WebApps 6502",
+    "section": "reactiveValues() Example",
+    "text": "reactiveValues() Example\n\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  numericInput(inputId = \"number\", \n               label = \"Enter a number\", \n               value = 0),\n               \n  actionButton(inputId = \"button\", \n               label = \"Click me\"),\n               \n  textOutput(outputId = \"text\")\n)\n\nserver &lt;- function(input, output, session) {\n  r &lt;- reactiveValues(number_squared = 0) \n  \n  observe({\n    r$number_squared &lt;- input$number^2\n  }) |&gt; bindEvent(input$button)\n  \n  output$text &lt;- renderText({\n    r$number_squared\n  })\n  \n  observe({\n    print(r$number_squared)\n  })\n}\n\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "slides/session-2.1.html#reactive-values-1",
+    "href": "slides/session-2.1.html#reactive-values-1",
+    "title": "WebApps 6502",
+    "section": "Reactive Values",
+    "text": "Reactive Values\nYou can see reactiveValues() as some kind of reactive mini-database. You can use it to store multiple values, retrieve them in different places, and update them.\n\nAnd since it’s reactive, you can use it to trigger other parts of your app when one of its values changes."
+  },
+  {
+    "objectID": "slides/session-2.1.html#example-from-this-week",
+    "href": "slides/session-2.1.html#example-from-this-week",
+    "title": "WebApps 6502",
+    "section": "Example from this Week",
+    "text": "Example from this Week"
+  },
+  {
+    "objectID": "slides/session-2.1.html#server-with-reactive-functions",
+    "href": "slides/session-2.1.html#server-with-reactive-functions",
+    "title": "WebApps 6502",
+    "section": "Server with reactive() Functions",
+    "text": "Server with reactive() Functions\n\n\n    # Download data from FRED with reactive function. \n    # Only updates when user selects new indicator\n    fred_indicator &lt;- reactive({\n      fredr(series_id = input$indicator,\n        observation_start = start_date,\n        observation_end = end_date)\n    })\n  \n    # Filter data according to chosen years \n    # Only updates when user selects new data range\n    fred_data &lt;- reactive({\n      fred_indicator() |&gt;\n      filter(between(date, input$range[1],input$range[2])) \n   })"
+  },
+  {
+    "objectID": "slides/session-2.1.html#key-concepts",
+    "href": "slides/session-2.1.html#key-concepts",
+    "title": "WebApps 6502",
+    "section": "Key Concepts",
+    "text": "Key Concepts\n\nFocused Reactivity:\n\nEach reactive() function isolates updates to specific user inputs.\nThis avoids redundant processing and enhances app performance.\n\nChained Dependencies:\n\nreactive() functions can depend on each other.\nChanges in one reactive output can trigger updates in another, maintaining efficient data flow.\n\nSelective Execution:\n\nReduces the computational workload by recalculating only necessary parts of the data pipeline.\nReactivity is triggered only in response to relevant user interactions."
+  },
+  {
+    "objectID": "slides/session-2.1.html#ui-code",
+    "href": "slides/session-2.1.html#ui-code",
+    "title": "WebApps 6502",
+    "section": "UI Code",
+    "text": "UI Code\n\nui &lt;- fluidPage(\n\n    # Application title\n    titlePanel(\"FRED Data App\"),\n    \n    fluidRow(\n      \n      # 12 columns on one row: this panel will take 1/3 of it\n      column(4, wellPanel(\n        selectInput(\"indicator\", \"Indicator:\", vars)\n        ),\n      helpText(\"Select an indicator, choose a date range and view the trend. \n               The grey bars represent economic recessions. \n               The data for this app comes from the St. Louis Fed's \n               FRED database. The consumer confidence, business confidence and \n               lead composite indicators are OECD data downloaded through FRED.\")\n      ), \n      \n      # Remaining 2/3 occupied by plot\n      column(8,\n        plotOutput(\"lineChart\"),     \n        sliderInput(\n          \"range\",\n          \"\",\n          min = start_date,\n          max = end_date, \n          value = c(start_date, end_date), \n          width = \"100%\"\n        )\n      )\n    )\n)"
+  },
+  {
+    "objectID": "slides/session-2.1.html#setup-global-code",
+    "href": "slides/session-2.1.html#setup-global-code",
+    "title": "WebApps 6502",
+    "section": "Setup (Global) Code",
+    "text": "Setup (Global) Code\n\n# Load packages\nlibrary(shiny)\nlibrary(fredr)\nlibrary(dplyr)\nlibrary(ggplot2)\n\n# Set Fred API key \nfredr_set_key(\"YOUR FRED API KEY\") \n\n# Assign FRED series to objects\ncci &lt;- \"CSCICP03USM665S\" # consumer confidence\nbci &lt;- \"BSCICP03USM665S\" # business confidence\ncli &lt;- \"USALOLITONOSTSAM\" # composite lead indicator\nunemp_rate &lt;- \"UNRATE\" # unemployment rate\ngrowth &lt;- \"A191RL1Q225SBEA\" # growth rate\n\n# set start and end date\nstart_date &lt;- as.Date(\"1970-01-01\")\nend_date &lt;- as.Date(Sys.Date())\n\n# Create list of named values for the input selection\nvars &lt;- c(\"Consumer Confidence\" = cci, \n          \"Business Confidence\" = bci, \n          \"Composite Indicator\" = cli, \n          \"Unemployment Rate\" = unemp_rate,\n          \"Growth Rate\" = growth)\n\n# Load helper script\nsource(\"helper.R\") # scroll down, code pasted below"
+  },
+  {
+    "objectID": "slides/session-2.1.html#your-turn",
+    "href": "slides/session-2.1.html#your-turn",
+    "title": "WebApps 6502",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\n\nDo the prework, getting set up with fredr and other relevant packages\nCreate a NEW project folder\nSave your helper script in a subfolder\nStart on your app.R file\nExtend the app by incorporating new indicators\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/session-2.1.html#challenge-1observers",
+    "href": "slides/session-2.1.html#challenge-1observers",
+    "title": "WebApps 6502",
+    "section": "Challenge 1–Observers",
+    "text": "Challenge 1–Observers\n\nNotification Management:\n\nImplement observeEvent() using showNotification() to show notifications when indicators are selected.\n\nAction Logging:\n\nLog changes to the indicator or date range to the R console with timestamps.\n\nDynamic UI Updates:\n\nUse observe() to adjust the UI elements dynamically based on the indicator selected."
+  },
+  {
+    "objectID": "slides/session-2.1.html#challenge-2reactives",
+    "href": "slides/session-2.1.html#challenge-2reactives",
+    "title": "WebApps 6502",
+    "section": "Challenge 2–Reactives",
+    "text": "Challenge 2–Reactives\n\nImplement a counter using reactiveValues() that increments each time the indicator input changes.\n\nDisplay the counter value in the UI using textOutput().\nUse observeEvent() to increment the counter reactively.\n\nCreate UI controls for selecting plot line type and color.\n\nUse reactiveValues() to store the current plot style settings.\nUpdate the plot rendering logic to use these settings dynamically.\n\nUpdate our app to include vertical lines on the plot that show “black swan” events\n\nUse check boxes to allow users to select which events to display\nUse reactiveValues() to store the selected events, then plot"
+  },
+  {
+    "objectID": "slides/session-2.1.html#acknowledgements",
+    "href": "slides/session-2.1.html#acknowledgements",
+    "title": "WebApps 6502",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\n\nParts of this presentation were adapted from Veerle van Leemput’s Shiny 101: The Modular App Blueprint"
+  },
+  {
+    "objectID": "slides/session-2.2.html#what-are-modules",
+    "href": "slides/session-2.2.html#what-are-modules",
+    "title": "WebApps 6502",
+    "section": "What are modules?",
+    "text": "What are modules?\nYou could call modules special functions.\n\nUsing functions in a Shiny app is common:\n\nYou use functions in your UI (e.g. value_box())\nYou use functions in your server\n\n\nThat works well for code that is completely on the ui or server side."
+  },
+  {
+    "objectID": "slides/session-2.2.html#what-are-modules-1",
+    "href": "slides/session-2.2.html#what-are-modules-1",
+    "title": "WebApps 6502",
+    "section": "What are modules?",
+    "text": "What are modules?\nFor code that spans both the ui and the server, you need a new technique: modules\n\nA module consists of some UI code that works together with some server code\n\nModules are special because they create their own namespace: things like input and output ids are isolated from the rest of the app"
+  },
+  {
+    "objectID": "slides/session-2.2.html#why-use-modules",
+    "href": "slides/session-2.2.html#why-use-modules",
+    "title": "WebApps 6502",
+    "section": "Why use modules?",
+    "text": "Why use modules?\nThere are two main reasons to work with modules:\n\n\nBecause a module creates its own namespace, you can write and run code in isolation. You don’t need to worry about what’s going on outside the module. And remember, ids needed to be unique!\nBecause a module is basically a function, it comes with all the benefits that functions have."
+  },
+  {
+    "objectID": "slides/session-2.2.html#what-does-a-module-look-like",
+    "href": "slides/session-2.2.html#what-does-a-module-look-like",
+    "title": "WebApps 6502",
+    "section": "What does a module look like?",
+    "text": "What does a module look like?\nA module has two parts, and is basically a mini-app:\n\n\nThe module UI, which generates the HTML and runs code inside the ui() function\nThe module server, which runs code inside the server() function"
+  },
+  {
+    "objectID": "slides/session-2.2.html#what-does-a-module-look-like-1",
+    "href": "slides/session-2.2.html#what-does-a-module-look-like-1",
+    "title": "WebApps 6502",
+    "section": "What does a module look like?",
+    "text": "What does a module look like?\nlibrary(shiny)\n\nnumberModUI &lt;- function(id) {\n  ns &lt;- NS(id)\n  tagList(\n    numericInput(inputId = ns(\"number\"),\n                 label = \"Enter a number\",\n                 value = 0),\n    actionButton(inputId = ns(\"button\"),\n                 label = \"Click me\"),\n    textOutput(outputId = ns(\"text\"))\n  )\n}\n\nnumberModServer &lt;- function(id) {\n  moduleServer(id, function(input, output, session) {\n    output$text &lt;- renderText({\n      input$number^2\n    }) |&gt; bindEvent(input$button)\n  })\n}\n\nui &lt;- fluidPage(\n  numberModUI(\"numbers\")\n)\n\nserver &lt;- function(input, output, session) {\n  numberModServer(\"numbers\")\n}\n\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "slides/session-2.2.html#what-does-a-module-look-like-2",
+    "href": "slides/session-2.2.html#what-does-a-module-look-like-2",
+    "title": "WebApps 6502",
+    "section": "What does a module look like?",
+    "text": "What does a module look like?\nlibrary(shiny)\n\nnumberModUI &lt;- function(id) {\n  ns &lt;- NS(id)\n  tagList(\n    numericInput(inputId = ns(\"number\"),\n                 label = \"Enter a number\",\n                 value = 0),\n    actionButton(inputId = ns(\"button\"),\n                 label = \"Click me\"),\n    textOutput(outputId = ns(\"text\"))\n  )\n}\n\nnumberModServer &lt;- function(id) {\n  moduleServer(id, function(input, output, session) {\n    output$text &lt;- renderText({\n      input$number^2\n    }) |&gt; bindEvent(input$button)\n  })\n}\n\nui &lt;- fluidPage(\n  numberModUI(\"numbers\")\n)\n\nserver &lt;- function(input, output, session) {\n  numberModServer(\"numbers\")\n}\n\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "slides/session-2.2.html#what-does-a-module-look-like-3",
+    "href": "slides/session-2.2.html#what-does-a-module-look-like-3",
+    "title": "WebApps 6502",
+    "section": "What does a module look like?",
+    "text": "What does a module look like?\nlibrary(shiny)\n\nnumberModUI &lt;- function(id) {\n  ns &lt;- NS(id)\n  tagList(\n    numericInput(inputId = ns(\"number\"),\n                 label = \"Enter a number\",\n                 value = 0),\n    actionButton(inputId = ns(\"button\"),\n                 label = \"Click me\"),\n    textOutput(outputId = ns(\"text\"))\n  )\n}\n\nnumberModServer &lt;- function(id) {\n  moduleServer(id, function(input, output, session) {\n    output$text &lt;- renderText({\n      input$number^2\n    }) |&gt; bindEvent(input$button)\n  })\n}\n\nui &lt;- fluidPage(\n  numberModUI(\"numbers\")\n)\n\nserver &lt;- function(input, output, session) {\n  numberModServer(\"numbers\")\n}\n\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "slides/session-2.2.html#what-does-a-module-look-like-4",
+    "href": "slides/session-2.2.html#what-does-a-module-look-like-4",
+    "title": "WebApps 6502",
+    "section": "What does a module look like?",
+    "text": "What does a module look like?\nlibrary(shiny)\n\nnumberModUI &lt;- function(id) {\n  ns &lt;- NS(id)\n  tagList(\n    numericInput(inputId = ns(\"number\"),\n                 label = \"Enter a number\",\n                 value = 0),\n    actionButton(inputId = ns(\"button\"),\n                 label = \"Click me\"),\n    textOutput(outputId = ns(\"text\"))\n  )\n}\n\nnumberModServer &lt;- function(id) {\n  moduleServer(id, function(input, output, session) {\n    output$text &lt;- renderText({\n      input$number^2\n    }) |&gt; bindEvent(input$button)\n  })\n}\n\nui &lt;- fluidPage(\n  numberModUI(\"numbers\")\n)\n\nserver &lt;- function(input, output, session) {\n  numberModServer(\"numbers\")\n}\n\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "slides/session-2.2.html#where-do-you-put-modules",
+    "href": "slides/session-2.2.html#where-do-you-put-modules",
+    "title": "WebApps 6502",
+    "section": "Where do you put modules?",
+    "text": "Where do you put modules?\nYou can simply put the module functions in the app.R file (you call this inline).\n\nOther options:\n\nPut the module in a separate R script in the /R folder. Shiny will automatically source it.\nPut the module in a separate R script in any other folder, and source it using source(“./my_modules/random.R”)."
+  },
+  {
+    "objectID": "slides/session-2.2.html#module-use-cases",
+    "href": "slides/session-2.2.html#module-use-cases",
+    "title": "WebApps 6502",
+    "section": "Module Use Cases",
+    "text": "Module Use Cases\n\nWhen do you think modules might be useful in a Shiny app?\nWhat are some examples of modules you might create?\nHint: works well when you have to repeat the same thing multiple times, like with countries, regions, months or years.\nHere is one simple example"
+  },
+  {
+    "objectID": "slides/session-2.2.html#design-an-app-with-modules",
+    "href": "slides/session-2.2.html#design-an-app-with-modules",
+    "title": "WebApps 6502",
+    "section": "Design an App with Modules",
+    "text": "Design an App with Modules\n\nDesign a simple Shiny app that uses a module.\nWhat are the UI elements?\nWhat are the server elements?\nHow could you use one or more modules to make the app easier to build and maintain?\nDiscuss a possible design with your group."
+  },
+  {
+    "objectID": "slides/session-2.2.html#build-the-app",
+    "href": "slides/session-2.2.html#build-the-app",
+    "title": "WebApps 6502",
+    "section": "Build the App",
+    "text": "Build the App\n\nBuild the app you designed.\nStart with the modules.\nTest it out.\nPost it to shinyapps.io and share the link with the class."
+  },
+  {
+    "objectID": "slides/session-2.2.html#acknowledgements",
+    "href": "slides/session-2.2.html#acknowledgements",
+    "title": "WebApps 6502",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\n\nParts of this presentation were adapted from Veerle van Leemput’s Shiny 101: The Modular App Blueprint"
+  },
+  {
     "objectID": "project/project-assignment.html",
     "href": "project/project-assignment.html",
-    "title": "Project Assignment",
+    "title": "Project Assignment 3",
     "section": "",
-    "text": "This is your opportunity to apply the insights and skills you have developed in this course to a real-world problem. You can produce an HTML report, Revealjs slides, a blog or a pdf document. It can be on anything you like and can incorporate any kind of data that you like. But it should incoprorate both text and code as we have done throughout the course and it should be substantial enough that you would be proud to show it to a potential employer."
+    "text": "Now that you have a clear sense of where you are going with your app, it is time to build it. This is the hard part and you will likely have to invest significant time in wrangling your data and debugging the app. Be patient! It will turn out great and you will have a nice project to show for it.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
   },
   {
     "objectID": "project/project-assignment.html#overview",
     "href": "project/project-assignment.html#overview",
-    "title": "Project Assignment",
+    "title": "Project Assignment 3",
     "section": "",
-    "text": "This is your opportunity to apply the insights and skills you have developed in this course to a real-world problem. You can produce an HTML report, Revealjs slides, a blog or a pdf document. It can be on anything you like and can incorporate any kind of data that you like. But it should incoprorate both text and code as we have done throughout the course and it should be substantial enough that you would be proud to show it to a potential employer."
+    "text": "Now that you have a clear sense of where you are going with your app, it is time to build it. This is the hard part and you will likely have to invest significant time in wrangling your data and debugging the app. Be patient! It will turn out great and you will have a nice project to show for it.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
   },
   {
-    "objectID": "project/project-assignment.html#setup",
-    "href": "project/project-assignment.html#setup",
-    "title": "Project Assignment",
-    "section": "Setup",
-    "text": "Setup\nCreate a new project folder and call it final-project. Once you have your project open, initialize whatever type of Quarto document you have chosen to use. In the YAML header, include the following information: title, subtitle, author, format, execute and any other settings that you want to apply to the document. Set echo: false, message: false, and warning: false.\n(12.5 pts)"
+    "objectID": "project/project-assignment.html#step-1-setup",
+    "href": "project/project-assignment.html#step-1-setup",
+    "title": "Project Assignment 3",
+    "section": "Step 1: Setup",
+    "text": "Step 1: Setup\nStart a new Shiny app in R Studio. In your app.R file, begin by loading your packages, loading and/or wrangling your data, and creating lists for your inputs.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
   },
   {
-    "objectID": "project/project-assignment.html#elements",
-    "href": "project/project-assignment.html#elements",
-    "title": "Project Assignment",
-    "section": "Elements",
-    "text": "Elements\nYour project should include the following elements:\n\nIntroduction: What is the problem or question that you are addressing? Why is it interesting? Why is it important? (12.5 pts)\nData: Discuss the data. What data are you using? Where did it come from–a package, an API or wild-caught? How did you process it? (12.5 pts)\nVisualization: Include at least one visualization. It can be a plot, a map, a diagram, or any other kind of visual representation that you think is appropriate. (12.5 pts)\nAnalysis: What did you learn from the data and your visualization? What insights did you gain? What did you find surprising? (12.5 pts)\nOther Elements: Incorporate at some additional elements like a figure (image), a hyperlink, a table, a callout box, a block quote, a footnote that relate to the basic content and narrative of your document. (12.5 pts)\nStyling: Now change the theme and try to make your blog or presentation look a little different/better than the default. (12.5 pts)\nConclusion: What are the implications of your findings? What are the next steps? What other data would you like to have to further explore this question? (12.5 pts)"
+    "objectID": "project/project-assignment.html#step-2-define-the-ui",
+    "href": "project/project-assignment.html#step-2-define-the-ui",
+    "title": "Project Assignment 3",
+    "section": "Step 2: Define the ui",
+    "text": "Step 2: Define the ui\nStarting with ui &lt;- fluidPage(), start building your UI. Add a titlePanel(), a fluidRow() and then add the various columnar elements that you want to include such as inputs, text and the plot output. Try running your app just with the ui set up and see how it looks.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
   },
   {
-    "objectID": "project/project-assignment.html#submission",
-    "href": "project/project-assignment.html#submission",
-    "title": "Project Assignment",
-    "section": "Submission",
-    "text": "Submission\nUpload your document to Quarto Pub. and submit a link to your project in the Discord server. Then, submit your project folder to this link."
+    "objectID": "project/project-assignment.html#step-3-define-the-server-logic",
+    "href": "project/project-assignment.html#step-3-define-the-server-logic",
+    "title": "Project Assignment 3",
+    "section": "Step 3: Define the server logic",
+    "text": "Step 3: Define the server logic\nBuild your reactive function(s) and specify how the data and output will change based on user input(s). This is a process that is very specific to each project, so it is hard to say anything general here. But when in the process of building your server function, it often helps to look back at examples we have done in class or those that you might find helpful in the Shiny gallery.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment.html#step-4-debug-your-app",
+    "href": "project/project-assignment.html#step-4-debug-your-app",
+    "title": "Project Assignment 3",
+    "section": "Step 4: Debug your app",
+    "text": "Step 4: Debug your app\nAre you having issues with your code? See this post and reach out for help on Discord.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment.html#step-5-post-your-app-to-shinyapps.io",
+    "href": "project/project-assignment.html#step-5-post-your-app-to-shinyapps.io",
+    "title": "Project Assignment 3",
+    "section": "Step 5: Post your app to shinyapps.io",
+    "text": "Step 5: Post your app to shinyapps.io\nSign up for a free account at https://www.shinyapps.io/. When you are ready, hit the little blue icon at the top of your app.R window to publish it.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment.html#step-6-record-a-video-or-writeup-your-results",
+    "href": "project/project-assignment.html#step-6-record-a-video-or-writeup-your-results",
+    "title": "Project Assignment 3",
+    "section": "Step 6: Record a video or writeup your results",
+    "text": "Step 6: Record a video or writeup your results\nYou have two options for presenting your app. You can post a five- to ten-minute video using a service like Vimeo or you can write two pages about your app. In your presentation or writeup, talk about the main features of the app. What kinds of data can users explore and then also what kinds of patterns emerge from the data and what we learn from the visualization that we might not have thought of before.",
+    "crumbs": [
+      "Project",
+      "Project Assignment"
+    ]
   },
   {
     "objectID": "course-syllabus.html",

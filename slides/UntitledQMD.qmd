@@ -1,0 +1,16 @@
+---
+title: "WebApps 6502"
+subtitle: "Session 2.1--"
+footer: "[WebApps Website](https://rshiny-is.cool)"
+logo: images/webapps-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    chalkboard: true
+execute:
+  echo: true
+  eval: false
+  freeze: auto
+---

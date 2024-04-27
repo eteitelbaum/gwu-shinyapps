@@ -68,8 +68,8 @@ website:
           #   text: "Assignment 2"
       - section: "Project"
         contents:
-          # - href: project/project-assignment.qmd
-          #   text: "Project Assignment"
+          - href: project/project-assignment.qmd
+            text: "Project Assignment"
           - href: project/project-datasets.qmd
             text: "Datasets"
       - section: "Course Modules"
@@ -98,8 +98,8 @@ website:
         contents: 
           - href: weeks/workshop-day1.qmd
             text: "Workshop Day 1"
-          # - href: weeks/workshop-day2.qmd
-          #   text: "Workshop Day 2" 
+          - href: weeks/workshop-day2.qmd
+            text: "Workshop Day 2"
 format:
   html:
     theme:

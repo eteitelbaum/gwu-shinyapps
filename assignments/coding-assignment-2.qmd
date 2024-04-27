@@ -4,32 +4,36 @@ title: "Coding Assignment 2"
 
 ## Overview
 
-For this assignment you are going to do two things. The first is to produce a basic data visualization that takes advantage of parameterization. The second is to embed that visualization in either a reveal JS presentation or a blog post. Then you will produce a duplicate version of that presentation or blog post with a different parameter value (most likely a country).
+The requirements for this assignment are very simple. You could create a Shiny app that incorporates at least one reactive function and one module. An observer function is optional. The app can be an extension of the `fredr` line app that we did for this week, the V-Dem app we did for last week, or it can be a completely new app. 
 
-Be sure to reference the course material, the [Quarto Guide](https://quarto.org/docs/guide/) and the [Quarto Reference](https://quarto.org/docs/reference/) as you work through this assignment.
+## Step 1: Plan Your App (15%)
 
-**Submission note**: After you share your link with the class, please also submit your document to me via [this link](https://www.dropbox.com/request/VFGXSMBIKK3MoxrAHtBW).
+*Before you start coding, write out a plan for your app. What variables will be on your X axis? What variables will be Y axis variables? What will the user interface look like? What will the server logic do? Etc. Write your plan in words in the space below (for your benefit).* 
 
-## Step 1: Create a quarto presentation or blog(20pts)
+## Step 2: Wrangling (15%)
 
-Create a new Revealjs presentation or Quarto blog. You can copy code from class to get yourself started. In your YAML header, be sure to include a `params:` argument that will specify what country you want to visualize data for.
+*Start a new Shiny App. In the folder you created, start a new R script. Now use the dplyr package or other handy methods to wrangle the data into a format that is ready for plotting and write the CSV file to the folder. Remember that for this app the USER will be selecting which year to plot.*
 
-## Step 2: Create a data visualization (20 pts)
+## Step 3: Create the Setup Portion of the App (20%)
 
-Create a code chunk and within it write the code that you need to produce a data visualization. This will involve loading the packages you need, importing the data and creating the visualization with `ggplot2`. 
+*Load the packages that you will need for the app and create the variable lists that you will use in the UI. You will also need to load the data you created in the previous step.*
 
-For your visualization, you could go with the `gapminder` dataset like we did in class or you could go back to the `vdem` dataset that we used in the first workshop. You could also use a different dataset if you like. The important thing is that you are able to parameterize your visualization so that you can easily change the country that is being visualized.
+## Step 4: Create the User Interface (20%)
 
-## Step 3: Incorporate additional elements (20 pts)
+*Create the user interface for the app. This should include the title, the X and Y axis variable selectors, and the viridis color scheme selector. You will also need to create a plot output.*
 
-Incorporate at some additional elements to your blog post or Reveal presentation. This could be a figure (image), a hyperlink, a table, a callout box, a block quote, a footnote or some other element that relates to the basic content and narrative of your document. Now change the theme and try to make your blog or presentation look a little different/better than the default
+## Step 5: Create the Server Logic (20%)
 
-## Step 4: Create a duplicate post or presentation (20 pts)
+*Create the server logic for the app. This should include the reactive expression that will filter the data based on the user's selections and the renderPlot() function that will create the plot. Make sure that your labels also change along with the updated data.*
 
-Now create a duplicate presentation or blog post. This time, change the parameter value so that the visualization is for a different country. You can do this by changing the `params:` argument in the YAML header. You should also change the title of the document so that it is clear that this is a different version of the original document.
+## Step 6: Deploy Your App (10%)
 
-## Step 5: Uplaod your document to Quarto pub (20 pts)
+*Once you have it working, deploy your app to shinyapps.io. Share the link with the class. Then submit your folder to the Dropbox link listed below.*
 
-Following the procedure you leanred in class, upload your blog or Reveal presentations to Quarto PUb. Remember that you will need to have a Quarto account to do this and that you need to type the relevant command in the **terminal** (not the console) to upload your document. Once you have your document link, share it with the class on the Discord server. Please also upload your project folder to [this link](https://www.dropbox.com/request/VFGXSMBIKK3MoxrAHtBW).
+::: {.callout-important}
+## Submission Note
+
+After you share your link with the class, please also submit your document to me via [this link]().
+:::
 
 

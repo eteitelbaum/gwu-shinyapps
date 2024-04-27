@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>IAFF 6502/6505 Communicating Data with Web Apps - Project Assignment</title>
+<title>IAFF 6502/6505 Communicating Data with Web Apps - Project Assignment 3</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,6 +29,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../project/project-datasets.html" rel="next">
+<link href="../assignments/coding-assignment-1.html" rel="prev">
 <link href="../images/webapps-logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -70,11 +72,11 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="IAFF 6502/6505 Communicating Data with Web Apps - Project Assignment">
+<meta property="og:title" content="IAFF 6502/6505 Communicating Data with Web Apps - Project Assignment 3">
 <meta property="og:description" content="Homepage for Communicating Data with Web Apps">
 <meta property="og:image" content="https://rshiny-is.cool/project/images/webapps-logo.png">
 <meta property="og:site_name" content="IAFF 6502/6505 Communicating Data with Web Apps">
-<meta name="twitter:title" content="IAFF 6502/6505 Communicating Data with Web Apps - Project Assignment">
+<meta name="twitter:title" content="IAFF 6502/6505 Communicating Data with Web Apps - Project Assignment 3">
 <meta name="twitter:description" content="Homepage for Communicating Data with Web Apps">
 <meta name="twitter:image" content="https://rshiny-is.cool/project/images/webapps-logo.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -89,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Project Assignment</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../project/project-assignment.html">Project</a></li><li class="breadcrumb-item"><a href="../project/project-assignment.html">Project Assignment</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -185,13 +187,19 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
  <span class="menu-text">Project</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../project/project-assignment.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Project Assignment</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../project/project-datasets.html" class="sidebar-item-text sidebar-link">
@@ -286,6 +294,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Workshop Day 1</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/workshop-day2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop Day 2</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -299,18 +313,21 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#elements" id="toc-elements" class="nav-link" data-scroll-target="#elements">Elements</a></li>
-  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  <li><a href="#step-1-setup" id="toc-step-1-setup" class="nav-link" data-scroll-target="#step-1-setup">Step 1: Setup</a></li>
+  <li><a href="#step-2-define-the-ui" id="toc-step-2-define-the-ui" class="nav-link" data-scroll-target="#step-2-define-the-ui">Step 2: Define the ui</a></li>
+  <li><a href="#step-3-define-the-server-logic" id="toc-step-3-define-the-server-logic" class="nav-link" data-scroll-target="#step-3-define-the-server-logic">Step 3: Define the server logic</a></li>
+  <li><a href="#step-4-debug-your-app" id="toc-step-4-debug-your-app" class="nav-link" data-scroll-target="#step-4-debug-your-app">Step 4: Debug your app</a></li>
+  <li><a href="#step-5-post-your-app-to-shinyapps.io" id="toc-step-5-post-your-app-to-shinyapps.io" class="nav-link" data-scroll-target="#step-5-post-your-app-to-shinyapps.io">Step 5: Post your app to shinyapps.io</a></li>
+  <li><a href="#step-6-record-a-video-or-writeup-your-results" id="toc-step-6-record-a-video-or-writeup-your-results" class="nav-link" data-scroll-target="#step-6-record-a-video-or-writeup-your-results">Step 6: Record a video or writeup your results</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/gwu-shinyapps/edit/main/project/project-assignment.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/gwu-shinyapps/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../project/project-assignment.html">Project</a></li><li class="breadcrumb-item"><a href="../project/project-assignment.html">Project Assignment</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Project Assignment</h1>
+<h1 class="title">Project Assignment 3</h1>
 </div>
 
 
@@ -329,29 +346,31 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This is your opportunity to apply the insights and skills you have developed in this course to a real-world problem. You can produce an HTML report, Revealjs slides, a blog or a pdf document. It can be on anything you like and can incorporate any kind of data that you like. But it should incoprorate both text and code as we have done throughout the course and it should be substantial enough that you would be proud to show it to a potential employer.</p>
+<p>Now that you have a clear sense of where you are going with your app, it is time to build it. This is the hard part and you will likely have to invest significant time in wrangling your data and debugging the app. Be patient! It will turn out great and you will have a nice project to show for it.</p>
 </section>
-<section id="setup" class="level2">
-<h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<p>Create a new project folder and call it <code>final-project</code>. Once you have your project open, initialize whatever type of Quarto document you have chosen to use. In the YAML header, include the following information: title, subtitle, author, format, execute and any other settings that you want to apply to the document. Set <code>echo: false</code>, <code>message: false</code>, and <code>warning: false</code>.</p>
-<p>(12.5 pts)</p>
+<section id="step-1-setup" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-setup">Step 1: Setup</h2>
+<p><em>Start a new Shiny app in R Studio. In your app.R file, begin by loading your packages, loading and/or wrangling your data, and creating lists for your inputs.</em></p>
 </section>
-<section id="elements" class="level2">
-<h2 class="anchored" data-anchor-id="elements">Elements</h2>
-<p>Your project should include the following elements:</p>
-<ol type="1">
-<li><p><strong>Introduction</strong>: What is the problem or question that you are addressing? Why is it interesting? Why is it important? (12.5 pts)</p></li>
-<li><p><strong>Data</strong>: Discuss the data. What data are you using? Where did it come from–a package, an API or wild-caught? How did you process it? (12.5 pts)</p></li>
-<li><p><strong>Visualization</strong>: Include at least one visualization. It can be a plot, a map, a diagram, or any other kind of visual representation that you think is appropriate. (12.5 pts)</p></li>
-<li><p><strong>Analysis</strong>: What did you learn from the data and your visualization? What insights did you gain? What did you find surprising? (12.5 pts)</p></li>
-<li><p><strong>Other Elements</strong>: Incorporate at some additional elements like a figure (image), a hyperlink, a table, a callout box, a block quote, a footnote that relate to the basic content and narrative of your document. (12.5 pts)</p></li>
-<li><p><strong>Styling</strong>: Now change the theme and try to make your blog or presentation look a little different/better than the default. (12.5 pts)</p></li>
-<li><p><strong>Conclusion</strong>: What are the implications of your findings? What are the next steps? What other data would you like to have to further explore this question? (12.5 pts)</p></li>
-</ol>
+<section id="step-2-define-the-ui" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-define-the-ui">Step 2: Define the ui</h2>
+<p><em>Starting with <code>ui &lt;- fluidPage()</code>, start building your UI. Add a <code>titlePanel()</code>, a <code>fluidRow()</code> and then add the various columnar elements that you want to include such as inputs, text and the plot output. Try running your app just with the ui set up and see how it looks.</em></p>
 </section>
-<section id="submission" class="level2">
-<h2 class="anchored" data-anchor-id="submission">Submission</h2>
-<p>Upload your document to Quarto Pub. and submit a link to your project in the Discord server. Then, submit your project folder to <a href="https://www.dropbox.com/request/8mhFB0M306CBqxL1hvjv">this link</a>.</p>
+<section id="step-3-define-the-server-logic" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-define-the-server-logic">Step 3: Define the server logic</h2>
+<p><em>Build your reactive function(s) and specify how the data and output will change based on user input(s). This is a process that is very specific to each project, so it is hard to say anything general here. But when in the process of building your server function, it often helps to look back at examples we have done in class or those that you might find helpful in the Shiny <a href="https://shiny.posit.co/r/gallery/">gallery</a>.</em></p>
+</section>
+<section id="step-4-debug-your-app" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-debug-your-app">Step 4: Debug your app</h2>
+<p><em>Are you having issues with your code? See <a href="https://shiny.posit.co/r/articles/improve/debugging/">this post</a> and reach out for help on Discord.</em></p>
+</section>
+<section id="step-5-post-your-app-to-shinyapps.io" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-post-your-app-to-shinyapps.io">Step 5: Post your app to shinyapps.io</h2>
+<p><em>Sign up for a free account at https://www.shinyapps.io/. When you are ready, hit the little blue icon at the top of your app.R window to publish it.</em></p>
+</section>
+<section id="step-6-record-a-video-or-writeup-your-results" class="level2">
+<h2 class="anchored" data-anchor-id="step-6-record-a-video-or-writeup-your-results">Step 6: Record a video or writeup your results</h2>
+<p><em>You have two options for presenting your app. You can post a five- to ten-minute video using a service like <a href="https://vimeo.com/">Vimeo</a> or you can write two pages about your app. In your presentation or writeup, talk about the main features of the app. What kinds of data can users explore and then also what kinds of patterns emerge from the data and what we learn from the visualization that we might not have thought of before.</em></p>
 
 
 </section>
@@ -901,6 +920,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../assignments/coding-assignment-1.html" class="pagination-link  aria-label=" assignment="" 1"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Assignment 1</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../project/project-datasets.html" class="pagination-link" aria-label="Datasets">
+        <span class="nav-page-text">Datasets</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

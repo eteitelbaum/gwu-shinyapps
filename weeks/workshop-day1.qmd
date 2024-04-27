@@ -1,6 +1,6 @@
 ---
 title: "Workshop Day 1"
-subtitle: "Working with Data"
+subtitle: "Intro to Shiny"
 format: html
 ---
 
@@ -24,4 +24,4 @@ Room 428, Monroe Hall (Sigelman Seminar Room)
 
 ## Assignments
 
-| 🧮 [Coding Assignment 1](/assignments/coding-assignment-1.html)
+| 🧮 [Coding Assignment 1](/assignments/coding-assignment-1.qmd)

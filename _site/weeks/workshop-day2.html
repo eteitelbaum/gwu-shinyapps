@@ -29,6 +29,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../weeks/workshop-day1.html" rel="prev">
 <link href="../images/webapps-logo.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -71,11 +72,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="IAFF 6502/6505 Communicating Data with Web Apps - Workshop Day 2">
-<meta property="og:description" content="Visualizing Data">
+<meta property="og:description" content="Advanced Shiny">
 <meta property="og:image" content="https://rshiny-is.cool/weeks/images/webapps-logo.png">
 <meta property="og:site_name" content="IAFF 6502/6505 Communicating Data with Web Apps">
 <meta name="twitter:title" content="IAFF 6502/6505 Communicating Data with Web Apps - Workshop Day 2">
-<meta name="twitter:description" content="Visualizing Data">
+<meta name="twitter:description" content="Advanced Shiny">
 <meta name="twitter:image" content="https://rshiny-is.cool/weeks/images/webapps-logo.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -89,7 +90,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Workshop Day 2</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/workshop-day1.html">Workshop Schedule</a></li><li class="breadcrumb-item"><a href="../weeks/workshop-day2.html">Workshop Day 2</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -194,6 +195,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../project/project-assignment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Assignment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../project/project-datasets.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Datasets</span></a>
   </div>
@@ -273,17 +280,23 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
  <span class="menu-text">Workshop Schedule</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../weeks/workshop-day1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workshop Day 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/workshop-day2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Workshop Day 2</span></a>
   </div>
 </li>
       </ul>
@@ -298,8 +311,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#guest-speaker" id="toc-guest-speaker" class="nav-link active" data-scroll-target="#guest-speaker">Guest Speaker</a></li>
-  <li><a href="#sessions" id="toc-sessions" class="nav-link" data-scroll-target="#sessions">Sessions</a></li>
+  <li><a href="#sessions" id="toc-sessions" class="nav-link active" data-scroll-target="#sessions">Sessions</a></li>
   <li><a href="#assignments" id="toc-assignments" class="nav-link" data-scroll-target="#assignments">Assignments</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/gwu-shinyapps/edit/main/weeks/workshop-day2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/gwu-shinyapps/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -307,10 +319,10 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/workshop-day1.html">Workshop Schedule</a></li><li class="breadcrumb-item"><a href="../weeks/workshop-day2.html">Workshop Day 2</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Workshop Day 2</h1>
-<p class="subtitle lead">Visualizing Data</p>
+<p class="subtitle lead">Advanced Shiny</p>
 </div>
 
 
@@ -338,33 +350,27 @@ Important
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Homework Assignment 2 is due Sunday, March 3 at 11:59pm.</li>
-<li>Final Project is due Sunday, March 10 at 11:59pm.</li>
+<li>Homework Assignment 2 is due Monday, May 6 at 11:59pm.</li>
+<li>Final Project is due Friday, May 10 at 11:59pm.</li>
 </ul>
 </div>
 </div>
-<section id="guest-speaker" class="level2">
-<h2 class="anchored" data-anchor-id="guest-speaker">Guest Speaker</h2>
-<ul>
-<li>David Keyes, founder of <a href="https://rfortherestofus.com/">R for the Rest of Us</a></li>
-</ul>
-</section>
 <section id="sessions" class="level2">
 <h2 class="anchored" data-anchor-id="sessions">Sessions</h2>
 <ul>
-<li>9:00 - 10:30: <a href="../slides/session-2.1.qmd">Revealjs Slides</a></li>
-<li>10:30 - 11:00: Break</li>
-<li>11:00 - 12:30: <a href="../slides/session-2.2.qmd">Blogs and Websites</a></li>
-<li>12:30 - 1:30: Lunch</li>
-<li>1:30 - 3:00: <a href="../slides/session-2.3.qmd">Working with PDFs</a></li>
-<li>3:00 - 3:30: Break</li>
-<li>3:30 - 5:00 <a href="../slides/session-2.4.qmd">Parameterized Reporting</a> with David Keyes</li>
+<li>9:00 - 10:20: <a href="../slides/session-2.1.html">Observers and Reactives</a></li>
+<li>10:20 - 10:40: Break</li>
+<li>10:40 - 12:00: <a href="../slides/session-2.2.html">Modules</a></li>
+<li>12:00 - 1:00: Lunch</li>
+<li>1:00 - 2:20: <a href="../slides/session-2.3.html">Building Your App</a></li>
+<li>2:20 - 2:40: Break</li>
+<li>2:40 - 4:00 <a href="../project/project-assignment.html">Final Project</a> time</li>
 </ul>
 </section>
 <section id="assignments" class="level2">
 <h2 class="anchored" data-anchor-id="assignments">Assignments</h2>
-<div class="line-block">🧮 <a href="">Coding Assignment 2</a><br>
-✍️ <a href="">Final Project</a></div>
+<div class="line-block">🧮 <a href="assignments/coding-assignment-1.html">Coding Assignment 2</a><br>
+✍️ <a href="../project/project-assignment.html">Final Project</a></div>
 
 
 </section>
@@ -914,6 +920,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../weeks/workshop-day1.html" class="pagination-link  aria-label=" workshop="" day="" 1"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Workshop Day 1</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

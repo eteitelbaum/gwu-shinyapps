@@ -194,6 +194,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../project/project-assignment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Assignment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../project/project-datasets.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Datasets</span></a>
   </div>
@@ -286,6 +292,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Workshop Day 1</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../weeks/workshop-day2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop Day 2</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -299,11 +311,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#step-1-create-a-quarto-presentation-or-blog20pts" id="toc-step-1-create-a-quarto-presentation-or-blog20pts" class="nav-link" data-scroll-target="#step-1-create-a-quarto-presentation-or-blog20pts">Step 1: Create a quarto presentation or blog(20pts)</a></li>
-  <li><a href="#step-2-create-a-data-visualization-20-pts" id="toc-step-2-create-a-data-visualization-20-pts" class="nav-link" data-scroll-target="#step-2-create-a-data-visualization-20-pts">Step 2: Create a data visualization (20 pts)</a></li>
-  <li><a href="#step-3-incorporate-additional-elements-20-pts" id="toc-step-3-incorporate-additional-elements-20-pts" class="nav-link" data-scroll-target="#step-3-incorporate-additional-elements-20-pts">Step 3: Incorporate additional elements (20 pts)</a></li>
-  <li><a href="#step-4-create-a-duplicate-post-or-presentation-20-pts" id="toc-step-4-create-a-duplicate-post-or-presentation-20-pts" class="nav-link" data-scroll-target="#step-4-create-a-duplicate-post-or-presentation-20-pts">Step 4: Create a duplicate post or presentation (20 pts)</a></li>
-  <li><a href="#step-5-uplaod-your-document-to-quarto-pub-20-pts" id="toc-step-5-uplaod-your-document-to-quarto-pub-20-pts" class="nav-link" data-scroll-target="#step-5-uplaod-your-document-to-quarto-pub-20-pts">Step 5: Uplaod your document to Quarto pub (20 pts)</a></li>
+  <li><a href="#step-1-plan-your-app-15" id="toc-step-1-plan-your-app-15" class="nav-link" data-scroll-target="#step-1-plan-your-app-15">Step 1: Plan Your App (15%)</a></li>
+  <li><a href="#step-2-wrangling-15" id="toc-step-2-wrangling-15" class="nav-link" data-scroll-target="#step-2-wrangling-15">Step 2: Wrangling (15%)</a></li>
+  <li><a href="#step-3-create-the-setup-portion-of-the-app-20" id="toc-step-3-create-the-setup-portion-of-the-app-20" class="nav-link" data-scroll-target="#step-3-create-the-setup-portion-of-the-app-20">Step 3: Create the Setup Portion of the App (20%)</a></li>
+  <li><a href="#step-4-create-the-user-interface-20" id="toc-step-4-create-the-user-interface-20" class="nav-link" data-scroll-target="#step-4-create-the-user-interface-20">Step 4: Create the User Interface (20%)</a></li>
+  <li><a href="#step-5-create-the-server-logic-20" id="toc-step-5-create-the-server-logic-20" class="nav-link" data-scroll-target="#step-5-create-the-server-logic-20">Step 5: Create the Server Logic (20%)</a></li>
+  <li><a href="#step-6-deploy-your-app-10" id="toc-step-6-deploy-your-app-10" class="nav-link" data-scroll-target="#step-6-deploy-your-app-10">Step 6: Deploy Your App (10%)</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/gwu-shinyapps/edit/main/assignments/coding-assignment-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/gwu-shinyapps/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -331,30 +344,44 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>For this assignment you are going to do two things. The first is to produce a basic data visualization that takes advantage of parameterization. The second is to embed that visualization in either a reveal JS presentation or a blog post. Then you will produce a duplicate version of that presentation or blog post with a different parameter value (most likely a country).</p>
-<p>Be sure to reference the course material, the <a href="https://quarto.org/docs/guide/">Quarto Guide</a> and the <a href="https://quarto.org/docs/reference/">Quarto Reference</a> as you work through this assignment.</p>
-<p><strong>Submission note</strong>: After you share your link with the class, please also submit your document to me via <a href="https://www.dropbox.com/request/VFGXSMBIKK3MoxrAHtBW">this link</a>.</p>
+<p>The requirements for this assignment are very simple. You could create a Shiny app that incorporates at least one reactive function and one module. An observer function is optional. The app can be an extension of the <code>fredr</code> line app that we did for this week, the V-Dem app we did for last week, or it can be a completely new app.</p>
 </section>
-<section id="step-1-create-a-quarto-presentation-or-blog20pts" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-create-a-quarto-presentation-or-blog20pts">Step 1: Create a quarto presentation or blog(20pts)</h2>
-<p>Create a new Revealjs presentation or Quarto blog. You can copy code from class to get yourself started. In your YAML header, be sure to include a <code>params:</code> argument that will specify what country you want to visualize data for.</p>
+<section id="step-1-plan-your-app-15" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-plan-your-app-15">Step 1: Plan Your App (15%)</h2>
+<p><em>Before you start coding, write out a plan for your app. What variables will be on your X axis? What variables will be Y axis variables? What will the user interface look like? What will the server logic do? Etc. Write your plan in words in the space below (for your benefit).</em></p>
 </section>
-<section id="step-2-create-a-data-visualization-20-pts" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-create-a-data-visualization-20-pts">Step 2: Create a data visualization (20 pts)</h2>
-<p>Create a code chunk and within it write the code that you need to produce a data visualization. This will involve loading the packages you need, importing the data and creating the visualization with <code>ggplot2</code>.</p>
-<p>For your visualization, you could go with the <code>gapminder</code> dataset like we did in class or you could go back to the <code>vdem</code> dataset that we used in the first workshop. You could also use a different dataset if you like. The important thing is that you are able to parameterize your visualization so that you can easily change the country that is being visualized.</p>
+<section id="step-2-wrangling-15" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-wrangling-15">Step 2: Wrangling (15%)</h2>
+<p><em>Start a new Shiny App. In the folder you created, start a new R script. Now use the dplyr package or other handy methods to wrangle the data into a format that is ready for plotting and write the CSV file to the folder. Remember that for this app the USER will be selecting which year to plot.</em></p>
 </section>
-<section id="step-3-incorporate-additional-elements-20-pts" class="level2">
-<h2 class="anchored" data-anchor-id="step-3-incorporate-additional-elements-20-pts">Step 3: Incorporate additional elements (20 pts)</h2>
-<p>Incorporate at some additional elements to your blog post or Reveal presentation. This could be a figure (image), a hyperlink, a table, a callout box, a block quote, a footnote or some other element that relates to the basic content and narrative of your document. Now change the theme and try to make your blog or presentation look a little different/better than the default</p>
+<section id="step-3-create-the-setup-portion-of-the-app-20" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-create-the-setup-portion-of-the-app-20">Step 3: Create the Setup Portion of the App (20%)</h2>
+<p><em>Load the packages that you will need for the app and create the variable lists that you will use in the UI. You will also need to load the data you created in the previous step.</em></p>
 </section>
-<section id="step-4-create-a-duplicate-post-or-presentation-20-pts" class="level2">
-<h2 class="anchored" data-anchor-id="step-4-create-a-duplicate-post-or-presentation-20-pts">Step 4: Create a duplicate post or presentation (20 pts)</h2>
-<p>Now create a duplicate presentation or blog post. This time, change the parameter value so that the visualization is for a different country. You can do this by changing the <code>params:</code> argument in the YAML header. You should also change the title of the document so that it is clear that this is a different version of the original document.</p>
+<section id="step-4-create-the-user-interface-20" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-create-the-user-interface-20">Step 4: Create the User Interface (20%)</h2>
+<p><em>Create the user interface for the app. This should include the title, the X and Y axis variable selectors, and the viridis color scheme selector. You will also need to create a plot output.</em></p>
 </section>
-<section id="step-5-uplaod-your-document-to-quarto-pub-20-pts" class="level2">
-<h2 class="anchored" data-anchor-id="step-5-uplaod-your-document-to-quarto-pub-20-pts">Step 5: Uplaod your document to Quarto pub (20 pts)</h2>
-<p>Following the procedure you leanred in class, upload your blog or Reveal presentations to Quarto PUb. Remember that you will need to have a Quarto account to do this and that you need to type the relevant command in the <strong>terminal</strong> (not the console) to upload your document. Once you have your document link, share it with the class on the Discord server. Please also upload your project folder to <a href="https://www.dropbox.com/request/VFGXSMBIKK3MoxrAHtBW">this link</a>.</p>
+<section id="step-5-create-the-server-logic-20" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-create-the-server-logic-20">Step 5: Create the Server Logic (20%)</h2>
+<p><em>Create the server logic for the app. This should include the reactive expression that will filter the data based on the user’s selections and the renderPlot() function that will create the plot. Make sure that your labels also change along with the updated data.</em></p>
+</section>
+<section id="step-6-deploy-your-app-10" class="level2">
+<h2 class="anchored" data-anchor-id="step-6-deploy-your-app-10">Step 6: Deploy Your App (10%)</h2>
+<p><em>Once you have it working, deploy your app to shinyapps.io. Share the link with the class. Then submit your folder to the Dropbox link listed below.</em></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Submission Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>After you share your link with the class, please also submit your document to me via <a href="">this link</a>.</p>
+</div>
+</div>
 
 
 </section>
