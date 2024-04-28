@@ -37,7 +37,7 @@ Be sure to reference the [V-Dem codebook](https://www.v-dem.net/documents/38/v-d
 ::: {.callout-important}
 ## Submission Note
 
-After you share your link with the class, please also submit your document to me via [this link](https://www.dropbox.com/request/2yCjJdVzSoNpXi9utzza).
+After you share your link with the class, please also submit your code to me via [this link](https://www.dropbox.com/request/2yCjJdVzSoNpXi9utzza).
 :::
 
 
